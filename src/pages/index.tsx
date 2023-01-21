@@ -1,7 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-
+import { Avatar, Text, Button, Card } from "dracula-ui";
+import SocialList from "components/social-list";
+import Typewriter from "typewriter-effect";
+import { motion } from "framer-motion";
+const styles = {
+  container: "max-w-desktop px-10 w-full",
+  text: "text-2xl mb-2",
+};
 const Home = () => {
   return (
     <div className={styles.container}>
@@ -11,10 +17,45 @@ const Home = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <main className="home w-full h-screen flex items-center justify-center">
+        <div className="w-full">
+          <section className="flex flex-col items-center justify-center">
+            <div className="flex flex-col py-3">
+              <Avatar title="Selfie" src="/images/pfp.jpeg" color="green" />
+            </div>
+            <p className={`${styles.text}`}>Jonathan Picazo</p>
+            <div className={styles.text}>
+              <Typewriter
+                options={{
+                  strings: [
+                    "Web Developer",
+                    "Software Engineer",
+                    "Dracula Enjoyer",
+                    "Builder",
+                  ],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
+            <SocialList />
+            <div>
+              <div>
+                <motion.div
+                  className=""
+                  /**
+                   * Setting the initial keyframe to "null" will use
+                   * the current value to allow for interruptable keyframes.
+                   */
+                  whileHover={{ scale: [null, 1.5, 1.4] }}
+                  transition={{ duration: 0.3 }}
+                >
+                  Download
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
   );

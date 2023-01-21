@@ -6,7 +6,10 @@ module.exports = {
       maxWidth: {
         desktop: "1440px",
       },
+      colors: {
+        "drac-dark-black": "#15171b",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-dracula")("dracula")],
 };
