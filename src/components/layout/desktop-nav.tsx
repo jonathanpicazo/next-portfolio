@@ -12,7 +12,7 @@ const DesktopNav = () => {
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <a href="https://flowbite.com/" className="flex items-center">
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
+              Picazo
             </span>
           </a>
 

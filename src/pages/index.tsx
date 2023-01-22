@@ -21,7 +21,13 @@ const Home = () => {
         <div className="w-full">
           <section className="flex flex-col items-center justify-center">
             <div className="flex flex-col py-3">
-              <Avatar title="Selfie" src="/images/pfp.jpeg" color="green" />
+              <Image
+                className="rounded-full"
+                src="/images/pfp.jpeg"
+                alt="green"
+                width={250}
+                height={250}
+              />
             </div>
             <p className={`${styles.text}`}>Jonathan Picazo</p>
             <div className={styles.text}>
@@ -41,8 +47,8 @@ const Home = () => {
             <SocialList />
             <div>
               <div>
-                <motion.div
-                  className=""
+                <motion.button
+                  className="p-5 border border-dracula-cyan rounded-xl"
                   /**
                    * Setting the initial keyframe to "null" will use
                    * the current value to allow for interruptable keyframes.
@@ -51,7 +57,7 @@ const Home = () => {
                   transition={{ duration: 0.3 }}
                 >
                   Download
-                </motion.div>
+                </motion.button>
               </div>
             </div>
           </section>
