@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "data/variables";
-import { useRouter } from "next/router";
 import { formatPathName } from "utils/functions/format-path-name";
 import { RouterType } from "types";
 const DesktopNav = ({ router }: { router: RouterType }) => {
   return (
     <>
-      <nav className="bg-dracula-darker-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+      <nav className="bg-dracula-darker-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded mb-6">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <div className="flex items-center"></div>
 

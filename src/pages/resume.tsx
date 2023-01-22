@@ -1,24 +1,22 @@
 import React from "react";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Head from "next/head";
 import CardList from "components/card-list";
 import { resumeCards } from "data/resume";
 const Resume = () => {
-  const tw = {};
   return (
     <>
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <h1>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <div className="h-screen max-w-desktop px-10 w-full mx-auto">
+        <main className="resume">
+          <h1 className="text-right md:text-left mb-4 text-2xl md:text-4xl font-bold text-dracula-cyan">
+            Resume
           </h1>
           <section>
-            <div className="flex">
+            <div className="flex flex-col md:flex-row gap-5 md:gap-0">
               {resumeCards.map((el, index) => (
-                <>
-                  <CardList list={el.list} header={el.header} />
-                </>
+                <CardList
+                  list={el.list}
+                  header={el.header}
+                  key={`resume-card-${index}`}
+                />
               ))}
             </div>
           </section>

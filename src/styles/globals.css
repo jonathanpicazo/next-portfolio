@@ -2,14 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Fira+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background: #44475a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-heading {
+  font-family: "Montserrat", sans-serif;
+}
+
+.text-body {
+  font-family: "Open Sans", sans-serif;
 }
 
 a {
@@ -27,15 +41,7 @@ a {
   }
   body {
     color: white;
-    background: #21222c;
   }
-}
-.drac-btn,
-.drac-heading,
-.drac-input,
-.drac-select,
-.drac-text {
-  font-family: "Fira Sans", sans-serif !important;
 }
 
 .home .drac-avatar {
