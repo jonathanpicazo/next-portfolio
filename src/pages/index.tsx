@@ -5,7 +5,7 @@ import SocialList from "components/social-list";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 const styles = {
-  container: "max-w-desktop px-10 w-full",
+  container: "max-w-desktop px-10 w-full mx-auto",
   text: "text-2xl mb-2",
 };
 const Home = () => {
