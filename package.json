@@ -26,6 +26,7 @@
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.30.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "tailwind-dracula": "^1.1.0",
