@@ -1,2 +1,2 @@
 import { NextRouter } from "next/router";
-export type Router = NextRouter;
+export type RouterType = NextRouter;
