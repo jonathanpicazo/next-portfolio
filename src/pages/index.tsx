@@ -19,15 +19,18 @@ const Home = () => {
           <section className="flex flex-col items-center justify-center">
             <div className="flex flex-col py-3">
               <Image
-                className="rounded-full mb-5 border border-solid border-dracula-cyan"
+                className="rounded-full mb-5 "
                 src="/images/pfp.jpeg"
                 alt="green"
                 width={250}
                 height={250}
+                loading="eager"
               />
             </div>
-            <h1 className="mb-4 text-4xl font-bold">Jonathan Picazo</h1>
-            <div className="text-xl mb-2">
+            <h1 className="mb-4 text-2xl md:text-4xl font-bold text-body">
+              Jonathan Picazo
+            </h1>
+            <div className="text-large md:text-xl mb-2">
               <Typewriter
                 options={{
                   strings: [

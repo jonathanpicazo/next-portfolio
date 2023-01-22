@@ -33,12 +33,20 @@ const SUAVECITO: CardType = {
   address: "Santa Ana, CA",
   title: "Web Developer",
   timespan: ["Sep 2021", "Present"],
+  details: [
+    "Experience using React, Typescript, static site frameworks such as Gatsby",
+    "Built a custom static headless e-commerce site using GatsbyJS, which amplified the site's performance and SEO",
+    "Worked to ensure webpages/features are a positive and hassle-free customer experience",
+    "Wrote scripts that organized and tagged items in product database",
+    "Implemented features that improved customer experience and interaction",
+    "Effectively multi tasked and worked well in a small, three person team",
+  ],
   image: "suavecito",
 };
 
 const EDUCATION: ResumeCardsType = {
   header: "Education",
-  list: [HIGH_SCHOOL, COLLEGE],
+  list: [COLLEGE, HIGH_SCHOOL],
 };
 
 const EXPERIENCE: ResumeCardsType = {
@@ -46,4 +54,4 @@ const EXPERIENCE: ResumeCardsType = {
   list: [SUAVECITO],
 };
 
-export const resumeCards: ResumeCardsType[] = [EDUCATION, EXPERIENCE];
+export const resumeCards: ResumeCardsType[] = [EXPERIENCE, EDUCATION];

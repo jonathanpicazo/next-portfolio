@@ -18,7 +18,11 @@ const MobileNavList = ({ router }: { router: RouterType }) => (
     variants={variants}
   >
     {navLinks.map((el: string, index: number) => (
-      <MobileNavItem name={el} key={index} router={router} />
+      <MobileNavItem
+        name={el}
+        key={`mobile-nav-${el}-${index}`}
+        router={router}
+      />
     ))}
   </motion.ul>
 );

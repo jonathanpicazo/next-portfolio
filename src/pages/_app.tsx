@@ -10,9 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
   };
   return (
     <>
-      <div>
+      <div className="min-h-screen">
         <Nav />
-        <div className="bg-dracula-dark">
+        <div className="bg-dracula-dark mt-20">
           <Component {...pageProps} />
         </div>
         <Footer />

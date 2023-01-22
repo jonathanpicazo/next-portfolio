@@ -11,30 +11,39 @@ const Footer = () => {
     copyright: "flex gap-x-2",
   };
   const router = useRouter();
-  console.log("router", router);
   return (
     <>
-      {router.pathname === "/" && (
-        <footer className={styles.wrapper}>
-          <Link
-            href="https://www.linkedin.com/in/jonathan-picazo/"
-            target="_blank"
-          >
-            <FaLinkedin className={styles.icon} />
-          </Link>
-          <Link href="https://github.com/jonathanpicazo" target="_blank">
-            <FaGithub className={styles.icon} />
-          </Link>
-          <Link
-            href="https://github.com/jonathanpicazo/next-portfolio"
-            target="_blank"
-          >
-            <GoRepo className={styles.icon} />
-          </Link>
-          <div className={styles.copyright}>
-            <p>Jonathan Picazo</p>
-            <p>© {new Date().getFullYear()}</p>
-          </div>
+      {router.pathname !== "/" && (
+        <footer className="flex mx-auto bg-dracula-darker">
+          <ul className="flex justify-between items-center max-w-[375px] w-full mx-auto py-5 px-2 bg-dracula-darker-900">
+            <li>
+              <Link
+                href="https://www.linkedin.com/in/jonathan-picazo/"
+                target="_blank"
+              >
+                <FaLinkedin className={styles.icon} />
+              </Link>
+            </li>
+            <li>
+              <Link href="https://github.com/jonathanpicazo" target="_blank">
+                <FaGithub className={styles.icon} />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://github.com/jonathanpicazo/next-portfolio"
+                target="_blank"
+              >
+                <GoRepo className={styles.icon} />
+              </Link>
+            </li>
+            <li>
+              <div className={styles.copyright}>
+                <p>Jonathan Picazo</p>
+                <p>© {new Date().getFullYear()}</p>
+              </div>
+            </li>
+          </ul>
         </footer>
       )}
     </>
