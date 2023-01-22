@@ -11,10 +11,9 @@ const Footer = () => {
     copyright: "flex gap-x-2",
   };
   const router = useRouter();
-  console.log("router", router);
   return (
     <>
-      {router.pathname === "/" && (
+      {router.pathname !== "/" && (
         <footer className={styles.wrapper}>
           <Link
             href="https://www.linkedin.com/in/jonathan-picazo/"

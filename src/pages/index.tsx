@@ -24,10 +24,13 @@ const Home = () => {
                 alt="green"
                 width={250}
                 height={250}
+                loading="eager"
               />
             </div>
-            <h1 className="mb-4 text-4xl font-bold">Jonathan Picazo</h1>
-            <div className="text-xl mb-2">
+            <h1 className="mb-4 text-2xl md:text-4xl font-bold">
+              Jonathan Picazo
+            </h1>
+            <div className="text-large md:text-xl mb-2">
               <Typewriter
                 options={{
                   strings: [
