@@ -14,7 +14,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <main className="home w-full h-screen flex items-center justify-center">
+      <main className="home w-full h-screen md:h-[90vh] lg:h-[80vh] xl:h-[71vh] flex items-center justify-center">
         <div className="w-full">
           <section className="flex flex-col items-center justify-center">
             <div className="flex flex-col py-3">
