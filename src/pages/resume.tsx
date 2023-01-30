@@ -4,7 +4,7 @@ import { resumeCards } from "data/resume";
 const Resume = () => {
   return (
     <>
-      <div className="h-screen max-w-desktop px-10 w-full mx-auto">
+      <div className="h-screen max-w-desktop md:px-10 px-1 w-full mx-auto">
         <main className="resume">
           <h1 className="text-right md:text-left mb-4 text-2xl md:text-4xl font-bold text-dracula-cyan">
             Resume
