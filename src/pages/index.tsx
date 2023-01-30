@@ -17,7 +17,7 @@ const Home = () => {
       <main className="home w-full h-screen md:h-[90vh] lg:h-[80vh] xl:h-[71vh] flex items-center justify-center">
         <div className="w-full">
           <section className="flex flex-col items-center justify-center">
-            <div className="flex flex-col py-3">
+            <div className="flex flex-col my-5">
               <Image
                 className="rounded-full mb-5 "
                 src="/images/pfp.jpeg"
@@ -27,10 +27,10 @@ const Home = () => {
                 loading="eager"
               />
             </div>
-            <h1 className="mb-4 text-2xl md:text-4xl font-bold text-body">
+            <h1 className="mb-5 text-2xl md:text-4xl font-bold text-body">
               Jonathan Picazo
             </h1>
-            <div className="text-large md:text-xl mb-2">
+            <div className="text-large md:text-xl mb-4">
               <Typewriter
                 options={{
                   strings: [
@@ -45,28 +45,24 @@ const Home = () => {
               />
             </div>
             <SocialList />
-            <div>
-              <div>
-                <motion.div
-                  /**
-                   * Setting the initial keyframe to "null" will use
-                   * the current value to allow for interruptable keyframes.
-                   */
-                  whileHover={{ scale: [null, 1.3, 1.2] }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <a
-                    className="p-5 border border-dracula-cyan bg-dracula-darker hover:opacity-75 rounded-3xl flex items-center gap-x-5"
-                    role="button"
-                    href="/picazo_cv.pdf"
-                    download="CV_Jonathan_Picazo.pdf"
-                  >
-                    <FaDownload className="text-dracula-cyan" />
-                    <span className="text-dracula-cyan">Download CV</span>
-                  </a>
-                </motion.div>
-              </div>
-            </div>
+            <motion.div
+              /**
+               * Setting the initial keyframe to "null" will use
+               * the current value to allow for interruptable keyframes.
+               */
+              whileHover={{ scale: [null, 1.3, 1.2] }}
+              transition={{ duration: 0.3 }}
+            >
+              <a
+                className="p-5 border border-dracula-cyan bg-dracula-darker hover:opacity-75 rounded-3xl flex items-center gap-x-5 my-2"
+                role="button"
+                href="/picazo_cv.pdf"
+                download="CV_Jonathan_Picazo.pdf"
+              >
+                <FaDownload className="text-dracula-cyan" />
+                <span className="text-dracula-cyan">Download CV</span>
+              </a>
+            </motion.div>
           </section>
         </div>
       </main>
