@@ -18,6 +18,7 @@ const HIGH_SCHOOL: CardType = {
   title: "High School Degree",
   timespan: ["2013", "2017"],
   image: "drhs",
+  details: ["Go Panthers!"],
 };
 
 const COLLEGE: CardType = {
@@ -26,6 +27,7 @@ const COLLEGE: CardType = {
   title: "B.S. Computer Science",
   timespan: ["2017", "2021"],
   image: "ucr",
+  details: ["Go Highlanders!"],
 };
 
 const SUAVECITO: CardType = {
