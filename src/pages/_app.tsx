@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="bg-dracula-dark mt-20">
           <Component {...pageProps} />
         </div>
-        <Footer />
       </div>
     </>
   );
