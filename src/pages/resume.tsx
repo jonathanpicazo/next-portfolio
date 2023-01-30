@@ -6,7 +6,7 @@ const Resume = () => {
     <>
       <div className="h-screen max-w-desktop md:px-10 px-1 w-full mx-auto">
         <main className="resume">
-          <h1 className="text-right md:text-left mb-4 text-2xl md:text-4xl font-bold text-dracula-cyan">
+          <h1 className="text-right md:text-left mb-4 text-2xl md:text-4xl font-bold px-4 md:px-6">
             Resume
           </h1>
           <section>
