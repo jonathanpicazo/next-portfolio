@@ -1,2 +1,2 @@
-import { NextRouter } from "next/router";
-export type RouterType = NextRouter;
+export * from "./resume";
+export * from "./global";

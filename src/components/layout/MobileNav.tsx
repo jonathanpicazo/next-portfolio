@@ -1,10 +1,9 @@
 import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
-import { useDimensions } from "utils/hooks/use-dimensions";
-import MobileNavList from "./mobile-nav.list";
-import MobileNavToggle from "./mobile-nav-toggle";
-import { RouterType } from "types";
+import { useDimensions } from "~/utils";
+import { MobileNavToggle, MobileNavList } from "~/components";
+import { RouterType } from "~/types";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -49,5 +48,3 @@ export const MobileNav = ({ router }: { router: RouterType }) => {
     </div>
   );
 };
-
-export default MobileNav;

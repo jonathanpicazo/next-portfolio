@@ -1,7 +1,9 @@
 import React from "react";
-import { CardType } from "types/resume";
-import Card from "./card";
-const CardList = ({ header, list }: { header: string; list: any }) => {
+
+import { Card } from "~/components";
+import { CardType } from "~/types/resume";
+
+export const CardList = ({ header, list }: { header: string; list: any }) => {
   return (
     <>
       <section className="flex-1 md:mx-6 mx-3 rounded-lg bg-dracula-darker-900 px-9 py-4">
@@ -15,5 +17,3 @@ const CardList = ({ header, list }: { header: string; list: any }) => {
     </>
   );
 };
-
-export default CardList;

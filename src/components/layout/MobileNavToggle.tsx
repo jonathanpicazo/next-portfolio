@@ -10,7 +10,7 @@ const Path = (props: any) => (
   />
 );
 
-const MobileNavToggle = ({ toggle }: { toggle: any }) => {
+export const MobileNavToggle = ({ toggle }: { toggle: any }) => {
   return (
     <button
       className="cursor-pointer absolute bg-dracula-darker-900 top-[18px] left-[15px] w-[50px] h-[50px] rounded-full"
@@ -46,5 +46,3 @@ const MobileNavToggle = ({ toggle }: { toggle: any }) => {
     </button>
   );
 };
-
-export default MobileNavToggle;

@@ -2,9 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { navLinks } from "data/variables";
-import { formatPathName } from "utils/functions/format-path-name";
-import { RouterType } from "types";
+
+import { navLinks } from "~/data";
+import { formatPathName } from "~/utils";
+import { RouterType } from "~/types";
+
 const variants = {
   open: {
     y: 0,
@@ -53,5 +55,3 @@ export const MobileNavItem = ({
     </motion.li>
   );
 };
-
-export default MobileNavItem;

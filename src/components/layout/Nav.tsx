@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import MobileNav from "./mobile-nav";
-import DesktopNav from "./desktop-nav";
 import { useRouter } from "next/router";
-function Nav() {
+
+import { MobileNav, DesktopNav } from "~/components";
+
+export const Nav = () => {
   const router = useRouter();
   const styles = {
     desktopLink: `capitalize text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium`,
@@ -18,6 +19,4 @@ function Nav() {
       </div>
     </nav>
   );
-}
-
-export default Nav;
+};
