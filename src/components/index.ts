@@ -1,4 +1,6 @@
-export * from "./layout";
-export { CardList } from "./CardList";
-export { Card } from "./Card";
+export * from "./nav";
+export * from "./resume";
 export { SocialList } from "./SocialList";
+export { PageCard } from "./PageCard";
+export { Header } from "./Header";
+export { Layout } from "./Layout";

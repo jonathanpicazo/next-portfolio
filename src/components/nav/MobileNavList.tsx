@@ -12,7 +12,13 @@ const variants = {
   },
 };
 
-export const MobileNavList = ({ router }: { router: RouterType }) => (
+export const MobileNavList = ({
+  router,
+  toggleOpen,
+}: {
+  router: RouterType;
+  toggleOpen: any;
+}) => (
   <motion.ul
     className="m-0 p-6 absolute top-[100px] w-[230px]"
     variants={variants}
@@ -22,6 +28,7 @@ export const MobileNavList = ({ router }: { router: RouterType }) => (
         name={el}
         key={`mobile-nav-${el}-${index}`}
         router={router}
+        toggleOpen={toggleOpen}
       />
     ))}
   </motion.ul>
