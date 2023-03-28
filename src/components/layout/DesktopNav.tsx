@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { navLinks } from "data/variables";
-import { formatPathName } from "utils/functions/format-path-name";
-import { RouterType } from "types";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+
+import { navLinks } from "~/data";
+import { formatPathName } from "~/utils";
+import { RouterType } from "~/types";
+
 const styles = {
   wrapper:
     "flex justify-between items-center py-4 max-w-[300px] w-full mx-auto py-5",
@@ -13,7 +14,7 @@ const styles = {
   social:
     "rounded-lg bg-dracula-darker-900 hover:opacity-75 p-3 flex items-center justify-center cursor-pointer",
 };
-const DesktopNav = ({ router }: { router: RouterType }) => {
+export const DesktopNav = ({ router }: { router: RouterType }) => {
   return (
     <>
       <nav className="bg-dracula-darker-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded mb-6">
@@ -73,5 +74,3 @@ const DesktopNav = ({ router }: { router: RouterType }) => {
     </>
   );
 };
-
-export default DesktopNav;

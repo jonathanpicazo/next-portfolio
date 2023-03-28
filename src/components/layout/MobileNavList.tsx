@@ -1,8 +1,8 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import MobileNavItem from "./mobile-nav-item";
-import { navLinks } from "data/variables";
-import { RouterType } from "types";
+import { MobileNavItem } from "~/components";
+import { navLinks } from "~/data/variables";
+import { RouterType } from "~/types";
 const variants = {
   open: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 },
@@ -12,7 +12,7 @@ const variants = {
   },
 };
 
-const MobileNavList = ({ router }: { router: RouterType }) => (
+export const MobileNavList = ({ router }: { router: RouterType }) => (
   <motion.ul
     className="m-0 p-6 absolute top-[100px] w-[230px]"
     variants={variants}
@@ -28,5 +28,3 @@ const MobileNavList = ({ router }: { router: RouterType }) => (
 );
 
 const itemIds = [0, 1, 2, 3, 4];
-
-export default MobileNavList;

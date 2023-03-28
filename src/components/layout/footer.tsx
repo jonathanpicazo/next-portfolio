@@ -3,7 +3,8 @@ import Link from "next/link";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { GoRepo } from "react-icons/go";
 import { useRouter } from "next/router";
-const Footer = () => {
+
+export const Footer = () => {
   const styles = {
     wrapper:
       "flex justify-between items-center py-4 max-w-[375px] w-full mx-auto py-5 px-2",
@@ -49,5 +50,3 @@ const Footer = () => {
     </>
   );
 };
-
-export default Footer;

@@ -1,6 +1,8 @@
 import React from "react";
-import CardList from "components/card-list";
-import { resumeCards } from "data/resume";
+
+import { CardList } from "~/components";
+import { resumeCards } from "~/data";
+
 const Resume = () => {
   return (
     <>
