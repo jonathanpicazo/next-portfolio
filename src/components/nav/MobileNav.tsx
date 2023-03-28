@@ -42,7 +42,7 @@ export const MobileNav = ({ router }: { router: RouterType }) => {
           className="bg-dracula-darker-900 absolute top-0 left-0 bottom-0 w-[300px]"
           variants={sidebar}
         />
-        <MobileNavList router={router} />
+        <MobileNavList router={router} toggleOpen={toggleOpen} />
         <MobileNavToggle toggle={() => toggleOpen()} />
       </motion.div>
     </div>

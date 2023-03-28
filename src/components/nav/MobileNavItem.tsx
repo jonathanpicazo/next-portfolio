@@ -30,9 +30,11 @@ const itemIds = [0, 1, 2, 3, 4];
 export const MobileNavItem = ({
   name,
   router,
+  toggleOpen,
 }: {
   name: string;
   router: RouterType;
+  toggleOpen: any;
 }) => {
   return (
     <motion.li
@@ -41,7 +43,13 @@ export const MobileNavItem = ({
       whileTap={{ scale: 0.95 }}
       className="m-0 p-0 flex items-center cursor-pointer capitalize hover:text-dracula-green text-xl"
     >
-      <Link href={formatPathName(name)} className="p-4">
+      <Link
+        href={formatPathName(name)}
+        className="p-4"
+        onClick={() => {
+          toggleOpen();
+        }}
+      >
         <span
           className={
             router.pathname === formatPathName(name)
