@@ -1,4 +1,4 @@
-export interface CardType {
+export interface ResumeCardType {
   location: string;
   address: string;
   title: string;
@@ -7,7 +7,7 @@ export interface CardType {
   image: string;
 }
 
-export interface ResumeCardsType {
+export interface ResumeCardListType {
   header: string;
-  list: CardType[];
+  list: ResumeCardType[];
 }

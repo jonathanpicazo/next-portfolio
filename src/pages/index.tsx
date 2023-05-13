@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Avatar, Text, Button, Card } from "dracula-ui";
-import SocialList from "components/social-list";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import { FaDownload } from "react-icons/fa";
-const Home = () => {
+
+import { SocialList } from "~/components";
+
+export const Home = () => {
   return (
     <div className="max-w-desktop px-10 w-full mx-auto">
       <Head>
