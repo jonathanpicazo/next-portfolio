@@ -5,8 +5,8 @@ const Contact = () => {
   return (
     <Layout>
       <main>
-        <section>
-          <form>
+        <section className="max-w-[1000px] mx-auto">
+          <form name="contact" method="POST" data-netlify="true">
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
@@ -18,7 +18,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="name"
-                  className="bg-dracula-darker-900  text-dracula-light text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  className="bg-dracula-darker-900  text-dracula-light text-sm rounded-lg focus:ring-dracula-purple-500 focus:border-dracula-purple-500 block w-full p-2.5"
                   placeholder="Name"
                   required
                 />
@@ -33,7 +33,7 @@ const Contact = () => {
                 <input
                   type="email"
                   id="email"
-                  className="bg-dracula-darker-900 text-dracula-light text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  className="bg-dracula-darker-900 text-dracula-light text-sm rounded-lg focus:ring-dracula-purple-500 focus:border-dracula-purple-500 block w-full p-2.5"
                   placeholder="Email address"
                   required
                 />
@@ -48,14 +48,14 @@ const Contact = () => {
               </label>
               <textarea
                 id="message"
-                rows={4}
-                className="block p-2.5 w-full text-sm text-dracula-light bg-dracula-darker-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500"
+                rows={6}
+                className="block p-2.5 w-full text-sm text-dracula-light bg-dracula-darker-900 rounded-lg  focus:ring-dracula-purple-500 focus:border-dracula-purple-500"
                 placeholder="Write your message here"
               ></textarea>
             </div>
             <button
               type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              className="text-dracula-darker-900 bg-dracula-purple-500 hover:bg-dracula-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
               Submit
             </button>
