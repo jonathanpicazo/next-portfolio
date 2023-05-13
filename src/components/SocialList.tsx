@@ -12,7 +12,7 @@ const styles = {
     "rounded-lg bg-dracula-darker-900 hover:opacity-75 p-3 flex items-center justify-center cursor-pointer",
 };
 
-const SocialList = () => {
+export const SocialList = () => {
   return (
     <>
       <section className="flex gap-x-4 mb-7 mt-4">
@@ -41,5 +41,3 @@ const SocialList = () => {
     </>
   );
 };
-
-export default SocialList;
