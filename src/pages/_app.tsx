@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Nav, Footer, NavBar } from "~/components";
+import { NavBar } from "~/components";
 import "dracula-ui/styles/dracula-ui.css";
 
 export default function App({ Component, pageProps }: AppProps) {
