@@ -7,7 +7,7 @@ export const Layout = ({
 }) => {
   return (
     <div
-      className={`h-full max-w-desktop md:px-10 px-1 w-full mx-auto ${className}`}
+      className={`h-full max-w-desktop md:px-10 px-[10px] w-full mx-auto ${className}`}
     >
       {children}
     </div>
