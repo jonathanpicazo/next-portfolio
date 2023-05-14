@@ -1,44 +1,52 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import { Layout } from "./Layout";
-import { navLinks } from "~/data";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import Link from "next/link";
-import { formatPathName } from "~/utils";
-import { RouterType } from "~/types";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
+import { GoRepo } from "react-icons/go";
+import { useClickAway } from "react-use";
+
+import { Layout } from "~/components";
+import { navLinks } from "~/data";
+import { formatPathName } from "~/utils";
 
 export const NavBar = () => {
-  const router = useRouter();
+  const { pathname } = useRouter();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const mobileNavRef = useRef(null);
+  useClickAway(mobileNavRef, () => {
+    setShowMobileMenu(false);
+  });
   return (
     <>
-      <nav className="bg-dracula-darker-900 border-gray-200">
+      <nav className="border-gray-200 bg-dracula-darker-900">
         <Layout>
-          <div className="flex flex-wrap items-center justify-between mx-auto py-4 px-2">
+          <div
+            className="mx-auto flex flex-wrap items-center justify-between py-4 px-2"
+            ref={mobileNavRef}
+          >
             <div>
               <SocialIcons />
             </div>
             <button
               data-collapse-toggle="navbar-default"
               type="button"
-              className="inline-flex items-center p-2 ml-3 text-sm rounded-lg md:hidden hover:bg-dracula-dark focus:outline-none focus:ring-2 focus:ring-dracula-dark"
+              className="ml-3 inline-flex items-center rounded-lg p-2 text-sm hover:bg-dracula-dark focus:outline-none focus:ring-2 focus:ring-dracula-dark md:hidden"
               aria-expanded="false"
               onClick={() => setShowMobileMenu(!showMobileMenu)}
             >
               <span className="sr-only">Open main menu</span>
-              <FiMenu size={20} fill="#9ba0c0" />
+              <FiMenu size={20} className="text-dracula-cyan" />
             </button>
             {/* Desktop */}
             <div className="hidden md:block">
-              <ul className="flex text-base rounded-lg flex-row space-x-8 mt-0">
+              <ul className="mt-0 flex flex-row space-x-8 rounded-lg text-base">
                 {navLinks.map((name, index) => (
                   <li key={`desktop-nav-${name}-${index}`}>
                     <Link
                       href={formatPathName(name)}
-                      className="capitalize block py-2 pl-3 pr-4"
+                      className="block py-2 pl-3 pr-4 capitalize"
                     >
                       <motion.div
                         whileHover={{ scale: [null, 1.1, 1.0] }}
@@ -46,8 +54,8 @@ export const NavBar = () => {
                       >
                         <span
                           className={`hover:opacity-75 ${
-                            router.pathname === formatPathName(name)
-                              ? "text-dracula-cyan border-b border-dracula-cyan"
+                            pathname === formatPathName(name)
+                              ? "border-b border-dracula-cyan text-dracula-cyan"
                               : "text-dracula-light"
                           }`}
                         >
@@ -61,22 +69,22 @@ export const NavBar = () => {
             </div>
             {/* Mobile */}
             {showMobileMenu ? (
-              <div className="w-full block md:hidden">
-                <ul className="flex flex-col p-4 mt-4 rounded-lg bg-dracula-dark text-base">
+              <div className="block w-full md:hidden">
+                <ul className="mt-4 flex flex-col rounded-lg bg-dracula-dark p-4 text-base">
                   {navLinks.map((name, index) => (
                     <li
                       className="py-2 pl-3 pr-4"
                       key={`mobile-nav-${name}-${index}`}
                     >
                       <Link
-                        className="capitalize block"
+                        className="block capitalize"
                         href={formatPathName(name)}
                         onClick={() => setShowMobileMenu(false)}
                       >
                         <span
                           className={`hover:opacity-75 ${
-                            router.pathname === formatPathName(name)
-                              ? "text-dracula-cyan border-b border-dracula-cyan"
+                            pathname === formatPathName(name)
+                              ? "border-b border-dracula-cyan text-dracula-cyan"
                               : "text-dracula-light"
                           }`}
                         >
@@ -121,6 +129,18 @@ const SocialIcons = () => {
           className={styles.social}
         >
           <FaGithub className={`${styles.icon}`} />
+        </motion.div>
+      </Link>
+      <Link
+        href="https://github.com/jonathanpicazo/next-portfolio"
+        target="_blank"
+      >
+        <motion.div
+          whileHover={{ scale: [null, 1.2, 1.1] }}
+          transition={{ duration: 0.2 }}
+          className={styles.social}
+        >
+          <GoRepo className={`${styles.icon}`} />
         </motion.div>
       </Link>
     </div>
