@@ -1,6 +1,14 @@
-export const Header = ({ title }: { title: string }) => {
+export const Header = ({
+  title,
+  className,
+}: {
+  title: string;
+  className?: string;
+}) => {
   return (
-    <h1 className="text-left mb-4 text-2xl md:text-4xl font-bold px-4 md:px-3">
+    <h1
+      className={`mb-4 px-4 text-left text-2xl font-bold md:px-3 md:text-4xl ${className}`}
+    >
       {title}
     </h1>
   );
