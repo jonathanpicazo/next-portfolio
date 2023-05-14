@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <NavBar />
-      <div className="bg-dracula-dark mt-20">
+      <div className="bg-dracula-dark mt-8">
         <Component {...pageProps} />
       </div>
     </>
