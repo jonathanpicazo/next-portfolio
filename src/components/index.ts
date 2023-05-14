@@ -4,3 +4,4 @@ export { PageCard } from "./PageCard";
 export { Header } from "./Header";
 export { Layout } from "./Layout";
 export { NavBar } from "./NavBar";
+export { TechStack } from "./TechStack";

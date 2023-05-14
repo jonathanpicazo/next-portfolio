@@ -9,7 +9,7 @@ export const PageCard = ({
 }) => {
   return (
     <div
-      className={`flex-1 md:mx-2.5 mx-3 rounded-lg bg-dracula-darker-900 px-9 py-4 ${className}`}
+      className={`mx-3 flex-1 rounded-lg bg-dracula-darker-900 px-9 pt-4 pb-5 md:mx-2.5 ${className}`}
     >
       {children}
     </div>
