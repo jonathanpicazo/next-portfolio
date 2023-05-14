@@ -1,6 +1,12 @@
 import React from "react";
 
-import { ResumeCardList, Header, Layout } from "~/components";
+import {
+  ResumeCardList,
+  Header,
+  Layout,
+  ProjectExperience,
+  PageCard,
+} from "~/components";
 import { resumeCards } from "~/data";
 
 const Resume = () => {
@@ -9,7 +15,7 @@ const Resume = () => {
       <main className="resume">
         <Header title="Resume" />
         <section>
-          <div className="flex flex-col md:flex-row gap-5 md:gap-0">
+          <div className="flex flex-col gap-5 md:flex-row md:gap-0">
             {resumeCards.map((el, index) => (
               <ResumeCardList
                 list={el.list}
@@ -18,6 +24,10 @@ const Resume = () => {
               />
             ))}
           </div>
+          {/* Projects */}
+          <PageCard className="mt-4">
+            <ProjectExperience />
+          </PageCard>
         </section>
       </main>
     </Layout>

@@ -1,4 +1,5 @@
-import { Header, PageCard, Layout } from "~/components";
+import { ReactElement } from "react";
+import { Header, PageCard, Layout, TechStack } from "~/components";
 import Image from "next/image";
 import {
   MdEmail,
@@ -7,8 +8,9 @@ import {
   MdLocationPin,
 } from "react-icons/md";
 import { FiSmartphone } from "react-icons/fi";
+
 const ICON_SIZE = 23;
-const personalInfo: { label: string; value: string; icon: any }[] = [
+const personalInfo: { label: string; value: string; icon: ReactElement }[] = [
   {
     label: "phone",
     value: "+1 (909)-784-8797",
@@ -43,9 +45,9 @@ const About = () => {
       <Layout>
         <Header title="About" />
         <PageCard>
-          <div className="flex flex-col md:flex-row gap-x-5">
+          <div className="flex flex-col gap-x-5 md:flex-row">
             {/* Left Image */}
-            <div className="w-full desktop:basis-1/3 flex items-center justify-center">
+            <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
               <Image
                 className="rounded-md"
                 src="/images/pfp.jpeg"
@@ -55,9 +57,9 @@ const About = () => {
                 loading="eager"
               />
             </div>
-            <div className="w-full desktop:basis-2/3">
+            <div className="desktop:basis-2/3 w-full">
               {/* Right Content*/}
-              <p>
+              <p className="mb-4">
                 {`I'm a Software Developer from Pomona, California, working primarily
             in web development for e-commerce. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -70,16 +72,16 @@ const About = () => {
               </p>
               {/* Personal Info */}
               <div>
-                <h4 className="font-bold mb-4 text-lg">Personal Info</h4>
+                <h4 className="mb-4 text-lg font-bold">Personal Info</h4>
                 {/* Social Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5">
+                <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
                   {personalInfo.map((el) => (
                     <div className="flex" key={`about-icon-${el.label}`}>
-                      <div className="bg-dracula-dark rounded-md flex items-center justify-center p-2 mr-2">
+                      <div className="mr-2 flex items-center justify-center rounded-md bg-dracula-dark p-2">
                         {el.icon}
                       </div>
                       <div>
-                        <p className="capitalize text-dracula-dark-700 text-sm">
+                        <p className="text-sm capitalize text-dracula-dark-700">
                           {el.label}
                         </p>
                         <p className="text-dracula-purple">{el.value}</p>
@@ -89,6 +91,10 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="mt-4">
+            <h4 className="mb-1 text-lg font-bold">Tech Stack</h4>
+            <TechStack />
           </div>
         </PageCard>
       </Layout>
