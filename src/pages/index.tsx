@@ -20,7 +20,7 @@ export const Home = () => {
           <section className="flex flex-col items-center justify-center">
             <div className="flex flex-col my-5">
               <Image
-                className="rounded-full mb-5 "
+                className="rounded-full mb-5"
                 src="/images/pfp.jpeg"
                 alt="green"
                 width={250}
