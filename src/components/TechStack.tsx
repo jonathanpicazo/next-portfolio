@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import {
   SiHtml5,
   SiReact,
@@ -18,7 +18,8 @@ import {
   SiFlask,
 } from "react-icons/si";
 
-import type { TechStackItem, TechStackArray } from "~/types";
+import { TechStackIcon } from "./TechStackIcon";
+import type { TechStackArray } from "~/types";
 
 export const TechStack = () => {
   const ICON_SIZE = 25;
@@ -112,20 +113,13 @@ export const TechStack = () => {
     <section className="flex flex-col gap-y-4">
       {techStackArr.map((el) => (
         <div key={`tech-stack-arr-${el.label}`}>
-          <p className="mb-3 text-base">{el.label}</p>
+          <p className="mb-3 text-base text-dracula-pink">{el.label}</p>
           <div className="flex flex-wrap gap-x-3 gap-y-3">
             {el.items.map((item) => (
-              <div
-                className="flex min-w-[82px] flex-col items-center justify-center gap-2"
+              <TechStackIcon
                 key={`tech-stack-list-${item.label}`}
-              >
-                <div className="rounded-md bg-dracula-dark p-2">
-                  {item.icon}
-                </div>
-                <span className="text-sm text-dracula-dark-600">
-                  {item.label}
-                </span>
-              </div>
+                item={item}
+              />
             ))}
           </div>
         </div>

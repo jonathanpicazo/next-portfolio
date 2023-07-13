@@ -21,6 +21,8 @@ import {
 } from "react-icons/si";
 import { BiMicrochip } from "react-icons/bi";
 
+import { TechStackIcon } from "../TechStackIcon";
+
 import type { TechStackItem } from "~/types";
 
 const TECH_ICON_SIZE = 35;
@@ -42,7 +44,7 @@ export const ProjectExperience = () => {
       icon: <SiNba className={`text-[50px] text-dracula-orange`} />,
       techIcons: [
         {
-          label: "",
+          label: "React",
           icon: <SiReact key={nanoid()} size={TECH_ICON_SIZE} />,
         },
         {
@@ -60,12 +62,8 @@ export const ProjectExperience = () => {
       icon: <BiMicrochip className={`text-[50px] text-dracula-orange`} />,
       techIcons: [
         {
-          label: "",
-          icon: <SiReact key={nanoid()} size={TECH_ICON_SIZE} />,
-        },
-        {
-          label: "Flask",
-          icon: <SiFlask key={nanoid()} size={TECH_ICON_SIZE} />,
+          label: "C",
+          icon: <SiC key={nanoid()} size={TECH_ICON_SIZE} />,
         },
       ],
       description:
@@ -81,19 +79,32 @@ export const ProjectExperience = () => {
         {projectList.map((project) => (
           <div
             key={`project-list-${project.title}`}
-            className="flex flex-col gap-x-3 rounded-lg bg-dracula-dark px-4 py-2.5"
+            className="flex flex-col gap-x-3 rounded-lg border border-dracula-light px-4 py-2.5"
           >
             <div className="mb-2 flex flex-row items-center justify-between">
               <div>
                 <p className="text-heading mb-1 text-lg font-semibold text-dracula-purple">
                   {project.title}
                 </p>
-                <p className="rounded-full bg-dracula-darker-900 py-2 px-3 text-sm text-dracula-cyan">
+                <p className="rounded-full bg-dracula-dark py-2 px-3 text-sm text-dracula-cyan">
                   {project.subtitle}
                 </p>
               </div>
               <div>{project.icon}</div>
             </div>
+            {project.techIcons.length > 0 && (
+              <div className="mt-1">
+                {/* <p>Tech Stack used</p> */}
+                <div className="mb-2 flex">
+                  {project.techIcons.map((ti, index) => (
+                    <TechStackIcon
+                      item={ti}
+                      key={`project-tech-stack-icon-${ti}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             <p className="text-base text-dracula-light">
               {project.description}
