@@ -35,9 +35,25 @@ const personalInfo: { label: string; value: string; icon: ReactElement }[] = [
   },
 ];
 
-const SubHeader = ({ title }: { title: string }) => {
-  return <h4></h4>;
+const SubHeader = ({
+  title,
+  className,
+}: {
+  title: string;
+  className?: string;
+}) => {
+  return (
+    <h4 className={`text-lg font-bold text-dracula-green ${className}`}>
+      {title}
+    </h4>
+  );
 };
+
+const aboutText = [
+  "Hello! I'm a junior web developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
+  "Throughout my education and personal projects, I have gained proficiency in HTML, CSS, and JavaScript. I enjoy the process of transforming wireframes and mockups into fully functional websites that not only look great but also provide a seamless user experience. I am also familiar with popular front-end frameworks and libraries like React, NextJS and Tailwind, which enable me to build interactive and responsive web applications.",
+  "As a lifelong learner, I am constantly expanding my skill set and staying up-to-date with the latest trends and technologies in web development. I am enthusiastic about tackling new challenges and collaborating with experienced developers to enhance my knowledge and contribute to impactful projects.",
+];
 
 const About = () => {
   return (
@@ -49,8 +65,8 @@ const About = () => {
             {/* Left Image */}
             <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
               <Image
-                className="rounded-md"
-                src="/images/pfp.jpeg"
+                className="h-full w-full rounded-md object-cover"
+                src="/images/aboutme.jpg"
                 alt="green"
                 width={500}
                 height={500}
@@ -59,20 +75,16 @@ const About = () => {
             </div>
             <div className="desktop:basis-2/3 w-full">
               {/* Right Content*/}
-              <p className="mb-4">
-                {`I'm a Software Developer from Pomona, California, working primarily
-            in web development for e-commerce. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum`}
-              </p>
+              <div className="mb-4">
+                {aboutText.map((par, index) => (
+                  <p className="mb-2" key={`about-me-message-${index}`}>
+                    {par}
+                  </p>
+                ))}
+              </div>
               {/* Personal Info */}
               <div>
-                <h4 className="mb-4 text-lg font-bold">Personal Info</h4>
+                <SubHeader className="mb-4" title="Personal Info" />
                 {/* Social Grid */}
                 <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
                   {personalInfo.map((el) => (
@@ -93,7 +105,7 @@ const About = () => {
             </div>
           </div>
           <div className="mt-4">
-            <h4 className="mb-1 text-lg font-bold">Tech Stack</h4>
+            <SubHeader className="mb-1" title="Tech Stack" />
             <TechStack />
           </div>
         </PageCard>
