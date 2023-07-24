@@ -12,7 +12,7 @@ export const ResumeCardList = ({
 }) => {
   return (
     <PageCard>
-      <h3 className="text-xl mb-3">{header}</h3>
+      <h3 className="mb-3 text-xl text-dracula-pink">{header}</h3>
       <ol className="relative border-l border-gray-200 dark:border-gray-700">
         {list.map((el: ResumeCardType, index: number) => (
           <ResumeCard key={`card-item-${index}`} data={el} />

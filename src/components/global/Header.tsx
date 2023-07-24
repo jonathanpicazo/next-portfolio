@@ -7,7 +7,7 @@ export const Header = ({
 }) => {
   return (
     <h1
-      className={`mb-4 px-4 text-left text-2xl font-bold md:px-3 md:text-4xl ${className}`}
+      className={`mb-4 px-[5px] text-left text-2xl font-bold text-dracula-green md:px-3 md:text-4xl ${className}`}
     >
       {title}
     </h1>
