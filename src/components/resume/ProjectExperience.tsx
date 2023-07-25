@@ -18,10 +18,11 @@ import {
   SiC,
   SiFlask,
   SiNba,
+  SiShopify,
 } from "react-icons/si";
 import { BiMicrochip } from "react-icons/bi";
 
-import { TechStackIcon } from "../TechStackIcon";
+import { TechStackIcon } from "../sections/TechStackIcon";
 
 import type { TechStackItem } from "~/types";
 
@@ -34,10 +35,29 @@ type ProjectItem = {
   techIcons: TechStackItem[];
   description: string;
   link: string;
+  demoLink?: string;
 };
 
 export const ProjectExperience = () => {
   const projectList: ProjectItem[] = [
+    {
+      title: "Metafield Migration Tool",
+      subtitle: "APIs",
+      icon: <SiNba className={`text-[50px] text-dracula-orange`} />,
+      techIcons: [
+        {
+          label: "NodeJS",
+          icon: <SiNodedotjs key={nanoid()} size={TECH_ICON_SIZE} />,
+        },
+        {
+          label: "GraphQL",
+          icon: <SiGraphql key={nanoid()} size={TECH_ICON_SIZE} />,
+        },
+      ],
+      description:
+        "The web application uses an existing NBA statistics database from Kaggle to perform search queries. This application is essentially a search application for specific NBA statistics (best home team, best shooter, etc.). This project made me comfortable with having a backend (Flask server) communicate with the frontend (React).",
+      link: "https://github.com/jonathanpicazo/NBA-Stats-React",
+    },
     {
       title: "NBA Stats App",
       subtitle: "Web Development",
@@ -74,7 +94,7 @@ export const ProjectExperience = () => {
 
   return (
     <section>
-      <h3 className="mb-3 text-xl">Projects</h3>
+      <h3 className="mb-3 text-xl text-dracula-pink">Projects</h3>
       <div className="grid grid-cols-1 gap-x-6 gap-y-3 md:grid-cols-2">
         {projectList.map((project) => (
           <div
