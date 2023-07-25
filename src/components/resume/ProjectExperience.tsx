@@ -43,7 +43,7 @@ export const ProjectExperience = () => {
     {
       title: "Metafield Migration Tool",
       subtitle: "APIs",
-      icon: <SiNba className={`text-[50px] text-dracula-orange`} />,
+      icon: <SiShopify className={`text-[50px] text-dracula-orange`} />,
       techIcons: [
         {
           label: "NodeJS",
