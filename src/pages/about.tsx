@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Header, PageCard, Layout, TechStack } from "~/components";
+import { Header, PageCard, Layout, TechStack, SEO } from "~/components";
 import Image from "next/image";
 import {
   MdEmail,
@@ -58,58 +58,57 @@ const aboutText = [
 const About = () => {
   return (
     <>
-      <Layout>
-        <Header title="About" />
-        <PageCard>
-          <div className="flex flex-col gap-x-5 md:flex-row">
-            {/* Left Image */}
-            <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
-              <Image
-                className="h-full w-full rounded-md object-cover"
-                src="/images/aboutme.jpg"
-                alt="green"
-                width={500}
-                height={500}
-                loading="eager"
-              />
+      <SEO title="About" description={aboutText.join(" ")} />
+      <Header title="About" />
+      <PageCard>
+        <div className="flex flex-col gap-x-5 md:flex-row">
+          {/* Left Image */}
+          <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
+            <Image
+              className="h-full w-full rounded-md object-cover"
+              src="/images/aboutme.jpg"
+              alt="green"
+              width={500}
+              height={500}
+              loading="eager"
+            />
+          </div>
+          <div className="desktop:basis-2/3 w-full">
+            {/* Right Content*/}
+            <div className="mb-4">
+              {aboutText.map((par, index) => (
+                <p className="mb-2" key={`about-me-message-${index}`}>
+                  {par}
+                </p>
+              ))}
             </div>
-            <div className="desktop:basis-2/3 w-full">
-              {/* Right Content*/}
-              <div className="mb-4">
-                {aboutText.map((par, index) => (
-                  <p className="mb-2" key={`about-me-message-${index}`}>
-                    {par}
-                  </p>
+            {/* Personal Info */}
+            <div>
+              <SubHeader className="mb-4" title="Personal Info" />
+              {/* Social Grid */}
+              <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
+                {personalInfo.map((el) => (
+                  <div className="flex" key={`about-icon-${el.label}`}>
+                    <div className="mr-2 flex items-center justify-center rounded-md bg-dracula-dark p-2">
+                      {el.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm capitalize text-dracula-dark-700">
+                        {el.label}
+                      </p>
+                      <p className="text-dracula-purple">{el.value}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
-              {/* Personal Info */}
-              <div>
-                <SubHeader className="mb-4" title="Personal Info" />
-                {/* Social Grid */}
-                <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
-                  {personalInfo.map((el) => (
-                    <div className="flex" key={`about-icon-${el.label}`}>
-                      <div className="mr-2 flex items-center justify-center rounded-md bg-dracula-dark p-2">
-                        {el.icon}
-                      </div>
-                      <div>
-                        <p className="text-sm capitalize text-dracula-dark-700">
-                          {el.label}
-                        </p>
-                        <p className="text-dracula-purple">{el.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
-          <div className="mt-4">
-            <SubHeader className="mb-1" title="Tech Stack" />
-            <TechStack />
-          </div>
-        </PageCard>
-      </Layout>
+        </div>
+        <div className="mt-4">
+          <SubHeader className="mb-1" title="Tech Stack" />
+          <TechStack />
+        </div>
+      </PageCard>
     </>
   );
 };
