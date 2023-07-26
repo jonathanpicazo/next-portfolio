@@ -4,7 +4,7 @@ interface CardType {
   title: string;
   timespan: [string, string];
   details?: string[];
-  image: string;
+  image: 'drhs' | 'ucr' | 'suavecito';
 }
 
 interface ResumeCardsType {

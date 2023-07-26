@@ -14,7 +14,6 @@ const Resume = () => {
   return (
     <>
       <SEO title="Resume" description="Resume" />
-
       <Header title="Resume" />
       <section>
         <div className="flex flex-col gap-5 md:flex-row md:gap-0">
