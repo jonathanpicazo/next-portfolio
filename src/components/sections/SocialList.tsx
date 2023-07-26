@@ -1,12 +1,13 @@
 import React, { ReactElement } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 import { SocialLinkType } from "~/types";
 
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { GoRepo } from "react-icons/go";
 
-const socialLinks = [
+const socialLinks: SocialLinkType[] = [
   {
     label: "LinkedIn",
     url: "https://www.linkedin.com/in/jonathan-picazo/",
@@ -33,7 +34,7 @@ export const SocialList = ({
   length?: number;
 }) => {
   return (
-    <section className={`flex items-center gap-x-4 ${className}`}>
+    <section className={twMerge("flex items-center gap-x-4", className)}>
       {socialLinks.slice(0, length).map((link) => (
         <Link
           key={`social-link-component-${link.label}`}
