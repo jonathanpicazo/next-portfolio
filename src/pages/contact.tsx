@@ -25,6 +25,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className="block w-full rounded-lg bg-dracula-dark p-2.5 text-sm text-dracula-light focus:border-dracula-purple-500 focus:ring-dracula-purple-500"
                   placeholder="Name"
                   required
@@ -40,6 +41,7 @@ const Contact = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="block w-full rounded-lg bg-dracula-dark p-2.5 text-sm text-dracula-light focus:border-dracula-purple-500 focus:ring-dracula-purple-500"
                   placeholder="Email address"
                   required
@@ -56,9 +58,10 @@ const Contact = () => {
               <textarea
                 id="message"
                 rows={6}
+                name="message"
                 className="block w-full rounded-lg bg-dracula-dark p-2.5 text-sm text-dracula-light  focus:border-dracula-purple-500 focus:ring-dracula-purple-500"
                 placeholder="Write your message here"
-              ></textarea>
+              />
             </div>
             <button
               type="submit"
