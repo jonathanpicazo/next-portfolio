@@ -11,7 +11,7 @@ export const ResumeCard = ({ data }: { data: ResumeCardType }) => {
           <time className="mb-1 rounded-lg bg-dracula-yellow py-2 px-3 text-sm font-normal leading-none text-dracula-dark">
             {data.timespan[0]} - {data.timespan[1]}
           </time>
-          <h6 className="mt-2 text-lg  font-semibold text-dracula">
+          <h6 className="mt-2 text-lg font-semibold text-dracula">
             {data.location}
           </h6>
           <p className="text-dracula-cyan">{data.title}</p>
