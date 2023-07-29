@@ -15,13 +15,36 @@ import {
   SiNodedotjs,
   SiC,
   SiFlask,
+  SiElasticsearch,
 } from "react-icons/si";
 
 const ICON_SIZE = 25;
 
-import type { TechStackItem, TechStackKeys } from "~/types";
+import type { TechStackItem, TechStackKeys, TechStackArray } from "~/types";
 
-export const TECH_STACK_DICTIONARY: Record<TechStackKeys, TechStackItem> = {
+const languageArr: TechStackArray = {
+  label: "Languages",
+  items: ["html", "css", "python", "c++", "c", "graphql"],
+};
+
+const frameWorkArr: TechStackArray = {
+  label: "Frameworks",
+  items: [
+    "react",
+    "tailwind",
+    "react-native",
+    "next",
+    "gatsby",
+    "remix",
+    "node",
+    "express",
+    "flask",
+  ],
+};
+
+export const techStackArr = [languageArr, frameWorkArr];
+
+export const techStackDictionary: Record<TechStackKeys, TechStackItem> = {
   html: {
     label: "HTML5",
     icon: <SiHtml5 size={ICON_SIZE} className={`text-dracula-orange`} />,
@@ -89,5 +112,11 @@ export const TECH_STACK_DICTIONARY: Record<TechStackKeys, TechStackItem> = {
   flask: {
     label: "Flask",
     icon: <SiFlask size={ICON_SIZE} className={`text-dracula-black`} />,
+  },
+  "elastic-search": {
+    label: "ElasticSearch",
+    icon: (
+      <SiElasticsearch size={ICON_SIZE} className={`text-dracula-orange`} />
+    ),
   },
 };

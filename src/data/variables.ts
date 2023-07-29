@@ -6,4 +6,6 @@ export const navLinks: string[] = [
   "contact",
 ];
 
-export { TECH_STACK_DICTIONARY } from "./techStackItems";
+export * from "./techStack";
+
+export * from "./projects";

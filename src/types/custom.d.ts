@@ -1,12 +1,19 @@
+// SOCIALS
+export type SocialLinkType = {
+  url: string;
+  icon: ReactElement;
+  label: string;
+};
+
+// TECH STACK
 export type TechStackItem = {
   label: string;
   icon: ReactElement;
 };
 
-export type SocialLinkType = {
-  url: string;
-  icon: ReactElement;
+type TechStackArray = {
   label: string;
+  items: TechStackKeys[];
 };
 
 export type TechStackKeys =
@@ -26,4 +33,16 @@ export type TechStackKeys =
   | "remix"
   | "node"
   | "express"
-  | "flask";
+  | "flask"
+  | "elastic-search";
+
+// PROJECTS
+export type ProjectItem = {
+  title: string;
+  subtitle: string;
+  icon: ReactElement;
+  techIcons: TechStackKeys[];
+  description: string;
+  link: string;
+  demoLink?: string;
+};
