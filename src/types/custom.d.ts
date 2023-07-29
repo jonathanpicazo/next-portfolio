@@ -3,13 +3,27 @@ export type TechStackItem = {
   icon: ReactElement;
 };
 
-export type TechStackArray = {
-  label: string;
-  items: TechStackItem[];
-};
-
 export type SocialLinkType = {
   url: string;
   icon: ReactElement;
   label: string;
 };
+
+export type TechStackKeys =
+  | "html"
+  | "css"
+  | "javascript"
+  | "typescript"
+  | "python"
+  | "c++"
+  | "c"
+  | "graphql"
+  | "react"
+  | "tailwind"
+  | "react-native"
+  | "next"
+  | "gatsby"
+  | "remix"
+  | "node"
+  | "express"
+  | "flask";
