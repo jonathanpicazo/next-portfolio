@@ -5,3 +5,5 @@ export const navLinks: string[] = [
   "blogs",
   "contact",
 ];
+
+export { TECH_STACK_DICTIONARY } from "./techStackItems";
