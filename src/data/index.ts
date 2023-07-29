@@ -1,2 +1,4 @@
 export * from "./resume";
-export * from "./variables";
+export * from "./global";
+export * from "./about";
+export * from "./projects";

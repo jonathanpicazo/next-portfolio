@@ -10,8 +10,12 @@ export const SEO = ({
   return (
     <Head>
       <title>{title}</title>
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta name="title" property="og:title" content={title} />
+      <meta
+        name="description"
+        property="og:description"
+        content={description}
+      />
       <link rel="icon" href="/favicon.png" key="favicon-logo" />
     </Head>
   );
