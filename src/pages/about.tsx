@@ -1,53 +1,6 @@
-import { ReactElement } from "react";
-import { Header, PageCard, Layout, TechStack, SEO } from "~/components";
 import Image from "next/image";
-import {
-  MdEmail,
-  MdPhone,
-  MdCalendarViewMonth,
-  MdLocationPin,
-} from "react-icons/md";
-import { FiSmartphone } from "react-icons/fi";
-
-const ICON_SIZE = 23;
-const personalInfo: { label: string; value: string; icon: ReactElement }[] = [
-  {
-    label: "phone",
-    value: "+1 (909)-784-8797",
-    icon: <FiSmartphone className="fill-dracula-green" size={ICON_SIZE} />,
-  },
-  {
-    label: "location",
-    value: "Pomona, CA, USA",
-    icon: <MdLocationPin className="fill-dracula-red" size={ICON_SIZE} />,
-  },
-  {
-    label: "email",
-    value: "jonathanpicazo@outlook.com",
-    icon: <MdEmail className="fill-dracula-cyan" size={ICON_SIZE} />,
-  },
-  {
-    label: "birthday",
-    value: "February 27, 1999",
-    icon: (
-      <MdCalendarViewMonth className="fill-dracula-orange" size={ICON_SIZE} />
-    ),
-  },
-];
-
-const SubHeader = ({
-  title,
-  className,
-}: {
-  title: string;
-  className?: string;
-}) => {
-  return (
-    <h4 className={`text-lg font-bold text-dracula-green ${className}`}>
-      {title}
-    </h4>
-  );
-};
+import { Header, PageCard, TechStackIcon, SEO, SubHeader } from "~/components";
+import { techStackArr, techStackDictionary, personalInfo } from "~/data";
 
 const aboutText = [
   "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
@@ -84,7 +37,7 @@ const About = () => {
             </div>
             {/* Personal Info */}
             <div>
-              <SubHeader className="mb-4" title="Personal Info" />
+              <SubHeader className="mb-4">Personal Info</SubHeader>
               {/* Social Grid */}
               <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
                 {personalInfo.map((el) => (
@@ -96,7 +49,7 @@ const About = () => {
                       <p className="text-sm capitalize text-dracula-dark-700">
                         {el.label}
                       </p>
-                      <p className="text-dracula-purple">{el.value}</p>
+                      <p className="text-dracula-yellow">{el.value}</p>
                     </div>
                   </div>
                 ))}
@@ -105,8 +58,26 @@ const About = () => {
           </div>
         </div>
         <div className="mt-4">
-          <SubHeader className="mb-1" title="Tech Stack" />
-          <TechStack />
+          <SubHeader className="mb-2">Tech Stack</SubHeader>
+          {/* Tech Stack */}
+          <section className="flex flex-col gap-y-4">
+            {techStackArr.map((el) => (
+              <div key={`tech-stack-arr-${el.label}`}>
+                <p className="mb-3 text-base text-dracula-purple">{el.label}</p>
+                <div className="flex flex-wrap gap-x-3 gap-y-3">
+                  {el.items.map((key) => {
+                    const item = techStackDictionary[key];
+                    return (
+                      <TechStackIcon
+                        key={`tech-stack-list-${item.label}`}
+                        item={item}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </section>
         </div>
       </PageCard>
     </>
