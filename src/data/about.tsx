@@ -17,10 +17,19 @@ import {
   SiFlask,
   SiElasticsearch,
 } from "react-icons/si";
+import { FiSmartphone } from "react-icons/fi";
+import { MdLocationPin } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { MdCalendarViewMonth } from "react-icons/md";
+import type {
+  TechStackItem,
+  TechStackKeys,
+  TechStackArray,
+  PersonalInfoType,
+} from "~/types";
 
 const ICON_SIZE = 25;
-
-import type { TechStackItem, TechStackKeys, TechStackArray } from "~/types";
+const PERSONAL_ICON_SIZE = 23;
 
 const languageArr: TechStackArray = {
   label: "Languages",
@@ -120,3 +129,35 @@ export const techStackDictionary: Record<TechStackKeys, TechStackItem> = {
     ),
   },
 };
+
+export const personalInfo: PersonalInfoType[] = [
+  {
+    label: "phone",
+    value: "+1 (909)-784-8797",
+    icon: (
+      <FiSmartphone className="fill-dracula-green" size={PERSONAL_ICON_SIZE} />
+    ),
+  },
+  {
+    label: "location",
+    value: "Pomona, CA, USA",
+    icon: (
+      <MdLocationPin className="fill-dracula-red" size={PERSONAL_ICON_SIZE} />
+    ),
+  },
+  {
+    label: "email",
+    value: "jonathanpicazo@outlook.com",
+    icon: <MdEmail className="fill-dracula-cyan" size={PERSONAL_ICON_SIZE} />,
+  },
+  {
+    label: "birthday",
+    value: "February 27, 1999",
+    icon: (
+      <MdCalendarViewMonth
+        className="fill-dracula-orange"
+        size={PERSONAL_ICON_SIZE}
+      />
+    ),
+  },
+];

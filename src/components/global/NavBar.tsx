@@ -1,4 +1,4 @@
-import { useRef, useState, ReactElement } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -22,9 +22,8 @@ export const NavBar = () => {
         className="mx-auto flex flex-wrap items-center justify-between py-4 px-2"
         ref={mobileNavRef}
       >
-        <div>
-          <SocialList length={3} />
-        </div>
+        <SocialList length={3} />
+
         <button
           data-collapse-toggle="navbar-default"
           type="button"

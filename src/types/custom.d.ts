@@ -5,7 +5,13 @@ export type SocialLinkType = {
   label: string;
 };
 
-// TECH STACK
+// ABOUT
+export type PersonalInfoType = {
+  label: string;
+  value: string;
+  icon: ReactElement;
+};
+
 export type TechStackItem = {
   label: string;
   icon: ReactElement;
@@ -46,3 +52,5 @@ export type ProjectItem = {
   link: string;
   demoLink?: string;
 };
+
+//
