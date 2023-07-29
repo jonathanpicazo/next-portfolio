@@ -30,7 +30,7 @@ export const Home = () => {
             <h1 className="text-body mb-5 text-2xl font-bold text-dracula-green md:text-4xl">
               Jonathan Picazo
             </h1>
-            <div className="text-large mb-4 text-dracula-pink md:text-xl">
+            <div className="text-large mb-4 text-dracula-yellow md:text-xl">
               <Typewriter
                 options={{
                   strings: [

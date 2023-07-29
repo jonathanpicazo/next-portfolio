@@ -1,9 +1,8 @@
-import { ReactNode, ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
 type ButtonPropType = {
-  children: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({ children, ...props }: ButtonPropType) => {
   const buttonStyles =
