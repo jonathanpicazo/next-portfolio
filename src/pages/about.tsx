@@ -50,7 +50,7 @@ const SubHeader = ({
 };
 
 const aboutText = [
-  "Hello! I'm a junior web developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
+  "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
   "Throughout my education and personal projects, I have gained proficiency in HTML, CSS, and JavaScript. I enjoy the process of transforming wireframes and mockups into fully functional websites that not only look great but also provide a seamless user experience. I am also familiar with popular front-end frameworks and libraries like React, NextJS and Tailwind, which enable me to build interactive and responsive web applications.",
   "As a lifelong learner, I am constantly expanding my skill set and staying up-to-date with the latest trends and technologies in web development. I am enthusiastic about tackling new challenges and collaborating with experienced developers to enhance my knowledge and contribute to impactful projects.",
 ];

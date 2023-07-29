@@ -5,3 +5,7 @@ export const navLinks: string[] = [
   "blogs",
   "contact",
 ];
+
+export * from "./techStack";
+
+export * from "./projects";

@@ -1,15 +1,48 @@
+// SOCIALS
+export type SocialLinkType = {
+  url: string;
+  icon: ReactElement;
+  label: string;
+};
+
+// TECH STACK
 export type TechStackItem = {
   label: string;
   icon: ReactElement;
 };
 
-export type TechStackArray = {
+type TechStackArray = {
   label: string;
-  items: TechStackItem[];
+  items: TechStackKeys[];
 };
 
-export type SocialLinkType = {
-  url: string;
+export type TechStackKeys =
+  | "html"
+  | "css"
+  | "javascript"
+  | "typescript"
+  | "python"
+  | "c++"
+  | "c"
+  | "graphql"
+  | "react"
+  | "tailwind"
+  | "react-native"
+  | "next"
+  | "gatsby"
+  | "remix"
+  | "node"
+  | "express"
+  | "flask"
+  | "elastic-search";
+
+// PROJECTS
+export type ProjectItem = {
+  title: string;
+  subtitle: string;
   icon: ReactElement;
-  label: string;
+  techIcons: TechStackKeys[];
+  description: string;
+  link: string;
+  demoLink?: string;
 };
