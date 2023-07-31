@@ -16,7 +16,11 @@ export const SEO = ({
         property="og:description"
         content={description}
       />
-      <meta name="image" property="og:image" content="/images/pfp.jpeg" />
+      <meta
+        name="image"
+        property="og:image"
+        content="https://res.cloudinary.com/dgmtygobu/image/upload/v1690838852/next-portfolio/pfp_njd5wn.jpg"
+      />
       <link rel="icon" href="/favicon.png" key="favicon-logo" />
     </Head>
   );
