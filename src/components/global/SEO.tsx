@@ -16,6 +16,7 @@ export const SEO = ({
         property="og:description"
         content={description}
       />
+      <meta name="image" property="og:image" content="/images/pfp.jpeg" />
       <link rel="icon" href="/favicon.png" key="favicon-logo" />
     </Head>
   );
