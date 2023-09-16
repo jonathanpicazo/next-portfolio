@@ -1,6 +1,6 @@
 import { TechStackIcon, Button } from "~/components";
 import { techStackDictionary } from "~/data";
-import { ProjectItem } from "~/types";
+import { ProjectItem } from "~/lib/types";
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   return (
@@ -10,7 +10,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
           <p className="text-heading mb-1 text-lg font-semibold text-dracula-purple">
             {project.title}
           </p>
-          <p className="w-fit rounded-full bg-dracula-dark py-2 px-3 text-sm text-dracula-cyan">
+          <p className="w-fit rounded-full bg-dracula-dark px-3 py-2 text-sm text-dracula-cyan">
             {project.subtitle}
           </p>
         </div>

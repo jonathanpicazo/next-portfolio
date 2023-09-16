@@ -7,7 +7,7 @@ import { useClickAway } from "react-use";
 
 import { SocialList } from "~/components";
 import { navLinks } from "~/data";
-import { formatPathName } from "~/utils";
+import { formatPathName } from "~/lib/utils";
 
 export const NavBar = () => {
   const { pathname } = useRouter();
@@ -19,7 +19,7 @@ export const NavBar = () => {
   return (
     <nav className="mx-auto max-w-desktop border-gray-200 bg-dracula-darker-900 md:px-10">
       <div
-        className="mx-auto flex flex-wrap items-center justify-between py-4 px-2"
+        className="mx-auto flex flex-wrap items-center justify-between px-2 py-4"
         ref={mobileNavRef}
       >
         <SocialList length={3} />
@@ -65,7 +65,7 @@ export const NavBar = () => {
         {/* Mobile */}
         {showMobileMenu ? (
           <div className="block w-full md:hidden">
-            <ul className="mt-4 flex flex-col rounded-lg bg-dracula-dark py-4 px-1 text-base">
+            <ul className="mt-4 flex flex-col rounded-lg bg-dracula-dark px-1 py-4 text-base">
               {navLinks.map((name, index) => (
                 <li
                   className="py-2 pl-3 pr-4"

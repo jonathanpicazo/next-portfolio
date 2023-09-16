@@ -1,7 +1,7 @@
 import { SiShopify, SiNba } from "react-icons/si";
 import { BiMicrochip } from "react-icons/bi";
 
-import { ProjectItem } from "~/types";
+import { ProjectItem } from "~/lib/types";
 
 export const projectList: ProjectItem[] = [
   {
