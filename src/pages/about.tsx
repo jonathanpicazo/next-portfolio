@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { Header, PageCard, TechStackIcon, SEO, SubHeader } from "~/components";
 import { techStackArr, techStackDictionary, personalInfo } from "~/data";
@@ -8,7 +9,7 @@ const aboutText = [
   "As a lifelong learner, I am constantly expanding my skill set and staying up-to-date with the latest trends and technologies in web development. I am enthusiastic about tackling new challenges and collaborating with experienced developers to enhance my knowledge and contribute to impactful projects.",
 ];
 
-const About = () => {
+export default function About() {
   return (
     <>
       <SEO title="About" description={aboutText.join(" ")} />
@@ -82,6 +83,4 @@ const About = () => {
       </PageCard>
     </>
   );
-};
-
-export default About;
+}
