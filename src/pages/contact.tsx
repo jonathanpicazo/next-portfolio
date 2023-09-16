@@ -2,7 +2,7 @@ import React from "react";
 import { Header, PageCard, SEO } from "~/components";
 import { Button } from "~/components";
 
-const Contact = () => {
+export default function Contact() {
   return (
     <>
       <SEO
@@ -69,6 +69,4 @@ const Contact = () => {
       </section>
     </>
   );
-};
-
-export default Contact;
+}

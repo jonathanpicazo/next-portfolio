@@ -1,4 +1,4 @@
-import Head from "next/head";
+import React from "react";
 import Image from "next/image";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
@@ -6,7 +6,7 @@ import { FaDownload } from "react-icons/fa";
 
 import { SocialList, SEO } from "~/components";
 
-export const Home = () => {
+export default function Home() {
   return (
     <div className="mx-auto w-full max-w-desktop px-10">
       <SEO
@@ -68,6 +68,4 @@ export const Home = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Header,
   PageCard,
@@ -10,7 +9,7 @@ import {
 } from "~/components";
 import { resumeCards, projectList } from "~/data";
 
-const Resume = () => {
+export default function Resume() {
   return (
     <>
       <SEO title="Resume" description="Resume" />
@@ -45,6 +44,4 @@ const Resume = () => {
       </section>
     </>
   );
-};
-
-export default Resume;
+}
