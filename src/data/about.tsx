@@ -27,7 +27,7 @@ import type {
   TechStackKeys,
   TechStackArray,
   PersonalInfoType,
-} from "~/types";
+} from "~/lib/types";
 
 const ICON_SIZE = 25;
 const PERSONAL_ICON_SIZE = 23;

@@ -1,5 +1,5 @@
 import React from "react";
-import { ResumeCardType } from "../../types/resume";
+import { ResumeCardType } from "../../lib/types/resume";
 import Image from "next/image";
 
 export const ResumeCard = ({ data }: { data: ResumeCardType }) => {
@@ -8,7 +8,7 @@ export const ResumeCard = ({ data }: { data: ResumeCardType }) => {
       <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
       <div className="mb-3 flex justify-between">
         <div>
-          <time className="mb-1 rounded-lg bg-dracula-yellow py-2 px-3 text-sm font-normal leading-none text-dracula-dark">
+          <time className="mb-1 rounded-lg bg-dracula-yellow px-3 py-2 text-sm font-normal leading-none text-dracula-dark">
             {data.timespan[0]} - {data.timespan[1]}
           </time>
           <h6 className="mt-2 text-lg font-semibold text-dracula">
