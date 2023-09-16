@@ -7,7 +7,6 @@ const blogs = [{ title: "React Native Skeleton" }];
 
 export async function getStaticProps() {
   const posts = await client.fetch(groq`*[_type == "post"]`);
-  console.log("posts", posts);
   return { props: { posts } };
 }
 
@@ -18,10 +17,11 @@ export default function Blogs({ posts }: { posts: any[] }) {
 
       <Header title="Blog" />
       <PageCard>
-        <p>Coming soon...</p>
-        {posts.map((post) => (
-          <PostCard post={post} key={`post-card-${post.title}`} />
-        ))}
+        <ul className="grid grid-cols-2 md:grid-cols-3">
+          {posts.map((post) => (
+            <PostCard post={post} key={`post-card-${post.title}`} />
+          ))}
+        </ul>
       </PageCard>
     </>
   );
