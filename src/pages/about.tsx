@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import { Header, PageCard, TechStackIcon, SEO, SubHeader } from "~/components";
-import { techStackArr, techStackDictionary, personalInfo } from "~/data";
+import {
+  techStackArr,
+  techStackDictionary,
+  personalInfo,
+  siteStack,
+} from "~/data";
 
 const aboutText = [
   "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
@@ -25,6 +30,7 @@ export default function About() {
               width={500}
               height={500}
               loading="eager"
+              priority
             />
           </div>
           <div className="desktop:basis-2/3 w-full">
@@ -78,6 +84,18 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </section>
+          {/* Site Stack */}
+          <section className="mt-4">
+            <SubHeader className="mb-2">This Site is Built With</SubHeader>
+            <div className="flex flex-wrap gap-x-3 gap-y-3">
+              {siteStack.items.map((icon, index) => (
+                <TechStackIcon
+                  key={`site-stack-list-${icon}`}
+                  item={techStackDictionary[icon]}
+                />
+              ))}
+            </div>
           </section>
         </div>
       </PageCard>

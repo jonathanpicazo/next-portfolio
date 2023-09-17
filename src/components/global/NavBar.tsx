@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { FiMenu } from "react-icons/fi";
 import { useClickAway } from "react-use";
-
+import { twMerge } from "tailwind-merge";
 import { SocialList } from "~/components";
 import { navLinks } from "~/data";
 import { formatPathName } from "~/lib/utils";
@@ -16,6 +16,13 @@ export const NavBar = () => {
   useClickAway(mobileNavRef, () => {
     setShowMobileMenu(false);
   });
+  const isSelectedPath = (name: string) => {
+    if (pathname === "/" && name === "home") {
+      return true;
+    } else {
+      return name !== "home" && pathname.includes(formatPathName(name));
+    }
+  };
   return (
     <nav className="mx-auto max-w-desktop border-gray-200 bg-dracula-darker-900 md:px-10">
       <div
@@ -48,11 +55,12 @@ export const NavBar = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <span
-                      className={`hover:opacity-75 ${
-                        pathname === formatPathName(name)
+                      className={twMerge(
+                        "hover:opacity-75",
+                        isSelectedPath(name)
                           ? "border-b border-dracula-cyan text-dracula-cyan"
                           : "text-dracula-light"
-                      }`}
+                      )}
                     >
                       {name}
                     </span>
@@ -77,11 +85,12 @@ export const NavBar = () => {
                     onClick={() => setShowMobileMenu(false)}
                   >
                     <span
-                      className={`hover:opacity-75 ${
-                        pathname === formatPathName(name)
+                      className={twMerge(
+                        "hover:opacity-75",
+                        pathname.includes(formatPathName(name))
                           ? "border-b border-dracula-cyan text-dracula-cyan"
                           : "text-dracula-light"
-                      }`}
+                      )}
                     >
                       {name}
                     </span>

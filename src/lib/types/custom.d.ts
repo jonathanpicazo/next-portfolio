@@ -40,7 +40,8 @@ export type TechStackKeys =
   | "node"
   | "express"
   | "flask"
-  | "elastic-search";
+  | "elastic-search"
+  | "sanity";
 
 // PROJECTS
 export type ProjectItem = {
