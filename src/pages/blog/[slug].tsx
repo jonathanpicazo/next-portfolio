@@ -7,6 +7,7 @@ import { Header, SEO, PageCard, AuthorCard } from "~/components";
 import { ALL_POST_SLUGS_QUERY, POST_QUERY } from "~/data";
 import { urlFor } from "~/lib/utils";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { BlogPostType } from "~/lib";
 
 export async function getStaticPaths() {
   const paths: string[] = await client.fetch(ALL_POST_SLUGS_QUERY);
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const slug = { params };
   const handle = slug.params.slug;
-  const data = await client.fetch(POST_QUERY, { slug: handle });
+  const data: BlogPostType = await client.fetch(POST_QUERY, { slug: handle });
   const mdxSource = await serialize(data.markdown);
 
   return {
@@ -30,7 +31,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   };
 }
 type PostProps = {
-  data: any;
+  data: BlogPostType;
   mdxSource: MDXRemoteSerializeResult;
 };
 export default function Post({ data, mdxSource }: PostProps) {
@@ -42,7 +43,7 @@ export default function Post({ data, mdxSource }: PostProps) {
       <SEO title={title} description="blog article" />
       <PageCard>
         <section className="px-4">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="md:grid-re grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
               <div className="mb-2 w-full">
                 <Image

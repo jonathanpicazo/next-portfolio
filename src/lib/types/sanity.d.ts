@@ -5,6 +5,8 @@ export type BlogPostType = {
   _id: string;
   _createdAt: string;
   title: string;
+  publishedAt: string;
+  markdown: string;
   description: string;
   mainImage: SanityAsset;
   slug: {
