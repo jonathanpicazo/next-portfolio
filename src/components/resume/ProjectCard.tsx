@@ -4,7 +4,7 @@ import { ProjectItem } from "~/lib/types";
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   return (
-    <div className="flex flex-col gap-x-3 rounded-lg border border-dracula-light px-4 py-2.5">
+    <div className="flex flex-col gap-x-3 rounded-lg border-2 border-double border-dracula-cyan px-4 py-2.5">
       <div className="mb-2 flex flex-row items-center justify-between">
         <div>
           <p className="text-heading mb-1 text-lg font-semibold text-dracula-purple">

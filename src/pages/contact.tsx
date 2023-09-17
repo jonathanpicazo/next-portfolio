@@ -9,7 +9,7 @@ export default function Contact() {
         title="Contact"
         description="Feel free to send a message to get in contact."
       />
-      <section className="mx-auto max-w-[1000px]">
+      <section className="">
         <Header title="Contact Me" />
         <PageCard>
           <form name="contact" method="POST" data-netlify="true">

@@ -3,11 +3,10 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { client } from "~/sanityClient";
-import { Header, SEO, PageCard } from "~/components";
+import { Header, SEO, PageCard, AuthorCard } from "~/components";
 import { ALL_POST_SLUGS_QUERY, POST_QUERY } from "~/data";
 import { urlFor } from "~/lib/utils";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { Test } from "~/components/mdx";
 
 export async function getStaticPaths() {
   const paths: string[] = await client.fetch(ALL_POST_SLUGS_QUERY);
@@ -36,9 +35,6 @@ type PostProps = {
 };
 export default function Post({ data, mdxSource }: PostProps) {
   const { title, description, mainImage, publishedAt } = data;
-  console.log("data", data);
-  console.log("mdxsource", mdxSource);
-  const { compiledSource } = mdxSource;
 
   return (
     <>
@@ -46,22 +42,32 @@ export default function Post({ data, mdxSource }: PostProps) {
       <SEO title={title} description="blog article" />
       <PageCard>
         <section className="px-4">
-          <div className="w-full">
-            <Image
-              src={urlFor(mainImage).width(500).url()}
-              height={400}
-              width={400}
-              className="aspect-video w-full rounded-lg object-cover"
-              alt={mainImage.alt ?? "Blog main image"}
-            />
-          </div>
-          <p>{description}</p>
-          <p>{publishedAt}</p>
-          <section className="rounded-lg p-4">
-            <div className="lg:prose-xl prose prose-invert rounded-lg border-2 border-dracula-green p-2 md:prose-lg md:p-5">
-              {mdxSource && <MDXRemote {...mdxSource} />}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <div className="mb-2 w-full">
+                <Image
+                  src={urlFor(mainImage).width(900).url()}
+                  height={900}
+                  width={900}
+                  className="aspect-video w-full rounded-lg object-cover"
+                  alt={mainImage.alt ?? "Blog main image"}
+                  priority
+                />
+              </div>
+              <p className="mb-2 text-dracula-yellow">{description}</p>
+              <p className="mb-2 text-dracula-pink">{publishedAt}</p>
             </div>
-          </section>
+            <div className="flex flex-col items-end">
+              <AuthorCard />
+            </div>
+          </div>
+        </section>
+      </PageCard>
+      <PageCard className="mt-4 md:mt-6">
+        <section className="rounded-lg md:mt-8">
+          <div className="md:prose-md prose prose-invert">
+            {mdxSource && <MDXRemote {...mdxSource} />}
+          </div>
         </section>
       </PageCard>
     </>
