@@ -3,14 +3,18 @@ import { BlogPostType } from "~/lib/types";
 import Image from "next/image";
 import { urlFor } from "~/lib/utils";
 import Link from "next/link";
-import motion from "framer-motion";
+import { motion } from "framer-motion";
 
 export const PostCard = ({ post }: { post: BlogPostType }) => {
-  console.log("post card", post);
-  console.log("image", urlFor(post.mainImage).width(500).url());
   return (
     <Link href={`/blog/${post.slug.current}`}>
-      <article className="flex flex-col rounded-lg border border-dracula-green-200">
+      <motion.article
+        className="flex flex-col rounded-lg border border-dracula-green-200"
+        whileHover={{
+          scale: 1.05,
+          transition: { duration: 0.2 },
+        }}
+      >
         <Image
           alt={post.mainImage.alt}
           src={urlFor(post.mainImage).width(500).url()}
@@ -21,7 +25,7 @@ export const PostCard = ({ post }: { post: BlogPostType }) => {
         <div className="p-4">
           <h4 className="mb-2">{post.title}</h4>
         </div>
-      </article>
+      </motion.article>
     </Link>
   );
 };

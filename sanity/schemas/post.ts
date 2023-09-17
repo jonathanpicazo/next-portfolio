@@ -34,12 +34,6 @@ export default defineType({
         },
       ],
     }),
-    // defineField({
-    //   name: "categories",
-    //   title: "Categories",
-    //   type: "array",
-    //   of: [{ type: "reference", to: { type: "category" } }],
-    // }),
     defineField({
       name: "publishedAt",
       title: "Published at",
@@ -49,6 +43,11 @@ export default defineType({
       name: "body",
       title: "Body",
       type: "blockContent",
+    }),
+    defineField({
+      type: "markdown",
+      description: "A Github flavored markdown field with image uploading",
+      name: "markdown",
     }),
   ],
 
