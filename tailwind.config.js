@@ -12,10 +12,18 @@ module.exports = {
       colors: {
         "dracula-yellow": "#f1fa8c",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "1440px",
+          },
+        },
+      },
     },
   },
   plugins: [
     require("tailwind-dracula")("dracula"),
     require("prettier-plugin-tailwindcss"),
+    require("@tailwindcss/typography"),
   ],
 };

@@ -40,9 +40,9 @@ export default defineType({
       type: "datetime",
     }),
     defineField({
-      name: "body",
-      title: "Body",
-      type: "blockContent",
+      name: "description",
+      title: "Description",
+      type: "text",
     }),
     defineField({
       type: "markdown",
