@@ -21,9 +21,9 @@ export const ResumeCard = ({ data }: { data: ResumeCardType }) => {
           <Image
             src={`/images/resume/${data.image}.png`}
             alt="test"
-            width={90}
-            height={90}
-            className="w-[70px] md:w-[90px]"
+            width={120}
+            height={120}
+            className="h-[70px] w-[70px] ipad:h-[90px] ipad:w-[90px] md:h-[120px] md:w-[120px]"
           />
         </div>
       </div>

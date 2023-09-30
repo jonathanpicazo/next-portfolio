@@ -36,6 +36,7 @@ type PostProps = {
 };
 export default function Post({ data, mdxSource }: PostProps) {
   const { title, description, mainImage, publishedAt } = data;
+  const date = new Date(publishedAt).toLocaleDateString();
 
   return (
     <>
@@ -56,7 +57,7 @@ export default function Post({ data, mdxSource }: PostProps) {
                 />
               </div>
               <p className="mb-2 text-dracula-yellow">{description}</p>
-              <p className="mb-2 text-dracula-pink">{publishedAt}</p>
+              <p className="mb-2 text-dracula-pink">{date}</p>
             </div>
             <div className="flex flex-col items-end">
               <AuthorCard />
@@ -65,7 +66,7 @@ export default function Post({ data, mdxSource }: PostProps) {
         </section>
       </PageCard>
       <PageCard className="mt-4 md:mt-6">
-        <section className="rounded-lg md:mt-8">
+        <section className="rounded-lg">
           <div className="md:prose-md prose prose-invert">
             {mdxSource && <MDXRemote {...mdxSource} />}
           </div>

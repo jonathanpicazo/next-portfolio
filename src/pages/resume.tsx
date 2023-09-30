@@ -15,7 +15,7 @@ export default function Resume() {
       <SEO title="Resume" description="Resume" />
       <Header title="Resume" />
       <section>
-        <div className="flex flex-col gap-5 md:flex-row md:gap-0">
+        <div className="flex flex-col gap-5">
           {resumeCards.map((el, index) => (
             <PageCard key={`resume-card-${index}`}>
               <SubHeader as="h3" className="mb-3 text-xl text-dracula-pink">
