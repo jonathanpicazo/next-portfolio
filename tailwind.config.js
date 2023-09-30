@@ -4,10 +4,11 @@ module.exports = {
   theme: {
     screens: {
       md: "1024px",
+      ipad: "768px",
     },
     extend: {
       maxWidth: {
-        desktop: "1440px",
+        desktop: "1280px",
       },
       colors: {
         "dracula-yellow": "#f1fa8c",
@@ -15,7 +16,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: "1440px",
+            maxWidth: "1280px",
           },
         },
       },
