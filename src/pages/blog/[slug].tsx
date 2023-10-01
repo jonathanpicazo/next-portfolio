@@ -46,7 +46,7 @@ export default function Post({ data, mdxSource }: PostProps) {
         <section className="px-4">
           <div className="md:grid-re grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
-              <div className="mb-2 w-full">
+              <div className="mb-2 w-full md:mb-0">
                 <Image
                   src={urlFor(mainImage).width(900).url()}
                   height={900}
@@ -56,11 +56,10 @@ export default function Post({ data, mdxSource }: PostProps) {
                   priority
                 />
               </div>
-              <p className="mb-2 text-dracula-yellow">{description}</p>
-              <p className="mb-2 text-dracula-pink">{date}</p>
             </div>
-            <div className="flex flex-col items-end">
-              <AuthorCard />
+            <div className="flex flex-col justify-between">
+              <p className="mb-2 text-dracula-yellow">{description}</p>
+              <AuthorCard date={date} />
             </div>
           </div>
         </section>

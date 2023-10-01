@@ -4,7 +4,6 @@ import {
   PageCard,
   SEO,
   ProjectCard,
-  ResumeCard,
   SubHeader,
   EducationCard,
   ExperienceCard,
