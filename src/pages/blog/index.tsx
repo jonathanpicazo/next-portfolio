@@ -3,8 +3,6 @@ import groq from "groq";
 import { client } from "~/sanity-client";
 import { Header, PageCard, SEO, PostCard } from "~/components";
 
-const blogs = [{ title: "React Native Skeleton" }];
-
 export async function getStaticProps() {
   const posts = await client.fetch(groq`*[_type == "post"]`);
   return { props: { posts } };

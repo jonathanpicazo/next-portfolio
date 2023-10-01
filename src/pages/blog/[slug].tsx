@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   const paths: string[] = await client.fetch(ALL_POST_SLUGS_QUERY);
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -21,7 +21,6 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const handle = slug.params.slug;
   const data: BlogPostType = await client.fetch(POST_QUERY, { slug: handle });
   const mdxSource = await serialize(data.markdown);
-
   return {
     props: {
       data,
@@ -59,7 +58,9 @@ export default function Post({ data, mdxSource }: PostProps) {
             </div>
             <div className="flex flex-col justify-between">
               <p className="mb-2 text-dracula-yellow">{description}</p>
-              <AuthorCard date={date} />
+              <div className="flex">
+                <AuthorCard date={date} />
+              </div>
             </div>
           </div>
         </section>

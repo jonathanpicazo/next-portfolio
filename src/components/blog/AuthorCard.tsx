@@ -24,9 +24,9 @@ export const AuthorCard = ({ date }: AuthorCardProps) => {
         <h4 className="text-dracula-purple">Jonathan Picazo</h4>
         <p className="text-dracula-orange">Avid Typer</p>
         {date && (
-          <div className="flex items-center">
+          <div className="flex items-center text-dracula-darker-300">
             <IoCreateOutline className="mr-1" />
-            <time className="text-dracula-pink">
+            <time className="text-sm">
               {dateFormatter.format(new Date(date))}
             </time>
           </div>

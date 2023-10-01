@@ -19,19 +19,6 @@ export async function getStaticProps() {
     education: EducationItemType[];
     experience: ExperienceItemType[];
   };
-  const a = JSON.stringify({
-    education: groq`*[_type == "education"]`,
-    experience: '*[_type == "experience"]',
-  });
-  const b = groq`
-  {
-    'education': *[_type == "education"],
-    'experience': *[_type == "experience"]
-  }
-`;
-  console.log("a", a);
-  console.log("b");
-  console.log("bool", a === b);
   const { education, experience }: ResumeQueryType = await client.fetch(groq`
   {
     'education': *[_type == "education"],
