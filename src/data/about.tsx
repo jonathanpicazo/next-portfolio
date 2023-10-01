@@ -1,3 +1,4 @@
+import React from "react";
 import {
   SiHtml5,
   SiReact,
@@ -16,6 +17,7 @@ import {
   SiC,
   SiFlask,
   SiElasticsearch,
+  SiSanity,
 } from "react-icons/si";
 import { FiSmartphone } from "react-icons/fi";
 import { MdLocationPin } from "react-icons/md";
@@ -26,7 +28,7 @@ import type {
   TechStackKeys,
   TechStackArray,
   PersonalInfoType,
-} from "~/types";
+} from "~/lib/types";
 
 const ICON_SIZE = 25;
 const PERSONAL_ICON_SIZE = 23;
@@ -52,6 +54,11 @@ const frameWorkArr: TechStackArray = {
 };
 
 export const techStackArr = [languageArr, frameWorkArr];
+
+export const siteStack: TechStackArray = {
+  label: "Technologies",
+  items: ["react", "tailwind", "next", "sanity"],
+};
 
 export const techStackDictionary: Record<TechStackKeys, TechStackItem> = {
   html: {
@@ -127,6 +134,10 @@ export const techStackDictionary: Record<TechStackKeys, TechStackItem> = {
     icon: (
       <SiElasticsearch size={ICON_SIZE} className={`text-dracula-orange`} />
     ),
+  },
+  sanity: {
+    label: "Sanity",
+    icon: <SiSanity size={ICON_SIZE} className={`text-dracula-red`} />,
   },
 };
 

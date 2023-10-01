@@ -1,6 +1,12 @@
+import React from "react";
 import Image from "next/image";
 import { Header, PageCard, TechStackIcon, SEO, SubHeader } from "~/components";
-import { techStackArr, techStackDictionary, personalInfo } from "~/data";
+import {
+  techStackArr,
+  techStackDictionary,
+  personalInfo,
+  siteStack,
+} from "~/data";
 
 const aboutText = [
   "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
@@ -8,7 +14,7 @@ const aboutText = [
   "As a lifelong learner, I am constantly expanding my skill set and staying up-to-date with the latest trends and technologies in web development. I am enthusiastic about tackling new challenges and collaborating with experienced developers to enhance my knowledge and contribute to impactful projects.",
 ];
 
-const About = () => {
+export default function About() {
   return (
     <>
       <SEO title="About" description={aboutText.join(" ")} />
@@ -24,6 +30,7 @@ const About = () => {
               width={500}
               height={500}
               loading="eager"
+              priority
             />
           </div>
           <div className="desktop:basis-2/3 w-full">
@@ -78,10 +85,20 @@ const About = () => {
               </div>
             ))}
           </section>
+          {/* Site Stack */}
+          <section className="mt-4">
+            <SubHeader className="mb-2">This Site is Built With</SubHeader>
+            <div className="flex flex-wrap gap-x-3 gap-y-3">
+              {siteStack.items.map((icon, index) => (
+                <TechStackIcon
+                  key={`site-stack-list-${icon}`}
+                  item={techStackDictionary[icon]}
+                />
+              ))}
+            </div>
+          </section>
         </div>
       </PageCard>
     </>
   );
-};
-
-export default About;
+}

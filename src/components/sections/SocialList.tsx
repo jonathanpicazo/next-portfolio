@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-import { SocialLinkType } from "~/types";
+import { SocialLinkType } from "~/lib/types";
 
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { GoRepo } from "react-icons/go";
