@@ -9,6 +9,7 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "slug",
@@ -18,6 +19,7 @@ export default defineType({
         source: "title",
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "mainImage",
@@ -33,21 +35,25 @@ export default defineType({
           title: "Alternative Text",
         },
       ],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
       type: "text",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       type: "markdown",
       description: "A Github flavored markdown field with image uploading",
       name: "markdown",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

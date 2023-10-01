@@ -1,6 +1,6 @@
 import React from "react";
 import groq from "groq";
-import { client } from "~/sanityClient";
+import { client } from "~/sanity-client";
 import { Header, PageCard, SEO, PostCard } from "~/components";
 
 const blogs = [{ title: "React Native Skeleton" }];
