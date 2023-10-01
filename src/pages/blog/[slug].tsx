@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import { client } from "~/sanityClient";
+import { client } from "~/sanity-client";
 import { Header, SEO, PageCard, AuthorCard } from "~/components";
 import { ALL_POST_SLUGS_QUERY, POST_QUERY } from "~/data";
 import { urlFor } from "~/lib/utils";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { BlogPostType } from "~/lib";
 
 export async function getStaticPaths() {
@@ -30,6 +29,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     },
   };
 }
+
 type PostProps = {
   data: BlogPostType;
   mdxSource: MDXRemoteSerializeResult;

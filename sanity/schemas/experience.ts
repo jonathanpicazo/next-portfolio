@@ -9,6 +9,7 @@ export default defineType({
       name: "name",
       title: "Company Name",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "slug",
@@ -18,6 +19,7 @@ export default defineType({
         source: "name",
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "logo",
@@ -33,31 +35,36 @@ export default defineType({
           title: "Alternative Text",
         },
       ],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "title",
       title: "Job Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "location",
       title: "Location",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "startingDate",
       title: "Started at",
-      type: "datetime",
+      type: "date",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "endingDate",
       title: "Ended at",
-      type: "datetime",
+      type: "date",
     }),
     defineField({
       name: "details",
       title: "Details",
       type: "markdown",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

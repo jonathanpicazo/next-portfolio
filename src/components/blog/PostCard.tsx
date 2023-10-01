@@ -6,7 +6,6 @@ import { urlFor } from "~/lib/utils";
 import { BlogPostType } from "~/lib/types";
 
 export const PostCard = ({ post }: { post: BlogPostType }) => {
-  console.log("post", post);
   return (
     <motion.article
       className="flex flex-col rounded-lg border-2 border-double border-dracula-cyan"
