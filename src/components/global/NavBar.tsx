@@ -17,6 +17,13 @@ export const MobileList = ({
   setShowMobileMenu: (state: boolean) => void;
 }) => {
   const { pathname } = useRouter();
+  const isSelectedPath = (name: string) => {
+    if (pathname === "/" && name === "home") {
+      return true;
+    } else {
+      return name !== "home" && pathname.includes(formatPathName(name));
+    }
+  };
   const drawerVariants = {
     visible: {
       //x: 0,
@@ -54,7 +61,7 @@ export const MobileList = ({
               <span
                 className={twMerge(
                   "hover:opacity-75",
-                  pathname.includes(formatPathName(name))
+                  isSelectedPath(name)
                     ? "border-b border-dracula-cyan text-dracula-cyan"
                     : "text-dracula-light"
                 )}
