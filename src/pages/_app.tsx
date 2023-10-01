@@ -1,14 +1,30 @@
+import React from "react";
+import type { AppProps } from "next/app";
+import { Layout } from "~/components";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
 import "dracula-ui/styles/dracula-ui.css";
+import "easymde/dist/easymde.min.css";
 
-import type { AppProps } from "next/app";
-import { NavBar, Layout } from "~/components";
-
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Layout>
-        <Component {...pageProps} />
+        <motion.div
+          key={router.route}
+          initial="pageInitial"
+          animate="pageAnimate"
+          variants={{
+            pageInitial: {
+              opacity: 0,
+            },
+            pageAnimate: {
+              opacity: 1,
+            },
+          }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
       </Layout>
     </>
   );

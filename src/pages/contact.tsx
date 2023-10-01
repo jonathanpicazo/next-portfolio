@@ -2,14 +2,14 @@ import React from "react";
 import { Header, PageCard, SEO } from "~/components";
 import { Button } from "~/components";
 
-const Contact = () => {
+export default function Contact() {
   return (
     <>
       <SEO
         title="Contact"
         description="Feel free to send a message to get in contact."
       />
-      <section className="mx-auto max-w-[1000px]">
+      <section className="">
         <Header title="Contact Me" />
         <PageCard>
           <form name="contact" method="POST" data-netlify="true">
@@ -69,6 +69,4 @@ const Contact = () => {
       </section>
     </>
   );
-};
-
-export default Contact;
+}

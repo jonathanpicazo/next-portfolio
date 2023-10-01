@@ -1,16 +1,16 @@
 import { TechStackIcon, Button } from "~/components";
 import { techStackDictionary } from "~/data";
-import { ProjectItem } from "~/types";
+import { ProjectItem } from "~/lib/types";
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   return (
-    <div className="flex flex-col gap-x-3 rounded-lg border border-dracula-light px-4 py-2.5">
+    <div className="flex flex-col gap-x-3 rounded-lg border-2 border-double border-dracula-cyan px-4 py-2.5">
       <div className="mb-2 flex flex-row items-center justify-between">
         <div>
           <p className="text-heading mb-1 text-lg font-semibold text-dracula-purple">
             {project.title}
           </p>
-          <p className="w-fit rounded-full bg-dracula-dark py-2 px-3 text-sm text-dracula-cyan">
+          <p className="w-fit rounded-full bg-dracula-dark px-3 py-2 text-sm text-dracula-cyan">
             {project.subtitle}
           </p>
         </div>
