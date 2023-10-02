@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "theme",
-  title: "Theme",
+  name: "home",
+  title: "Home",
   type: "document",
   fields: [
     defineField({
@@ -28,12 +28,12 @@ export default defineType({
     }),
   ],
 
-  preview: {
-    select: {
-      media: "mainImage",
-    },
-    prepare(selection) {
-      return { ...selection };
-    },
-  },
+  // preview: {
+  //   select: {
+  //     media: "mainImage",
+  //   },
+  //   prepare(selection) {
+  //     return { ...selection };
+  //   },
+  // },
 });

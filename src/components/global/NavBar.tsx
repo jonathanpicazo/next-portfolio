@@ -12,18 +12,12 @@ import { formatPathName } from "~/lib/utils";
 export const MobileList = ({
   showMobileMenu,
   setShowMobileMenu,
+  isSelectedPath,
 }: {
   showMobileMenu: boolean;
   setShowMobileMenu: (state: boolean) => void;
+  isSelectedPath: (path: string) => boolean;
 }) => {
-  const { pathname } = useRouter();
-  const isSelectedPath = (name: string) => {
-    if (pathname === "/" && name === "home") {
-      return true;
-    } else {
-      return name !== "home" && pathname.includes(formatPathName(name));
-    }
-  };
   const drawerVariants = {
     visible: {
       //x: 0,
@@ -44,13 +38,21 @@ export const MobileList = ({
   };
   return (
     <motion.div
-      className="block w-full md:hidden"
-      animate={showMobileMenu ? "visible" : "hidden"}
-      variants={drawerVariants}
-      initial="hidden"
-      exit="hidden"
+      className="absolute z-50 block w-full bg-dracula-darker-900 px-[10px] pb-3 pt-3 md:hidden"
+      animate={showMobileMenu ? "enter" : "hidden"}
+      initial="hidden" // Set the initial state to variants.hidden
+      // animate="enter" // Animated state to variants.enter
+      exit="exit" // Exit state (used later) to variants.exit
+      transition={{ type: "linear" }} // Set the transition to linear
+      variants={{
+        hidden: { opacity: 0, x: -0, y: 0 },
+        enter: { opacity: 1, x: 0, y: 1 },
+        exit: { opacity: 0, x: 0, y: -100 },
+      }}
+      // initial="hidden"
+      // exit="hidden"
     >
-      <ul className="mt-4 flex flex-col rounded-lg bg-dracula-dark px-1 py-4 text-base">
+      <ul className="flex flex-col rounded-lg bg-dracula-dark px-1 py-4 text-base">
         {navLinks.map((name, index) => (
           <li className="py-2 pl-3 pr-4" key={`mobile-nav-${name}-${index}`}>
             <Link
@@ -76,15 +78,11 @@ export const MobileList = ({
   );
 };
 
-export const DesktopList = () => {
-  const { pathname } = useRouter();
-  const isSelectedPath = (name: string) => {
-    if (pathname === "/" && name === "home") {
-      return true;
-    } else {
-      return name !== "home" && pathname.includes(formatPathName(name));
-    }
-  };
+export const DesktopList = ({
+  isSelectedPath,
+}: {
+  isSelectedPath: (path: string) => boolean;
+}) => {
   return (
     <div className="hidden md:block">
       <ul className="mt-0 flex flex-row space-x-8 rounded-lg text-base">
@@ -120,10 +118,7 @@ export const DesktopList = () => {
 export const NavBar = () => {
   const { pathname } = useRouter();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const mobileNavRef = useRef(null);
-  useClickAway(mobileNavRef, () => {
-    setShowMobileMenu(false);
-  });
+
   const isSelectedPath = (name: string) => {
     if (pathname === "/" && name === "home") {
       return true;
@@ -131,36 +126,38 @@ export const NavBar = () => {
       return name !== "home" && pathname.includes(formatPathName(name));
     }
   };
+  const mobileNavRef = useRef(null);
+  useClickAway(mobileNavRef, () => {
+    setShowMobileMenu(false);
+  });
   return (
-    <nav className="mx-auto max-w-desktop border-gray-200 bg-dracula-darker-900 md:px-10">
-      <div
-        className="mx-auto flex flex-wrap items-center justify-between px-2 py-4"
-        ref={mobileNavRef}
-      >
-        <SocialList length={3} />
+    <div className="relative" ref={mobileNavRef}>
+      <nav className="mx-auto max-w-desktop border-gray-200 bg-dracula-darker-900 shadow-md md:px-10">
+        <div className="mx-auto flex flex-wrap items-center justify-between px-2 py-4">
+          <SocialList length={3} />
 
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="ml-3 inline-flex items-center rounded-lg p-2 text-sm hover:bg-dracula-dark focus:outline-none focus:ring-2 focus:ring-dracula-dark md:hidden"
-          aria-expanded="false"
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
-        >
-          <span className="sr-only">Open main menu</span>
-          <FiMenu size={20} className="text-dracula-cyan" />
-        </button>
-        {/* Desktop */}
-        <DesktopList />
-        {/* Mobile */}
-        <AnimatePresence>
-          {showMobileMenu && (
-            <MobileList
-              setShowMobileMenu={setShowMobileMenu}
-              showMobileMenu={showMobileMenu}
-            />
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            className="ml-3 inline-flex items-center rounded-lg p-2 text-sm hover:bg-dracula-dark focus:outline-none focus:ring-2 focus:ring-dracula-dark md:hidden"
+            aria-expanded="false"
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+          >
+            <span className="sr-only">Open main menu</span>
+            <FiMenu size={20} className="text-dracula-cyan" />
+          </button>
+          {/* Desktop */}
+          <DesktopList isSelectedPath={isSelectedPath} />
+          {/* Mobile */}
+        </div>
+      </nav>
+      {showMobileMenu && (
+        <MobileList
+          isSelectedPath={isSelectedPath}
+          setShowMobileMenu={setShowMobileMenu}
+          showMobileMenu={showMobileMenu}
+        />
+      )}
+    </div>
   );
 };
