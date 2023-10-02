@@ -131,8 +131,8 @@ export const NavBar = () => {
     setShowMobileMenu(false);
   });
   return (
-    <div className="relative" ref={mobileNavRef}>
-      <nav className="mx-auto max-w-desktop border-gray-200 bg-dracula-darker-900 shadow-md md:px-10">
+    <div className="relative shadow-md" ref={mobileNavRef}>
+      <nav className="mx-auto max-w-desktop border-gray-200 bg-dracula-darker-900 md:px-10">
         <div className="mx-auto flex flex-wrap items-center justify-between px-2 py-4">
           <SocialList length={3} />
 
