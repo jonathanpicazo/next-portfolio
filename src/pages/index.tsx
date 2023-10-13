@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 import { FaDownload } from "react-icons/fa";
 
 import { SocialList, SEO } from "~/components";
+import Lottie from "lottie-react";
+import purpleLaptop from "../../public/lottie/purpleLaptop.json";
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-desktop px-10">
+    <div className="mx-auto w-full max-w-desktop md:px-10">
       <SEO
         title="Jonathan Picazo"
         description="Welcome to my personal website/portfolio!"
@@ -17,17 +19,10 @@ export default function Home() {
       <div className="home lg:h-[80vh] xl:h-[71vh] flex h-screen w-full items-center justify-center md:h-[90vh]">
         <div className="w-full">
           <section className="flex flex-col items-center justify-center">
-            <div className="my-5 flex flex-col">
-              <Image
-                className="mb-5 rounded-full"
-                src="/images/pfp.jpeg"
-                alt="green"
-                width={250}
-                height={250}
-                loading="eager"
-              />
+            <div className="mb-[-20px] md:mb-[-40px]">
+              <Lottie animationData={purpleLaptop} />
             </div>
-            <h1 className="text-body mb-5 text-2xl font-bold text-dracula-green md:text-4xl">
+            <h1 className="text-body mb-5 text-2xl font-bold text-dracula-green  md:text-4xl">
               Jonathan Picazo
             </h1>
             <div className="text-large mb-4 text-dracula-yellow md:text-xl">
@@ -45,6 +40,7 @@ export default function Home() {
               />
             </div>
             <SocialList className="mb-7 mt-4" />
+
             <motion.div
               /**
                * Setting the initial keyframe to "null" will use

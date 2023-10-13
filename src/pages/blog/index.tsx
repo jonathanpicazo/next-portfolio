@@ -11,7 +11,10 @@ export async function getStaticProps() {
 export default function Blogs({ posts }: { posts: any[] }) {
   return (
     <>
-      <SEO title="Blog" description="This page is coming soon!" />
+      <SEO
+        title="Blog"
+        description="Explore my blog posts pertaining to random things."
+      />
 
       <Header title="Blog" />
       <PageCard>
