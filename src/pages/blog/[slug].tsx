@@ -40,7 +40,7 @@ export default function Post({ data, mdxSource }: PostProps) {
   return (
     <>
       <Header title={title} />
-      <SEO title={title} description="blog article" />
+      <SEO title={title} description={description} />
       <PageCard>
         <section className="px-4">
           <div className="md:grid-re grid grid-cols-1 gap-6 md:grid-cols-2">
