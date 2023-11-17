@@ -7,8 +7,29 @@ import { FaDownload } from "react-icons/fa";
 import { SocialList, SEO } from "~/components";
 import Lottie from "lottie-react";
 import purpleLaptop from "../../public/lottie/purpleLaptop.json";
+import { client } from "~/sanity-client";
+import groq from "groq";
 
-export default function Home() {
+export async function getStaticProps() {
+  try {
+    const data = await client.fetch(
+      groq`*[_type == "theme"]{_id, "resumeFile": resumeFile.asset->url}`
+    );
+    return { props: { data } };
+  } catch (error) {
+    console.error("Error while fetching static props", error);
+    return { props: { data: undefined } };
+  }
+}
+
+type HomeProps = {
+  data: {
+    resumeFile: string;
+  };
+};
+export default function Home({ data }: HomeProps) {
+  console.log("a", data);
+  const { resumeFile } = data;
   return (
     <div className="mx-auto w-full max-w-desktop md:px-10">
       <SEO
@@ -52,7 +73,7 @@ export default function Home() {
               <a
                 className="my-2 flex items-center gap-x-5 rounded-3xl border border-dracula-purple bg-dracula-darker p-5 hover:opacity-75"
                 role="button"
-                href="/picazo_cv.pdf"
+                href={resumeFile}
                 download="CV_Jonathan_Picazo.pdf"
               >
                 <FaDownload className="text-dracula-purple" />
