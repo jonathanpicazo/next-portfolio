@@ -18,7 +18,7 @@ export default function Blogs({ posts }: { posts: any[] }) {
 
       <Header title="Blog" />
       <PageCard>
-        <ul className="sm:grid-cols-1 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+        <ul className="grid grid-cols-1 gap-4 ipad:grid-cols-2 md:grid-cols-3 md:gap-6">
           {posts.map((post, index) => (
             <PostCard post={post} key={`post-card-${post.title}-${index}`} />
           ))}

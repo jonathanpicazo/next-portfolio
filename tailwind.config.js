@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     screens: {
       md: "1024px",
-      ipad: "768px",
+      ipad: "600px",
     },
     extend: {
       maxWidth: {
