@@ -19,11 +19,11 @@ const socialLinks: SocialLinkType[] = [
     icon: <FaGithub className="text-xl text-dracula-cyan" />,
   },
 
-  {
-    label: "Repository",
-    url: "https://github.com/jonathanpicazo/next-portfolio",
-    icon: <GoRepo className="text-xl text-dracula-cyan" />,
-  },
+  // {
+  //   label: "Repository",
+  //   url: "https://github.com/jonathanpicazo/next-portfolio",
+  //   icon: <GoRepo className="text-xl text-dracula-cyan" />,
+  // },
 ];
 
 export const SocialList = ({

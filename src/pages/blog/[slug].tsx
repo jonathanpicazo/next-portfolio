@@ -1,10 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import {
-  MDXRemote,
-  MDXRemoteSerializeResult,
-  MDXRemoteProps,
-} from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { client } from "~/sanity-client";
 import { Header, SEO, PageCard, AuthorCard } from "~/components";
@@ -72,7 +68,7 @@ export default function Post({ data, mdxSource }: PostProps) {
               </div>
             </div>
             <div className="flex flex-col justify-between">
-              <p className="mb-2 text-dracula-yellow">{description}</p>
+              <p className="text-dracula-yellow mb-2">{description}</p>
 
               <AuthorCard date={date} />
             </div>
