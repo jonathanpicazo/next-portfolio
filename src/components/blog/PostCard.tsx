@@ -15,14 +15,16 @@ export const PostCard = ({ post }: { post: BlogPostType }) => {
       }}
     >
       <Link href={`/blog/${post.slug.current}`}>
-        <Image
-          alt={post.mainImage.alt ?? "Blog image"}
-          src={urlFor(post.mainImage).width(500).url()}
-          width={500}
-          height={500}
-          className="aspect-video rounded-t-lg object-cover"
-          priority
-        />
+        <div className="w-full">
+          <Image
+            alt={post.mainImage.alt ?? "Blog image"}
+            src={urlFor(post.mainImage).width(500).url()}
+            width={500}
+            height={500}
+            className="aspect-video rounded-t-lg object-cover"
+            priority
+          />
+        </div>
         <div className="p-4">
           <h4 className="mb-2 line-clamp-2 text-dracula-purple">
             {post.title}
