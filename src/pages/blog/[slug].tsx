@@ -1,6 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import {
+  MDXRemote,
+  MDXRemoteSerializeResult,
+  MDXRemoteProps,
+} from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { client } from "~/sanity-client";
 import { Header, SEO, PageCard, AuthorCard } from "~/components";
@@ -36,14 +40,25 @@ type PostProps = {
 export default function Post({ data, mdxSource }: PostProps) {
   const { title, description, mainImage, publishedAt } = data;
   const date = new Date(publishedAt).toLocaleDateString();
+  const components = {
+    h1: (props: any) => null,
+  };
 
   return (
     <>
       <Header title={title} />
       <SEO title={title} description={description} />
+
       <PageCard>
+        <section className="rounded-lg">
+          <div className="md:prose-md prose prose-invert">
+            {mdxSource && <MDXRemote {...mdxSource} components={components} />}
+          </div>
+        </section>
+      </PageCard>
+      <PageCard className="mt-4 md:mt-6">
         <section className="px-4">
-          <div className="md:grid-re grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
               <div className="mb-2 w-full md:mb-0">
                 <Image
@@ -61,13 +76,6 @@ export default function Post({ data, mdxSource }: PostProps) {
 
               <AuthorCard date={date} />
             </div>
-          </div>
-        </section>
-      </PageCard>
-      <PageCard className="mt-4 md:mt-6">
-        <section className="rounded-lg">
-          <div className="md:prose-md prose prose-invert">
-            {mdxSource && <MDXRemote {...mdxSource} />}
           </div>
         </section>
       </PageCard>
