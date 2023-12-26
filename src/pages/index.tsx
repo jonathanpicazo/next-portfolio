@@ -25,11 +25,10 @@ export async function getStaticProps() {
 type HomeProps = {
   data: {
     resumeFile: string;
-  };
+  }[];
 };
 export default function Home({ data }: HomeProps) {
-  console.log("a", data);
-  const { resumeFile } = data;
+  const resumeFile = data[0].resumeFile;
   return (
     <div className="mx-auto w-full max-w-desktop md:px-10">
       <SEO
@@ -74,7 +73,9 @@ export default function Home({ data }: HomeProps) {
                 className="my-2 flex items-center gap-x-5 rounded-3xl border border-dracula-purple bg-dracula-darker p-5 hover:opacity-75"
                 role="button"
                 href={resumeFile}
-                download="CV_Jonathan_Picazo.pdf"
+                download="Jonathan_Picazo_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaDownload className="text-dracula-purple" />
                 <span className="text-dracula-purple">Download CV</span>
