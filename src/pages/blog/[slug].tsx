@@ -1,10 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import {
-  MDXRemote,
-  MDXRemoteSerializeResult,
-  MDXRemoteProps,
-} from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { client } from "~/sanity-client";
 import { Header, SEO, PageCard, AuthorCard } from "~/components";
