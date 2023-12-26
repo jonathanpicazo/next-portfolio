@@ -25,12 +25,12 @@ export default function App({
             initial="hidden" // Set the initial state to variants.hidden
             animate="enter" // Animated state to variants.enter
             exit="exit" // Exit state (used later) to variants.exit
-            transition={{ type: "linear" }} // Set the transition to linear
             variants={{
-              hidden: { opacity: 0, x: -100, y: 0 },
+              hidden: { opacity: 0, x: -20, y: 0 },
               enter: { opacity: 1, x: 0, y: 0 },
-              exit: { opacity: 0, x: 0, y: -100 },
+              exit: { opacity: 0, x: 0, y: -20 },
             }}
+            transition={{ ease: "easeOut", duration: 0.6 }}
           >
             <Component {...pageProps} />
           </motion.div>
