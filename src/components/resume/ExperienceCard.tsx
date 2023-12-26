@@ -43,7 +43,7 @@ export const ExperienceCard = ({ data }: { data: ExperienceItemType }) => {
         </div>
       </div>
 
-      <div className="md:prose-md prose prose-invert">
+      <div className="md:prose-md resume-md prose prose-invert max-w-full text-dracula-light">
         <MDXRemote {...data.content} />
       </div>
     </div>
