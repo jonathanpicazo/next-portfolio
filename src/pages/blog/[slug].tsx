@@ -68,7 +68,7 @@ export default function Post({ data, mdxSource }: PostProps) {
               </div>
             </div>
             <div className="flex flex-col justify-between">
-              <p className="mb-2 text-dracula-yellow">{description}</p>
+              <p className="text-dracula-yellow mb-2">{description}</p>
 
               <AuthorCard date={date} />
             </div>

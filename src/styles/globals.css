@@ -71,3 +71,30 @@ a {
 .Typewriter {
   font-family: "Fira Code";
 }
+
+.resume-md ul:first-child {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.resume-md ul:first-child {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.resume-md ul:first-child li {
+  border: #44475a;
+  border-radius: 5px;
+  /* list-style: none; */
+  padding: 0;
+  margin: 0;
+}
+.resume-md ul:first-child li strong {
+  color: #bd93f9;
+}
+@media screen and (max-width: 768px) {
+  .resume-md ul:first-child {
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
