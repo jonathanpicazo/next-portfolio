@@ -13,8 +13,8 @@ type ProofCardProps = {
 };
 
 const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
-  const { name, description, previewImage, featuredTechnologies } = data;
-  console.log('data', data);
+  const { name, description, previewImage, featuredTechnologies, context } =
+    data;
 
   return (
     <motion.article
@@ -35,6 +35,10 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
       </div>
       <div className="p-4">
         <h3 className="text-dracula-purple text-md md:text-xl">{name}</h3>
+        <p className="text-dracula-cyan mb-1 text-sm">
+          <span>Context: </span>
+          <span>{context}</span>
+        </p>
         <p className="mb-3 text-sm text-gray-500 dark:text-gray-400 md:mb-4">
           A brief description of the project goes here.
         </p>

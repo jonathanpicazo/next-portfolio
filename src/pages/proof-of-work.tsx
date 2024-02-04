@@ -14,9 +14,8 @@ export async function getStaticProps(): Promise<{
 }> {
   try {
     const data = await client.fetch(
-      groq`*[_type == "proof-of-work"]{_id, name, description, previewImage, url, technologies, featuredTechnologies}`
+      groq`*[_type == "proof-of-work"]{_id, name, description, previewImage, url, technologies, featuredTechnologies, context}`
     );
-    console.log('data', data);
     return { props: { data } };
   } catch (error) {
     console.error('Error while fetching static props', error);
@@ -53,7 +52,7 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
   const dragThreshold = 200;
 
   return (
-    <div>
+    <>
       {/* Modal */}
       <div
         className={twMerge(
@@ -67,7 +66,7 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
           <motion.div
             key="work-project-modal"
             ref={modalRef}
-            className="fixed left-0 top-0 z-50 mt-[80px] h-full w-full overflow-y-auto rounded-lg bg-transparent shadow-2xl"
+            className="fixed left-0 top-0 z-50 mt-[80px] h-full w-full rounded-lg bg-transparent shadow-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -80,17 +79,17 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
             }}
           >
             <motion.div
-              className="min-w-screen ipad:px-4 relative w-full rounded-lg px-2.5 md:px-6"
+              className="min-w-screen ipad:px-4 max-w-desktop relative mx-auto w-full rounded-lg px-2.5 md:px-6"
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             >
               <PageCard
-                className="border-dracula-dark relative h-full min-h-screen border"
+                className="border-dracula-dark max-w-desktop relative h-full min-h-screen border !pt-0"
                 ref={modalContentRef}
               >
-                <div className="mx-auto mb-2 mt-2 h-2 w-12 rounded bg-gray-600"></div>
+                <div className="mx-auto mb-2 mt-3 h-2 w-12 rounded bg-gray-600"></div>
                 <button
                   className="absolute right-0 top-0 p-4"
                   onClick={clearProject}
@@ -105,7 +104,7 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
       </AnimatePresence>
       <Header title="Proof of Work" />
       <PageCard>
-        <p className="mb-4">
+        <p className="text-dracula-light mb-4 font-bold">
           Browse my personal portfolio for a closer look at my Proof of Work
           projects. Click to explore each project&apos;s specifics.
         </p>
@@ -120,6 +119,6 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
           ))}
         </div>
       </PageCard>
-    </div>
+    </>
   );
 }

@@ -12,6 +12,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'context',
+      title: 'Context',
+      type: 'string',
+    }),
+    defineField({
       name: 'previewImage',
       title: 'Preview Image',
       type: 'image',
@@ -44,6 +49,7 @@ export default defineType({
       name: 'featuredTechnologies',
       title: 'Featured Technologies',
     }),
+
     defineField({
       type: 'array',
       // @ts-ignore
