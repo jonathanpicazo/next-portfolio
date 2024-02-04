@@ -1,8 +1,8 @@
-import React from "react";
-import { twMerge } from "tailwind-merge";
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
 export const PageCard = ({
   children,
-  className = "",
+  className = '',
 }: {
   children: React.ReactNode;
   className?: string;
@@ -10,7 +10,7 @@ export const PageCard = ({
   return (
     <section
       className={twMerge(
-        "flex-1 rounded-lg bg-dracula-darker-900 px-[10px] pb-5 pt-4 shadow-md md:mx-2.5 md:px-9",
+        'bg-dracula-darker-900 flex-1 rounded-lg px-3.5 pb-5 pt-4 shadow-md md:mx-2.5 md:px-9',
         className
       )}
     >
