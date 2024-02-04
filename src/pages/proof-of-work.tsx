@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import groq from 'groq';
 import { twMerge } from 'tailwind-merge';
+
+import { MdClose as CloseIcon } from 'react-icons/md';
 import { useClickAway } from 'react-use';
 import { client } from '~/sanity-client';
 import { Header, PageCard, ProofCard, ProofModal } from '~/components';
@@ -32,8 +34,9 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
   const clearProject = () => setSelectedProject(null);
   const setProject = (project: WorkProject) => setSelectedProject(project);
   const modalRef: React.RefObject<HTMLDivElement> = useRef(null);
+  const modalContentRef: React.RefObject<HTMLDivElement> = useRef(null);
 
-  useClickAway(modalRef, () => {
+  useClickAway(modalContentRef, () => {
     if (selectedProject) {
       clearProject();
     }
@@ -52,12 +55,19 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
   return (
     <div>
       {/* Modal */}
+      <div
+        className={twMerge(
+          selectedProject &&
+            'fixed left-0 top-0 z-40 h-screen w-screen bg-black bg-opacity-40'
+        )}
+        onClick={clearProject}
+      />
       <AnimatePresence>
         {selectedProject && (
           <motion.div
             key="work-project-modal"
             ref={modalRef}
-            className="bg-dracula-darker-900 fixed left-0 top-0 z-50 mt-[80px] h-full w-full overflow-y-auto shadow-2xl"
+            className="fixed left-0 top-0 z-50 mt-[80px] h-full w-full overflow-y-auto rounded-lg bg-transparent shadow-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -70,22 +80,25 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
             }}
           >
             <motion.div
-              className="bg-dracula-darker-900 min-w-screen ipad:px-4 relative w-full rounded-lg px-2.5 md:px-6"
+              className="min-w-screen ipad:px-4 relative w-full rounded-lg px-2.5 md:px-6"
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             >
-              <div className="h-full">
+              <PageCard
+                className="border-dracula-dark relative h-full min-h-screen border"
+                ref={modalContentRef}
+              >
                 <div className="mx-auto mb-2 mt-2 h-2 w-12 rounded bg-gray-600"></div>
                 <button
-                  className="absolute right-0 top-0"
+                  className="absolute right-0 top-0 p-4"
                   onClick={clearProject}
                 >
-                  Close
+                  <CloseIcon className="text-3xl" />
                 </button>
                 <ProofModal data={selectedProject} closeModal={clearProject} />
-              </div>
+              </PageCard>
             </motion.div>
           </motion.div>
         )}
