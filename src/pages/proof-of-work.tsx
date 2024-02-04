@@ -109,7 +109,7 @@ export default function ProofOfWork({ data }: ProofOfWorkProps) {
           projects. Click to explore each project&apos;s specifics.
         </p>
         {/* <span>Suavecito</span> */}
-        <div className="ipad:grid-cols-2 ipad:gap-y-4 ipad:gap-x-2.5 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-x-9 md:gap-y-7">
+        <div className="ipad:grid-cols-2 ipad:gap-y-6 ipad:gap-x-4 grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-9 md:gap-y-7">
           {data.map((project) => (
             <ProofCard
               key={project._id}

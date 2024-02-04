@@ -2,7 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TechStackIcon } from '~/components';
+import { useWindowSize } from 'react-use';
 import { techStackDictionary } from '~/data';
+import { useMobile } from '~/hooks';
 import { motion } from 'framer-motion';
 import { urlFor } from '~/lib/utils';
 import type { WorkProject } from '~/lib';
@@ -15,14 +17,18 @@ type ProofCardProps = {
 const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
   const { name, description, previewImage, featuredTechnologies, context } =
     data;
-
+  const isMobile = useMobile();
   return (
     <motion.article
       className="border-dracula-dark cursor-pointer overflow-hidden rounded-lg border shadow-xl"
-      whileHover={{
-        scale: 1.035,
-        transition: { duration: 0.2 },
-      }}
+      whileHover={
+        !isMobile
+          ? {
+              scale: 1.035,
+              transition: { duration: 0.2 },
+            }
+          : undefined
+      }
       onClick={() => openModal(data)}
     >
       <div className="relative aspect-[5/3]">
@@ -39,9 +45,12 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
           <span>Context: </span>
           <span>{context}</span>
         </p>
-        <p className="mb-3 text-sm text-gray-500 dark:text-gray-400 md:mb-4">
-          A brief description of the project goes here.
-        </p>
+        {description && (
+          <p className="text-dracula-blue-300 mb-3 text-sm md:mb-4">
+            {description}
+          </p>
+        )}
+
         <div className="flex justify-center">
           {featuredTechnologies.map((key) => {
             if (techStackDictionary[key]) {
