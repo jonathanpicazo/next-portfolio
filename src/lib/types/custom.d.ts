@@ -61,6 +61,7 @@ export type WorkProject = {
   name: string;
   url: string;
   technologies: string[];
+  context: string;
   featuredTechnologies: TechStackKeys[];
   previewImage: {
     asset: {
