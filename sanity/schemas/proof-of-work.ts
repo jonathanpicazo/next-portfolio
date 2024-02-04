@@ -31,6 +31,11 @@ export default defineType({
       type: 'text',
     }),
     defineField({
+      name: 'details',
+      title: 'Details',
+      type: 'markdown',
+    }),
+    defineField({
       name: 'url',
       title: 'URL',
       type: 'url',

@@ -4,15 +4,21 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { urlFor } from '~/lib/utils';
 import { BlogPostType } from '~/lib/types';
+import { useMobile } from '~/hooks';
 
 export const PostCard = ({ post }: { post: BlogPostType }) => {
+  const isMobile = useMobile();
   return (
     <motion.article
       className="border-dracula-dark flex flex-col rounded-lg border shadow-xl"
-      whileHover={{
-        scale: 1.05,
-        transition: { duration: 0.2 },
-      }}
+      whileHover={
+        !isMobile
+          ? {
+              scale: 1.05,
+              transition: { duration: 0.2 },
+            }
+          : undefined
+      }
     >
       <Link href={`/blog/${post.slug.current}`}>
         <div className="w-full">

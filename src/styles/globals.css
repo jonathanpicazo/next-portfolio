@@ -2,13 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Define font faces for Roboto */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  src: local('Roboto Regular'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxM.woff2)
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600; /* Bold */
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmWUlfBBc4.woff2)
+      format('woff2');
+}
+
+/* Define font faces for Lato */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  src: local('Lato Regular'), local('Lato-Regular'),
+    url(https://fonts.gstatic.com/s/lato/v22/S6uyw4BMUTPHjx4wWw.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600; /* Bold */
+  src: local('Lato Bold'), local('Lato-Bold'),
+    url(https://fonts.gstatic.com/s/lato/v22/S6u9w4BMUTPHh6UVSwaPHw.ttf)
+      format('truetype');
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: #44475a;
 }
 
@@ -19,11 +57,11 @@ h4,
 h5,
 h6,
 .text-heading {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .text-body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -69,7 +107,7 @@ a {
 }
 
 .Typewriter {
-  font-family: "Fira Code";
+  font-family: 'Fira Code';
 }
 
 .resume-md ul:first-child {

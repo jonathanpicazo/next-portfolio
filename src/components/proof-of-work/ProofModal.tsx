@@ -26,16 +26,18 @@ const ProofModal: React.FC<ProofModalProps> = ({ data, closeModal }) => {
   return (
     <article className="rounded-lg">
       <h4 className="text-dracula-purple text-md md:text-xl">{name}</h4>
-      <div>
+      <div className="text-dracula-blue text-sm">
         <span>Technologies: {technologiesText}</span>
       </div>
       <div>
         <span>Demo gifs</span>
       </div>
       <div className="p-4">
-        <p className="mb-3 text-sm text-gray-500 dark:text-gray-400 md:mb-4">
-          A brief description of the project goes here.
-        </p>
+        {description && (
+          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+            {description}
+          </p>
+        )}
       </div>
     </article>
   );
