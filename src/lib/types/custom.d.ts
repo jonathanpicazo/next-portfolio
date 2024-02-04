@@ -23,25 +23,25 @@ type TechStackArray = {
 };
 
 export type TechStackKeys =
-  | "html"
-  | "css"
-  | "javascript"
-  | "typescript"
-  | "python"
-  | "c++"
-  | "c"
-  | "graphql"
-  | "react"
-  | "tailwind"
-  | "react-native"
-  | "next"
-  | "gatsby"
-  | "remix"
-  | "node"
-  | "express"
-  | "flask"
-  | "elastic-search"
-  | "sanity";
+  | 'html'
+  | 'css'
+  | 'javascript'
+  | 'typescript'
+  | 'python'
+  | 'c++'
+  | 'c'
+  | 'graphql'
+  | 'react'
+  | 'tailwind'
+  | 'react-native'
+  | 'next'
+  | 'gatsby'
+  | 'remix'
+  | 'node'
+  | 'express'
+  | 'flask'
+  | 'elastic-search'
+  | 'sanity';
 
 // PROJECTS
 export type ProjectItem = {
@@ -54,4 +54,24 @@ export type ProjectItem = {
   demoLink?: string;
 };
 
-//
+// Proof of Work
+
+export type WorkProject = {
+  _id: string;
+  name: string;
+  url: string;
+  technologies: string[];
+  featuredTechnologies: TechStackKeys[];
+  previewImage: {
+    asset: {
+      url: string;
+    };
+  };
+  description: string;
+  url: string;
+  media: {
+    asset: {
+      url: string;
+    };
+  }[];
+};
