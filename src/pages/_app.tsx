@@ -1,17 +1,23 @@
-import React from "react";
-import type { AppProps } from "next/app";
-import { Layout } from "~/components";
-import { motion, AnimatePresence } from "framer-motion";
+import React from 'react';
+import type { AppProps } from 'next/app';
+import { Layout } from '~/components';
+import { motion, AnimatePresence } from 'framer-motion';
 
-import "../styles/globals.css";
-import "dracula-ui/styles/dracula-ui.css";
-import "easymde/dist/easymde.min.css";
+import '../styles/globals.css';
+import 'dracula-ui/styles/dracula-ui.css';
+import 'easymde/dist/easymde.min.css';
+import { getCookie } from 'cookies-next';
+
+const PASSWORD = process.env.NEXT_PUBLIC_ROUTE_PASSWORD;
 
 export default function App({
   Component,
   pageProps: { ...pageProps },
   router,
 }: AppProps) {
+  const isCookied = getCookie('authToken') === PASSWORD ? true : false;
+  const isProtected = router.route === '/proof-of-work';
+
   return (
     <>
       <AnimatePresence
@@ -22,7 +28,7 @@ export default function App({
         <Layout>
           <motion.div
             key={router.route}
-            initial="hidden" // Set the initial state to variants.hidden
+            initial={!isCookied && isProtected ? 'enter' : 'hidden'} // Set the initial state to variants.hidden
             animate="enter" // Animated state to variants.enter
             exit="exit" // Exit state (used later) to variants.exit
             variants={{
@@ -30,7 +36,7 @@ export default function App({
               enter: { opacity: 1, x: 0, y: 0 },
               exit: { opacity: 0, x: 0, y: -20 },
             }}
-            transition={{ ease: "easeOut", duration: 0.6 }}
+            transition={{ ease: 'easeOut', duration: 0.6 }}
           >
             <Component {...pageProps} />
           </motion.div>
