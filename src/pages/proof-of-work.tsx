@@ -1,124 +1,53 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 import groq from 'groq';
-import { twMerge } from 'tailwind-merge';
-
-import { MdClose as CloseIcon } from 'react-icons/md';
-import { useClickAway } from 'react-use';
 import { client } from '~/sanity-client';
-import { Header, PageCard, ProofCard, ProofModal } from '~/components';
+import { ProofPage, AuthForm } from '~/components';
 import { WorkProject } from '~/lib';
+import { useEffectOnce } from 'react-use';
+import { getCookie, setCookie } from 'cookies-next';
+
+const PASSWORD = process.env.NEXT_PUBLIC_ROUTE_PASSWORD;
 
 export async function getStaticProps(): Promise<{
-  props: { data: WorkProject[] };
+  props: { data: WorkProject[]; password: string };
 }> {
   try {
     const data = await client.fetch(
       groq`*[_type == "proof-of-work"]{_id, name, description, previewImage, url, technologies, featuredTechnologies, context}`
     );
-    return { props: { data } };
+
+    const password = PASSWORD as string;
+    return { props: { data, password } };
   } catch (error) {
     console.error('Error while fetching static props', error);
-    return { props: { data: [] } };
+    return { props: { data: [], password: '' } };
   }
 }
 
 type ProofOfWorkProps = {
   data: WorkProject[];
+  password: string;
 };
-export default function ProofOfWork({ data }: ProofOfWorkProps) {
-  const [selectedProject, setSelectedProject] = useState<WorkProject | null>(
-    null
-  );
-  const clearProject = () => setSelectedProject(null);
-  const setProject = (project: WorkProject) => setSelectedProject(project);
-  const modalRef: React.RefObject<HTMLDivElement> = useRef(null);
-  const modalContentRef: React.RefObject<HTMLDivElement> = useRef(null);
-
-  useClickAway(modalContentRef, () => {
-    if (selectedProject) {
-      clearProject();
+export default function ProofOfWork({ data, password }: ProofOfWorkProps) {
+  const [authenticated, setAuthenticated] = useState(false);
+  useEffectOnce(() => {
+    const authToken = getCookie('authToken');
+    if (authToken === password) {
+      setAuthenticated(true);
     }
+
+    // const input = prompt('Enter password');
+    // if (input === password) {
+    //   setAuthenticated(true);
+    // }
   });
-
-  useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [selectedProject]);
-
-  const dragThreshold = 200;
-
   return (
     <>
-      {/* Modal */}
-      <div
-        className={twMerge(
-          selectedProject &&
-            'fixed left-0 top-0 z-40 h-screen w-screen bg-black bg-opacity-40'
-        )}
-        onClick={clearProject}
-      />
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            key="work-project-modal"
-            ref={modalRef}
-            className="fixed left-0 top-0 z-50 mt-[80px] h-full w-full rounded-lg bg-transparent shadow-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 0 }}
-            onDragEnd={(e, { offset, velocity }) => {
-              if (offset.y > dragThreshold || Math.abs(velocity.y) > 1000) {
-                clearProject();
-              }
-            }}
-          >
-            <motion.div
-              className="min-w-screen ipad:px-4 max-w-desktop relative mx-auto w-full rounded-lg px-2.5 md:px-6"
-              initial={{ y: '100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: '100%', opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            >
-              <PageCard
-                className="border-dracula-dark max-w-desktop relative h-full min-h-screen border !pt-0"
-                ref={modalContentRef}
-              >
-                <div className="mx-auto mb-2 mt-3 h-2 w-12 rounded bg-gray-600"></div>
-                <button
-                  className="absolute right-0 top-0 p-4"
-                  onClick={clearProject}
-                >
-                  <CloseIcon className="text-3xl" />
-                </button>
-                <ProofModal data={selectedProject} closeModal={clearProject} />
-              </PageCard>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <Header title="Proof of Work" />
-      <PageCard>
-        <p className="text-dracula-light mb-4 font-bold">
-          Browse my personal portfolio for a closer look at my Proof of Work
-          projects. Click to explore each project&apos;s specifics.
-        </p>
-        {/* <span>Suavecito</span> */}
-        <div className="ipad:grid-cols-2 ipad:gap-y-6 ipad:gap-x-4 grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-9 md:gap-y-7">
-          {data.map((project) => (
-            <ProofCard
-              key={project._id}
-              data={project}
-              openModal={setProject}
-            />
-          ))}
-        </div>
-      </PageCard>
+      {!authenticated ? (
+        <AuthForm password={password} setAuthenticated={setAuthenticated} />
+      ) : (
+        <ProofPage data={data} />
+      )}
     </>
   );
 }
