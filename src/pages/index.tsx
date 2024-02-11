@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 import { FaDownload } from 'react-icons/fa';
