@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { Header, PageCard, TechStackIcon, SEO, SubHeader } from '~/components';
 import {
   techStackArr,
@@ -25,15 +24,6 @@ export default function About() {
         <div className="flex flex-col-reverse gap-x-5 md:flex-row">
           {/* Left Image */}
           <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
-            {/* <Image
-              className="h-full w-full rounded-md object-cover"
-              src="/images/aboutme.jpg"
-              alt="green"
-              width={500}
-              height={500}
-              loading="eager"
-              priority
-            /> */}
             <Lottie animationData={aboutMe} />
           </div>
           <div className="desktop:basis-2/3 w-full">
