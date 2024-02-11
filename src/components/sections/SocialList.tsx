@@ -1,22 +1,22 @@
-import React, { ReactElement } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { twMerge } from "tailwind-merge";
-import { SocialLinkType } from "~/lib/types";
+import React, { ReactElement } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { twMerge } from 'tailwind-merge';
+import { SocialLinkType } from '~/lib/types';
 
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { GoRepo } from "react-icons/go";
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { GoRepo } from 'react-icons/go';
 
 const socialLinks: SocialLinkType[] = [
   {
-    label: "LinkedIn",
-    url: "https://www.linkedin.com/in/jonathan-picazo/",
-    icon: <FaLinkedin className="text-xl text-dracula-cyan" />,
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/jonathan-picazo/',
+    icon: <FaLinkedin className="text-dracula-cyan text-xl" />,
   },
   {
-    label: "GitHub",
-    url: "https://github.com/jonathanpicazo",
-    icon: <FaGithub className="text-xl text-dracula-cyan" />,
+    label: 'GitHub',
+    url: 'https://github.com/jonathanpicazo',
+    icon: <FaGithub className="text-dracula-cyan text-xl" />,
   },
 
   // {
@@ -27,14 +27,14 @@ const socialLinks: SocialLinkType[] = [
 ];
 
 export const SocialList = ({
-  className = "",
+  className = '',
   length = 2,
 }: {
   className?: string;
   length?: number;
 }) => {
   return (
-    <section className={twMerge("flex items-center gap-x-4", className)}>
+    <section className={twMerge('flex items-center gap-x-4', className)}>
       {socialLinks.slice(0, length).map((link) => (
         <Link
           key={`social-link-component-${link.label}`}
@@ -44,7 +44,7 @@ export const SocialList = ({
           <motion.div
             whileHover={{ scale: [null, 1.2, 1.1] }}
             transition={{ duration: 0.2 }}
-            className="flex cursor-pointer items-center justify-center rounded-lg bg-dracula-darker-900 p-3 hover:opacity-75"
+            className="bg-dracula-darker-900 flex cursor-pointer items-center justify-center rounded-lg p-3 hover:opacity-75"
           >
             {link.icon}
           </motion.div>

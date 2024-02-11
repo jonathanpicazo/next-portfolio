@@ -1,14 +1,15 @@
+@import url('https://use.typekit.net/phj1crn.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'proxima-nova', sans-serif;
   background: #44475a;
 }
 
@@ -19,11 +20,11 @@ h4,
 h5,
 h6,
 .text-heading {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'myriad-pro', sans-serif;
 }
 
 .text-body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 }
 
 a {
@@ -69,9 +70,9 @@ a {
 }
 
 .Typewriter {
-  font-family: "Fira Code";
+  font-family: 'Fira Code';
 }
-
+/* 
 .resume-md ul:first-child {
   padding: 0;
   margin: 0;
@@ -85,7 +86,7 @@ a {
 .resume-md ul:first-child li {
   border: #44475a;
   border-radius: 5px;
-  /* list-style: none; */
+
   padding: 0;
   margin: 0;
 }
@@ -94,7 +95,6 @@ a {
 }
 @media screen and (max-width: 768px) {
   .resume-md ul:first-child {
-    /* grid-template-columns: 1fr 1fr; */
     grid-template-columns: repeat(1, 1fr);
   }
-}
+} */
