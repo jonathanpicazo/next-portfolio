@@ -8,6 +8,4 @@ const imageBuilder = createImageUrlBuilder({
   dataset: dataset || "",
 });
 
-export const urlForImage = (source: Image) => {
-  return imageBuilder?.image(source).auto("format").fit("max");
-};
+export const urlForImage = (source: Image) => imageBuilder?.image(source).auto("format").fit("max");

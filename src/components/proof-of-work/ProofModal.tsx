@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { TechStackIcon } from '~/components';
-import { techStackDictionary } from '~/data';
-import { urlFor } from '~/lib/utils';
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { TechStackIcon } from '~/components';
+// import { techStackDictionary } from '~/data';
+// import { urlFor } from '~/lib/utils';
 import type { WorkProject } from '~/lib';
 
 type ProofModalProps = {
@@ -12,21 +12,17 @@ type ProofModalProps = {
 };
 
 const ProofModal: React.FC<ProofModalProps> = ({ data, closeModal }) => {
-  const {
-    name,
-    description,
-    previewImage,
-    url,
-    featuredTechnologies,
-    technologies,
-  } = data;
+  const { name, description, technologies } = data;
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
+  const _breadMan = () => closeModal();
 
   const technologiesText = technologies ? technologies.join(', ') : '';
 
   return (
     <article className="rounded-lg">
-      <h4 className="text-dracula-purple text-md md:text-xl">{name}</h4>
-      <div className="text-dracula-blue text-sm">
+      <h4 className="text-md text-dracula-purple md:text-xl">{name}</h4>
+      <div className="text-sm text-dracula-blue">
         <span>Technologies: {technologiesText}</span>
       </div>
       <div>

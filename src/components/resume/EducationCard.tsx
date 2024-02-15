@@ -1,12 +1,15 @@
-import React from "react";
-import { EducationItemType } from "~/lib";
-import Image from "next/image";
-import { urlFor } from "~/lib/utils";
+import React from 'react';
+import { EducationItemType } from '~/lib';
+import Image from 'next/image';
+import { urlFor } from '~/lib/utils';
 
-export const EducationCard = ({ data }: { data: EducationItemType }) => {
-  const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "short",
+type EducationCardProps = {
+  data: EducationItemType;
+};
+const EducationCard: React.FC<EducationCardProps> = ({ data }) => {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
   });
   return (
     <div className="flex items-center">
@@ -29,16 +32,16 @@ export const EducationCard = ({ data }: { data: EducationItemType }) => {
           <div className="flex items-center gap-1 text-sm text-dracula-darker-300">
             <time>{dateFormatter.format(new Date(data.startingDate))}</time>
             <span>-</span>
-            <>
-              {data.endingDate ? (
-                <time>{dateFormatter.format(new Date(data.endingDate))}</time>
-              ) : (
-                <span>Present</span>
-              )}
-            </>
+            {data.endingDate ? (
+              <time>{dateFormatter.format(new Date(data.endingDate))}</time>
+            ) : (
+              <span>Present</span>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default EducationCard;

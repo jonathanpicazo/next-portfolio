@@ -1,2 +1,2 @@
-export * from "./formatPathName";
-export * from "./urlFor";
+export * from './formatPathName';
+export * from './urlFor';

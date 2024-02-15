@@ -1,12 +1,12 @@
-import React from "react";
-import Image from "next/image";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import { client } from "~/sanity-client";
-import { Header, SEO, PageCard, AuthorCard } from "~/components";
-import { ALL_POST_SLUGS_QUERY, POST_QUERY } from "~/data";
-import { urlFor } from "~/lib/utils";
-import { BlogPostType } from "~/lib";
+import React from 'react';
+import Image from 'next/image';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import { client } from '~/sanity-client';
+import { Header, SEO, PageCard, AuthorCard } from '~/components';
+import { ALL_POST_SLUGS_QUERY, POST_QUERY } from '~/data';
+import { urlFor } from '~/lib/utils';
+import { BlogPostType } from '~/lib';
 
 export async function getStaticPaths() {
   const paths: string[] = await client.fetch(ALL_POST_SLUGS_QUERY);
@@ -37,7 +37,7 @@ export default function Post({ data, mdxSource }: PostProps) {
   const { title, description, mainImage, publishedAt } = data;
   const date = new Date(publishedAt).toLocaleDateString();
   const components = {
-    h1: (props: any) => null,
+    h1: () => null,
   };
 
   return (
@@ -62,13 +62,13 @@ export default function Post({ data, mdxSource }: PostProps) {
                   height={900}
                   width={900}
                   className="aspect-video w-full rounded-lg object-cover"
-                  alt={mainImage.alt ?? "Blog main image"}
+                  alt={mainImage.alt ?? 'Blog main image'}
                   priority
                 />
               </div>
             </div>
             <div className="flex flex-col justify-between">
-              <p className="text-dracula-yellow mb-2">{description}</p>
+              <p className="mb-2 text-dracula-yellow">{description}</p>
 
               <AuthorCard date={date} />
             </div>
