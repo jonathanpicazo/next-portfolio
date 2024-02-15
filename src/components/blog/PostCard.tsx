@@ -6,11 +6,14 @@ import { urlFor } from '~/lib/utils';
 import { BlogPostType } from '~/lib/types';
 import { useMobile } from '~/hooks';
 
-export const PostCard = ({ post }: { post: BlogPostType }) => {
+type PostCardProps = {
+  post: BlogPostType;
+};
+const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const isMobile = useMobile();
   return (
     <motion.article
-      className="border-dracula-dark flex flex-col rounded-lg border shadow-xl"
+      className="flex flex-col rounded-lg border border-dracula-dark shadow-xl"
       whileHover={
         !isMobile
           ? {
@@ -32,7 +35,7 @@ export const PostCard = ({ post }: { post: BlogPostType }) => {
           />
         </div>
         <div className="p-4">
-          <h4 className="text-dracula-purple mb-2 line-clamp-2">
+          <h4 className="mb-2 line-clamp-2 text-dracula-purple">
             {post.title}
           </h4>
           <p className="mb-2 line-clamp-2">{post.description}</p>
@@ -41,3 +44,5 @@ export const PostCard = ({ post }: { post: BlogPostType }) => {
     </motion.article>
   );
 };
+
+export default PostCard;

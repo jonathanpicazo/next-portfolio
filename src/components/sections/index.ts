@@ -1,2 +1,2 @@
-export * from "./SocialList";
-export * from "./TechStackIcon";
+export { default as SocialList } from './SocialList';
+export { default as TechStackIcon } from './TechStackIcon';

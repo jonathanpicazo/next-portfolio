@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   SiHtml5,
   SiReact,
@@ -18,152 +18,148 @@ import {
   SiFlask,
   SiElasticsearch,
   SiSanity,
-} from "react-icons/si";
-import { FiSmartphone } from "react-icons/fi";
-import { MdLocationPin } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
-import { MdCalendarViewMonth } from "react-icons/md";
+} from 'react-icons/si';
+import { FiSmartphone } from 'react-icons/fi';
+import { MdLocationPin, MdEmail, MdCalendarViewMonth } from 'react-icons/md';
 import type {
   TechStackItem,
   TechStackKeys,
   TechStackArray,
   PersonalInfoType,
-} from "~/lib/types";
+} from '~/lib/types';
 
 const ICON_SIZE = 25;
 const PERSONAL_ICON_SIZE = 23;
 
 const languageArr: TechStackArray = {
-  label: "Languages",
-  items: ["html", "css", "python", "c++", "c", "graphql"],
+  label: 'Languages',
+  items: ['html', 'css', 'python', 'c++', 'c', 'graphql'],
 };
 
 const frameWorkArr: TechStackArray = {
-  label: "Frameworks",
+  label: 'Frameworks',
   items: [
-    "react",
-    "tailwind",
-    "react-native",
-    "next",
-    "gatsby",
-    "remix",
-    "node",
-    "express",
-    "flask",
+    'react',
+    'tailwind',
+    'react-native',
+    'next',
+    'gatsby',
+    'remix',
+    'node',
+    'express',
+    'flask',
   ],
 };
 
 export const techStackArr = [languageArr, frameWorkArr];
 
 export const siteStack: TechStackArray = {
-  label: "Technologies",
-  items: ["react", "tailwind", "next", "sanity"],
+  label: 'Technologies',
+  items: ['react', 'tailwind', 'next', 'sanity'],
 };
 
 export const techStackDictionary: Record<TechStackKeys, TechStackItem> = {
   html: {
-    label: "HTML5",
-    icon: <SiHtml5 size={ICON_SIZE} className={`text-dracula-orange`} />,
+    label: 'HTML5',
+    icon: <SiHtml5 size={ICON_SIZE} className="text-dracula-orange" />,
   },
   css: {
-    label: "CSS3",
-    icon: <SiCss3 size={ICON_SIZE} className={`text-dracula-cyan`} />,
+    label: 'CSS3',
+    icon: <SiCss3 size={ICON_SIZE} className="text-dracula-cyan" />,
   },
   javascript: {
-    label: "Javascript",
-    icon: <SiJavascript size={ICON_SIZE} className={`text-dracula-yellow`} />,
+    label: 'Javascript',
+    icon: <SiJavascript size={ICON_SIZE} className="text-dracula-yellow" />,
   },
   typescript: {
-    label: "Typescript",
+    label: 'Typescript',
     icon: <SiTypescript size={ICON_SIZE} className="text-dracula-cyan" />,
   },
   python: {
-    label: "Python",
-    icon: <SiPython size={ICON_SIZE} className={`text-dracula-yellow`} />,
+    label: 'Python',
+    icon: <SiPython size={ICON_SIZE} className="text-dracula-yellow" />,
   },
-  "c++": {
-    label: "C++",
+  'c++': {
+    label: 'C++',
     icon: <SiCplusplus size={ICON_SIZE} className="text-dracula-cyan" />,
   },
   c: {
-    label: "C",
+    label: 'C',
     icon: <SiC size={ICON_SIZE} className="text-dracula-cyan" />,
   },
   graphql: {
-    label: "GraphQL",
+    label: 'GraphQL',
     icon: <SiGraphql size={ICON_SIZE} className="text-dracula-pink" />,
   },
   react: {
-    label: "React",
+    label: 'React',
     icon: <SiReact size={ICON_SIZE} className="text-dracula-cyan" />,
   },
   tailwind: {
-    label: "Tailwind",
+    label: 'Tailwind',
     icon: <SiTailwindcss size={ICON_SIZE} className="text-dracula-cyan" />,
   },
-  "react-native": {
-    label: "React\nNative",
+  'react-native': {
+    label: 'React\nNative',
     icon: <SiReact size={ICON_SIZE} className="text-dracula-cyan" />,
   },
   next: {
-    label: "Next",
+    label: 'Next',
     icon: <SiNextdotjs size={ICON_SIZE} className="text-dracula-black" />,
   },
   gatsby: {
-    label: "Gatsby",
-    icon: <SiGatsby size={ICON_SIZE} className={`text-dracula-purple`} />,
+    label: 'Gatsby',
+    icon: <SiGatsby size={ICON_SIZE} className="text-dracula-purple" />,
   },
   remix: {
-    label: "Remix",
-    icon: <SiRemix size={ICON_SIZE} className={`text-dracula-black`} />,
+    label: 'Remix',
+    icon: <SiRemix size={ICON_SIZE} className="text-dracula-black" />,
   },
   node: {
-    label: "Node",
-    icon: <SiNodedotjs size={ICON_SIZE} className={`text-dracula-green`} />,
+    label: 'Node',
+    icon: <SiNodedotjs size={ICON_SIZE} className="text-dracula-green" />,
   },
   express: {
-    label: "Express",
-    icon: <SiExpress size={ICON_SIZE} className={`text-dracula-black`} />,
+    label: 'Express',
+    icon: <SiExpress size={ICON_SIZE} className="text-dracula-black" />,
   },
   flask: {
-    label: "Flask",
-    icon: <SiFlask size={ICON_SIZE} className={`text-dracula-black`} />,
+    label: 'Flask',
+    icon: <SiFlask size={ICON_SIZE} className="text-dracula-black" />,
   },
-  "elastic-search": {
-    label: "ElasticSearch",
-    icon: (
-      <SiElasticsearch size={ICON_SIZE} className={`text-dracula-orange`} />
-    ),
+  'elastic-search': {
+    label: 'ElasticSearch',
+    icon: <SiElasticsearch size={ICON_SIZE} className="text-dracula-orange" />,
   },
   sanity: {
-    label: "Sanity",
-    icon: <SiSanity size={ICON_SIZE} className={`text-dracula-red`} />,
+    label: 'Sanity',
+    icon: <SiSanity size={ICON_SIZE} className="text-dracula-red" />,
   },
 };
 
 export const personalInfo: PersonalInfoType[] = [
   {
-    label: "phone",
-    value: "+1 (909)-784-8797",
+    label: 'phone',
+    value: '+1 (909)-784-8797',
     icon: (
       <FiSmartphone className="fill-dracula-green" size={PERSONAL_ICON_SIZE} />
     ),
   },
   {
-    label: "location",
-    value: "Pomona, CA, USA",
+    label: 'location',
+    value: 'Pomona, CA, USA',
     icon: (
       <MdLocationPin className="fill-dracula-red" size={PERSONAL_ICON_SIZE} />
     ),
   },
   {
-    label: "email",
-    value: "jonathanpicazo@outlook.com",
+    label: 'email',
+    value: 'jonathanpicazo@outlook.com',
     icon: <MdEmail className="fill-dracula-cyan" size={PERSONAL_ICON_SIZE} />,
   },
   {
-    label: "birthday",
-    value: "February 27, 1999",
+    label: 'birthday',
+    value: 'February 27, 1999',
     icon: (
       <MdCalendarViewMonth
         className="fill-dracula-orange"

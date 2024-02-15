@@ -1,12 +1,12 @@
 // @ts-nocheck
-export const structure = (S, context) =>
+export const structure = (S) =>
   S.list()
-    .title("Content")
+    .title('Content')
     .items([
       S.listItem()
-        .title("Home")
-        .child(S.editor().id("home").schemaType("home").documentId("home")),
+        .title('Home')
+        .child(S.editor().id('home').schemaType('home').documentId('home')),
       ...S.documentTypeListItems().filter(
-        (listItem) => !["home"].includes(listItem.getId())
+        (listItem) => !['home'].includes(listItem.getId())
       ),
     ]);

@@ -1,10 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
 // Naive implementation - in reality would want to attach
 // a window or resize listener. Also use state/layoutEffect instead of ref/effect
 // if this is important to know on initial client render.
 // It would be safer to  return null for unmeasured states.
-export const useDimensions = (ref: any) => {
+interface Dimensions {
+  width: number;
+  height: number;
+}
+
+type UseDimensions = (ref: React.MutableRefObject<any>) => Dimensions;
+
+export const useDimensions: UseDimensions = (ref: any) => {
   const dimensions = useRef({ width: 0, height: 0 });
 
   useEffect(() => {

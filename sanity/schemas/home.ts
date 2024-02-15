@@ -1,14 +1,14 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "home",
-  title: "Home",
-  type: "document",
+  name: 'home',
+  title: 'Home',
+  type: 'document',
   fields: [
     defineField({
-      name: "resumeFile",
-      title: "Resume File",
-      type: "file",
+      name: 'resumeFile',
+      title: 'Resume File',
+      type: 'file',
     }),
   ],
 });
