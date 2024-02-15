@@ -1,66 +1,67 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "education",
-  title: "Education",
-  type: "document",
+  name: 'education',
+  title: 'Education',
+  type: 'document',
   fields: [
     defineField({
-      name: "name",
-      title: "School Name",
-      type: "string",
+      name: 'name',
+      title: 'School Name',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "logo",
-      title: "School Logo",
-      type: "image",
+      name: 'logo',
+      title: 'School Logo',
+      type: 'image',
       options: {
         hotspot: true,
       },
+      // @ts-ignore
       fields: [
         {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
         },
       ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "degree",
-      title: "Degree type",
-      type: "string",
+      name: 'degree',
+      title: 'Degree type',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "location",
-      title: "Location",
-      type: "string",
+      name: 'location',
+      title: 'Location',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "startingDate",
-      title: "Started at",
-      type: "date",
+      name: 'startingDate',
+      title: 'Started at',
+      type: 'date',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "endingDate",
-      title: "Ended at",
-      type: "date",
+      name: 'endingDate',
+      title: 'Ended at',
+      type: 'date',
     }),
     defineField({
-      name: "message",
-      title: "Message",
-      type: "text",
+      name: 'message',
+      title: 'Message',
+      type: 'text',
     }),
   ],
 
   preview: {
     select: {
-      title: "name",
-      media: "logo",
+      title: 'name',
+      media: 'logo',
     },
     prepare(selection) {
       return { ...selection };

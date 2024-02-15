@@ -27,7 +27,7 @@ export default function About() {
             <Lottie animationData={aboutMe} />
           </div>
           <div className="desktop:basis-2/3 w-full">
-            {/* Right Content*/}
+            {/* Right Content */}
             <div className="mb-4">
               {aboutText.map((par, index) => (
                 <p className="mb-2" key={`about-me-message-${index}`}>
@@ -42,11 +42,11 @@ export default function About() {
               <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
                 {personalInfo.map((el) => (
                   <div className="flex" key={`about-icon-${el.label}`}>
-                    <div className="bg-dracula-dark mr-2 flex items-center justify-center rounded-md p-2">
+                    <div className="mr-2 flex items-center justify-center rounded-md bg-dracula-dark p-2">
                       {el.icon}
                     </div>
                     <div>
-                      <p className="text-dracula-dark-700 text-sm capitalize">
+                      <p className="text-sm capitalize text-dracula-dark-700">
                         {el.label}
                       </p>
                       <p className="text-dracula-yellow">{el.value}</p>
@@ -63,7 +63,7 @@ export default function About() {
           <section className="flex flex-col gap-y-4">
             {techStackArr.map((el) => (
               <div key={`tech-stack-arr-${el.label}`}>
-                <p className="text-dracula-purple mb-3 text-base">{el.label}</p>
+                <p className="mb-3 text-base text-dracula-purple">{el.label}</p>
                 <div className="flex flex-wrap gap-x-3 gap-y-3">
                   {el.items.map((key) => {
                     const item = techStackDictionary[key];
@@ -82,7 +82,7 @@ export default function About() {
           <section className="mt-4">
             <SubHeader className="mb-2">This Site is Built With</SubHeader>
             <div className="flex flex-wrap gap-x-3 gap-y-3">
-              {siteStack.items.map((icon, index) => (
+              {siteStack.items.map((icon) => (
                 <TechStackIcon
                   key={`site-stack-list-${icon}`}
                   item={techStackDictionary[icon]}

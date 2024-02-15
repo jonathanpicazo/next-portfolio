@@ -1,6 +1,6 @@
 export const formatPathName = (path: string) => {
-  if (path === "home") {
-    return "/";
+  if (path === 'home') {
+    return '/';
   }
   return `/${path}`;
 };

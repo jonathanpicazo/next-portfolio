@@ -1,14 +1,15 @@
-import React from "react";
-import Image from "next/image";
-import { IoCreateOutline } from "react-icons/io5";
+import React from 'react';
+import Image from 'next/image';
+import { IoCreateOutline } from 'react-icons/io5';
+
 type AuthorCardProps = {
   date?: string;
 };
-export const AuthorCard = ({ date }: AuthorCardProps) => {
-  const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    day: "numeric",
-    month: "short",
+const AuthorCard: React.FC<AuthorCardProps> = ({ date }) => {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    day: 'numeric',
+    month: 'short',
   });
   return (
     <div className="flex items-center gap-3 rounded-lg border border-dracula-darker-700 px-3 py-3 shadow-md md:px-5">
@@ -35,3 +36,5 @@ export const AuthorCard = ({ date }: AuthorCardProps) => {
     </div>
   );
 };
+
+export default AuthorCard;

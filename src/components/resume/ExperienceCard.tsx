@@ -1,13 +1,16 @@
-import React from "react";
-import { ExperienceItemType } from "~/lib";
-import Image from "next/image";
-import { urlFor } from "~/lib/utils";
-import { MDXRemote } from "next-mdx-remote";
+import React from 'react';
+import { ExperienceItemType } from '~/lib';
+import Image from 'next/image';
+import { urlFor } from '~/lib/utils';
+import { MDXRemote } from 'next-mdx-remote';
 
-export const ExperienceCard = ({ data }: { data: ExperienceItemType }) => {
-  const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "short",
+type ExperienceCardProps = {
+  data: ExperienceItemType;
+};
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ data }) => {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
   });
   return (
     <div>
@@ -31,13 +34,11 @@ export const ExperienceCard = ({ data }: { data: ExperienceItemType }) => {
             <div className="flex items-center gap-1 text-sm text-dracula-darker-300">
               <time>{dateFormatter.format(new Date(data.startingDate))}</time>
               <span>-</span>
-              <>
-                {data.endingDate ? (
-                  <time>{dateFormatter.format(new Date(data.endingDate))}</time>
-                ) : (
-                  <span>Present</span>
-                )}
-              </>
+              {data.endingDate ? (
+                <time>{dateFormatter.format(new Date(data.endingDate))}</time>
+              ) : (
+                <span>Present</span>
+              )}
             </div>
           </div>
         </div>
@@ -49,3 +50,5 @@ export const ExperienceCard = ({ data }: { data: ExperienceItemType }) => {
     </div>
   );
 };
+
+export default ExperienceCard;

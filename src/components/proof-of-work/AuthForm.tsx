@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { setCookie } from 'cookies-next';
 import { Button } from '../elements';
@@ -22,8 +23,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ password, setAuthenticated }) => {
     authenticate();
   };
   return (
-    <div className="bg-dracula-darker-900 max-w-screen fixed inset-0 z-50 flex h-full max-h-screen w-full items-center justify-center">
-      <section className="border-dracula-dark w-full max-w-lg cursor-pointer rounded-lg border px-5 py-4 shadow-xl">
+    <div className="max-w-screen fixed inset-0 z-50 flex h-full max-h-screen w-full items-center justify-center bg-dracula-darker-900">
+      <section className="w-full max-w-lg cursor-pointer rounded-lg border border-dracula-dark px-5 py-4 shadow-xl">
         {/* <Header title="Contact Me" /> */}
 
         <form
@@ -37,7 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ password, setAuthenticated }) => {
             <div>
               <label
                 htmlFor="password"
-                className="text-dracula-pink mb-2 block text-sm font-medium"
+                className="mb-2 block text-sm font-medium text-dracula-pink"
               >
                 Please enter the password
               </label>
@@ -45,7 +46,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ password, setAuthenticated }) => {
                 type="password"
                 id="password"
                 name="password"
-                className="bg-dracula-dark text-dracula-light focus:border-dracula-purple-500 focus:ring-dracula-purple-500 block w-full rounded-lg p-2.5 text-sm"
+                className="block w-full rounded-lg bg-dracula-dark p-2.5 text-sm text-dracula-light focus:border-dracula-purple-500 focus:ring-dracula-purple-500"
                 placeholder="Password"
                 required
                 value={passwordInput}

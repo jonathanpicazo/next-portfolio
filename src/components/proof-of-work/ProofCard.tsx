@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { TechStackIcon } from '~/components';
-import { useWindowSize } from 'react-use';
+import { TechStackIcon } from '~/components/sections';
 import { techStackDictionary } from '~/data';
 import { useMobile } from '~/hooks';
 import { motion } from 'framer-motion';
@@ -20,7 +18,7 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
   const isMobile = useMobile();
   return (
     <motion.article
-      className="border-dracula-dark cursor-pointer overflow-hidden rounded-lg border shadow-xl"
+      className="cursor-pointer overflow-hidden rounded-lg border border-dracula-dark shadow-xl"
       whileHover={
         !isMobile
           ? {
@@ -40,13 +38,13 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
         />
       </div>
       <div className="p-4">
-        <h3 className="text-dracula-purple text-md md:text-xl">{name}</h3>
-        <p className="text-dracula-cyan mb-1 text-sm">
+        <h3 className="text-md text-dracula-purple md:text-xl">{name}</h3>
+        <p className="mb-1 text-sm text-dracula-cyan">
           <span>Context: </span>
           <span>{context}</span>
         </p>
         {description && (
-          <p className="text-dracula-blue-300 mb-3 text-sm md:mb-4">
+          <p className="mb-3 text-sm text-dracula-blue-300 md:mb-4">
             {description}
           </p>
         )}
@@ -62,6 +60,7 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
                 />
               );
             }
+            return null;
           })}
         </div>
       </div>

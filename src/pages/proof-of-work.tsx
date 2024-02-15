@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import groq from 'groq';
 import { client } from '~/sanity-client';
-import { ProofPage, AuthForm } from '~/components';
+import { ProofPage, AuthForm, SEO } from '~/components';
 import { WorkProject } from '~/lib';
 import { useEffectOnce } from 'react-use';
-import { getCookie, setCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 
 const PASSWORD = process.env.NEXT_PUBLIC_ROUTE_PASSWORD;
 
@@ -19,7 +19,7 @@ export async function getStaticProps(): Promise<{
     const password = PASSWORD as string;
     return { props: { data, password } };
   } catch (error) {
-    console.error('Error while fetching static props', error);
+    // console.error('Error while fetching static props', error);
     return { props: { data: [], password: '' } };
   }
 }
@@ -35,14 +35,10 @@ export default function ProofOfWork({ data, password }: ProofOfWorkProps) {
     if (authToken === password) {
       setAuthenticated(true);
     }
-
-    // const input = prompt('Enter password');
-    // if (input === password) {
-    //   setAuthenticated(true);
-    // }
   });
   return (
     <>
+      <SEO title="Proof Of Work" description="View my projects." />
       {!authenticated ? (
         <AuthForm password={password} setAuthenticated={setAuthenticated} />
       ) : (

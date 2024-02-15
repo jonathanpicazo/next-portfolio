@@ -1,7 +1,11 @@
-import { NavBar } from './NavBar';
+import React from 'react';
 import { useRouter } from 'next/router';
+import NavBar from './NavBar';
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+type Props = {
+  children: React.ReactNode;
+};
+const Layout: React.FC<Props> = ({ children }) => {
   const { pathname } = useRouter();
   const isStudioPath = pathname.includes('studio');
   return !isStudioPath ? (
@@ -9,7 +13,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className="bg-dracula-darker">
         <NavBar />
       </div>
-      <div className="max-w-desktop bg-dracula-dark mx-auto mb-4 mt-7 px-[10px] md:px-10">
+      <div className="mx-auto mb-4 mt-7 max-w-desktop bg-dracula-dark px-[10px] md:px-10">
         <main>{children}</main>
       </div>
     </div>
@@ -17,3 +21,5 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <main>{children}</main>
   );
 };
+
+export default Layout;

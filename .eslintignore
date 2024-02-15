@@ -1,4 +1,5 @@
 next.config.js
-post.config.js
+postcss.config.js
 tsconfig.json
 tailwind.config.js
+out/*
