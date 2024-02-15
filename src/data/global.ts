@@ -1,7 +1,7 @@
 export const navLinks: string[] = [
-  "home",
-  "about",
-  "resume",
-  "blog",
-  "contact",
+  'home',
+  'about',
+  'resume',
+  'blog',
+  'contact',
 ];

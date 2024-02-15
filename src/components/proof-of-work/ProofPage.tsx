@@ -1,10 +1,15 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import { MdClose as CloseIcon } from 'react-icons/md';
 import { useClickAway } from 'react-use';
-import { Header, PageCard, ProofCard, ProofModal } from '~/components';
+import { Header, PageCard } from '~/components/elements';
 import { WorkProject } from '~/lib';
+import ProofCard from './ProofCard';
+import ProofModal from './ProofModal';
 
 type ProofOfWorkProps = {
   data: WorkProject[];
@@ -62,17 +67,17 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
             }}
           >
             <motion.div
-              className="min-w-screen ipad:px-4 max-w-desktop relative mx-auto w-full rounded-lg px-2.5 md:px-6"
+              className="min-w-screen relative mx-auto w-full max-w-desktop rounded-lg px-2.5 ipad:px-4 md:px-6"
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             >
               <PageCard
-                className="border-dracula-dark max-w-desktop relative h-full min-h-screen border !pt-0"
+                className="relative h-full min-h-screen max-w-desktop border border-dracula-dark !pt-0"
                 ref={modalContentRef}
               >
-                <div className="mx-auto mb-2 mt-3 h-2 w-12 rounded bg-gray-600"></div>
+                <div className="mx-auto mb-2 mt-3 h-2 w-12 rounded bg-gray-600" />
                 <button
                   className="absolute right-0 top-0 p-4"
                   onClick={clearProject}
@@ -87,12 +92,12 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
       </AnimatePresence>
       <Header title="Proof of Work" />
       <PageCard>
-        <p className="text-dracula-light mb-4 font-bold">
+        <p className="mb-4 font-bold text-dracula-light">
           Browse my personal portfolio for a closer look at my Proof of Work
           projects. Click to explore each project&apos;s specifics.
         </p>
         {/* <span>Suavecito</span> */}
-        <div className="ipad:grid-cols-2 ipad:gap-y-6 ipad:gap-x-4 grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-9 md:gap-y-7">
+        <div className="grid grid-cols-1 gap-y-5 ipad:grid-cols-2 ipad:gap-x-4 ipad:gap-y-6 md:grid-cols-2 md:gap-x-9 md:gap-y-7">
           {data.map((project) => (
             <ProofCard
               key={project._id}

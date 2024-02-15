@@ -1,3 +1,3 @@
-export * from "./global";
-export * from "./custom";
-export * from "./sanity";
+export * from './global';
+export * from './custom';
+export * from './sanity';

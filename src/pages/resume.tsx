@@ -9,7 +9,7 @@ import {
   EducationCard,
   ExperienceCard,
 } from '~/components';
-import { resumeCards, projectList } from '~/data';
+import { projectList } from '~/data';
 import { client } from '~/sanity-client';
 import { serialize } from 'next-mdx-remote/serialize';
 import { EducationItemType, ExperienceItemType } from '~/lib';
@@ -52,7 +52,7 @@ export default function Resume({
       <Header title="Resume" />
       <section>
         <PageCard>
-          <SubHeader as="h3" className="text-dracula-pink mb-3 text-xl">
+          <SubHeader as="h3" className="mb-3 text-xl text-dracula-pink">
             Experience
           </SubHeader>
           <div className="relative mb-2.5 flex flex-col justify-between gap-3 md:mb-3 md:gap-6">
@@ -61,14 +61,14 @@ export default function Resume({
             ))}
           </div>
           <Link href="/proof-of-work">
-            <span className="text-dracula-orange mt-4 underline">
+            <span className="mt-4 text-dracula-orange underline">
               View more projects and work experience
             </span>
           </Link>
         </PageCard>
 
         <PageCard className="mt-4">
-          <SubHeader as="h3" className="text-dracula-pink mb-3 text-xl">
+          <SubHeader as="h3" className="mb-3 text-xl text-dracula-pink">
             Education
           </SubHeader>
           <div className="relative flex flex-col justify-between md:flex-row">
@@ -80,7 +80,7 @@ export default function Resume({
 
         {/* Projects */}
         <PageCard className="mt-4">
-          <SubHeader as="h3" className="text-dracula-pink mb-3 text-xl">
+          <SubHeader as="h3" className="mb-3 text-xl text-dracula-pink">
             Projects
           </SubHeader>
           <div className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2">

@@ -15,12 +15,11 @@ export default function App({
   pageProps: { ...pageProps },
   router,
 }: AppProps) {
-  const isCookied = getCookie('authToken') === PASSWORD ? true : false;
+  const isCookied = getCookie('authToken') === PASSWORD;
   const isProtected = router.route === '/proof-of-work';
 
   return (
-    <>
-      <AnimatePresence
+    <AnimatePresence
         mode="wait"
         onExitComplete={() => window.scrollTo(0, 0)}
         initial={false}
@@ -42,6 +41,5 @@ export default function App({
           </motion.div>
         </Layout>
       </AnimatePresence>
-    </>
   );
 }

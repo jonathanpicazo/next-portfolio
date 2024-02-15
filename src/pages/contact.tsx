@@ -1,6 +1,6 @@
-import React from "react";
-import { Header, PageCard, SEO } from "~/components";
-import { Button } from "~/components";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
+import { Header, PageCard, SEO, Button } from '~/components';
 
 export default function Contact() {
   return (
