@@ -16,30 +16,30 @@ export default function App({
   router,
 }: AppProps) {
   const isCookied = getCookie('authToken') === PASSWORD;
-  const isProtected = router.route === '/proof-of-work';
+  const isProtected = router.route === '/resume/proof-of-work';
 
   return (
     <AnimatePresence
-        mode="wait"
-        onExitComplete={() => window.scrollTo(0, 0)}
-        initial={false}
-      >
-        <Layout>
-          <motion.div
-            key={router.route}
-            initial={!isCookied && isProtected ? 'enter' : 'hidden'} // Set the initial state to variants.hidden
-            animate="enter" // Animated state to variants.enter
-            exit="exit" // Exit state (used later) to variants.exit
-            variants={{
-              hidden: { opacity: 0, x: -20, y: 0 },
-              enter: { opacity: 1, x: 0, y: 0 },
-              exit: { opacity: 0, x: 0, y: -20 },
-            }}
-            transition={{ ease: 'easeOut', duration: 0.6 }}
-          >
-            <Component {...pageProps} />
-          </motion.div>
-        </Layout>
-      </AnimatePresence>
+      mode="wait"
+      onExitComplete={() => window.scrollTo(0, 0)}
+      initial={false}
+    >
+      <Layout>
+        <motion.div
+          key={router.route}
+          initial={!isCookied && isProtected ? 'enter' : 'hidden'} // Set the initial state to variants.hidden
+          animate="enter" // Animated state to variants.enter
+          exit="exit" // Exit state (used later) to variants.exit
+          variants={{
+            hidden: { opacity: 0, x: -20, y: 0 },
+            enter: { opacity: 1, x: 0, y: 0 },
+            exit: { opacity: 0, x: 0, y: -20 },
+          }}
+          transition={{ ease: 'easeOut', duration: 0.6 }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
+      </Layout>
+    </AnimatePresence>
   );
 }

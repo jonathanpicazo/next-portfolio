@@ -18,7 +18,7 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
   const isMobile = useMobile();
   return (
     <motion.article
-      className="cursor-pointer overflow-hidden rounded-lg border border-dracula-dark shadow-xl"
+      className="flex cursor-pointer flex-col overflow-hidden rounded-lg border border-dracula-dark shadow-xl"
       whileHover={
         !isMobile
           ? {
@@ -37,31 +37,33 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
           src={urlFor(previewImage).width(1000).url()}
         />
       </div>
-      <div className="p-4">
+      <div className="flex w-full flex-1 flex-col p-4">
         <h3 className="text-md text-dracula-purple md:text-xl">{name}</h3>
         <p className="mb-1 text-sm text-dracula-cyan">
           <span>Context: </span>
           <span>{context}</span>
         </p>
-        {description && (
-          <p className="mb-3 text-sm text-dracula-blue-300 md:mb-4">
-            {description}
-          </p>
-        )}
+        <div className="flex flex-1 flex-col justify-between">
+          {description && (
+            <p className="mb-4 text-sm text-dracula-blue-300 md:mb-5">
+              {description}
+            </p>
+          )}
 
-        <div className="flex justify-center">
-          {featuredTechnologies.map((key) => {
-            if (techStackDictionary[key]) {
-              const item = techStackDictionary[key];
-              return (
-                <TechStackIcon
-                  item={item}
-                  key={`${name}-tech-stack-icon-${item.label}`}
-                />
-              );
-            }
-            return null;
-          })}
+          <div className="flex justify-center">
+            {featuredTechnologies.map((key) => {
+              if (techStackDictionary[key]) {
+                const item = techStackDictionary[key];
+                return (
+                  <TechStackIcon
+                    item={item}
+                    key={`${name}-tech-stack-icon-${item.label}`}
+                  />
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
       </div>
     </motion.article>

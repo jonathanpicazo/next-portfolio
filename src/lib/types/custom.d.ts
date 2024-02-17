@@ -56,6 +56,12 @@ export type ProjectItem = {
 
 // Proof of Work
 
+export type SanityAsset = {
+  asset: {
+    url: string;
+  };
+};
+
 export type WorkProject = {
   _id: string;
   name: string;
@@ -63,16 +69,12 @@ export type WorkProject = {
   technologies: string[];
   context: string;
   featuredTechnologies: TechStackKeys[];
-  previewImage: {
-    asset: {
-      url: string;
-    };
-  };
+  projectType: 'web' | 'app' | 'other';
+  previewImage: SanityAsset;
   description: string;
   url: string;
-  media: {
-    asset: {
-      url: string;
-    };
-  }[];
+  media: SanityAsset[];
+  ogImage: SanityAsset;
+  ogTitle: string;
+  ogDescription: string;
 };
