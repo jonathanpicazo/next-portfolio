@@ -54,13 +54,42 @@ export default defineType({
       name: 'featuredTechnologies',
       title: 'Featured Technologies',
     }),
-
     defineField({
       type: 'array',
       // @ts-ignore
       of: [defineArrayMember({ type: 'string' })],
       name: 'technologies',
       title: 'Technologies',
+    }),
+    defineField({
+      name: 'projectType',
+      title: 'Project Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Web', value: 'web' },
+          { title: 'App', value: 'app' },
+          { title: 'Other', value: 'other' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'ogImage',
+      title: 'OG Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'ogTitle',
+      title: 'OG Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'ogDescription',
+      title: 'OG Description',
+      type: 'text',
     }),
   ],
 
