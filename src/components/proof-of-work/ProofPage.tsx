@@ -90,10 +90,7 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
                   className="overflow-y-auto"
                   style={{ maxHeight: 'calc(100vh - 60px)' }}
                 >
-                  <ProofModal
-                    data={selectedProject}
-                    closeModal={clearProject}
-                  />
+                  <ProofModal data={selectedProject} />
                 </div>
               </PageCard>
             </motion.div>

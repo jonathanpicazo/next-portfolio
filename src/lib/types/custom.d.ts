@@ -1,3 +1,4 @@
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 // SOCIALS
 export type SocialLinkType = {
   url: string;
@@ -77,4 +78,6 @@ export type WorkProject = {
   ogImage: SanityAsset;
   ogTitle: string;
   ogDescription: string;
+  details: string;
+  mdxSource: MDXRemoteSerializeResult;
 };

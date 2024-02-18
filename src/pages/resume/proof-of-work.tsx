@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import groq from 'groq';
 import { client } from '~/sanity-client';
+import { serialize } from 'next-mdx-remote/serialize';
 import { ProofPage, AuthForm, SEO } from '~/components';
 import { WorkProject } from '~/lib';
 import { useEffectOnce } from 'react-use';
@@ -9,15 +10,23 @@ import { getCookie } from 'cookies-next';
 const PASSWORD = process.env.NEXT_PUBLIC_ROUTE_PASSWORD;
 
 export async function getStaticProps(): Promise<{
-  props: { data: WorkProject[]; password: string };
+  props: {
+    data: WorkProject[];
+    password: string;
+  };
 }> {
   try {
     const data = await client.fetch(
-      groq`*[_type == "proof-of-work"]{_id, name, description, previewImage, url, technologies, featuredTechnologies, context, projectType, media, ogTitle, ogImage, ogDescription}`
+      groq`*[_type == "proof-of-work"]{_id, name, description, previewImage, url, technologies, featuredTechnologies, context, projectType, media, ogTitle, ogImage, ogDescription, details}`
     );
-
+    const serializedData = await Promise.all(
+      data.map(async (item: any) => ({
+        ...item,
+        mdxSource: await serialize(item.details),
+      }))
+    );
     const password = PASSWORD as string;
-    return { props: { data, password } };
+    return { props: { data: serializedData, password } };
   } catch (error) {
     // console.error('Error while fetching static props', error);
     return { props: { data: [], password: '' } };
