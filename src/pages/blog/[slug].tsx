@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import Image from 'next/image';
@@ -39,19 +40,22 @@ export default function Post({ data, mdxSource }: PostProps) {
   const date = new Date(publishedAt).toLocaleDateString();
   const components = {
     h1: () => null,
-    code: CodeBlock,
+
+    h2: (props: any) => <h2 className="text-dracula-purple" {...props} />,
+    h3: (props: any) => <h3 className="text-dracula-pink" {...props} />,
     pre: (props: any) => <pre className="!bg-dracula-darker" {...props} />,
+    code: CodeBlock,
     p: (
       props: JSX.IntrinsicAttributes &
         React.ClassAttributes<HTMLParagraphElement> &
         React.HTMLAttributes<HTMLParagraphElement>
     ) => <p className="text-dracula-light" {...props} />,
-
     span: (
       props: JSX.IntrinsicAttributes &
         React.ClassAttributes<HTMLSpanElement> &
         React.HTMLAttributes<HTMLSpanElement>
     ) => <span className="text-dracula-light" {...props} />,
+    strong: (props: any) => <strong className="text-dracula-cyan" {...props} />,
   };
 
   return (

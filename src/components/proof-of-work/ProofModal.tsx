@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/heading-has-content */
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import Image from 'next/image';
+import { MDXRemote } from 'next-mdx-remote';
 import type { WorkProject, SanityAsset } from '~/lib';
 import { urlFor } from '~/lib/utils';
 import AppStoreImage from '../../../public/app_store_download.svg';
@@ -31,7 +34,7 @@ const LinkPreview: React.FC<LinkPreviewProps> = ({
       </span>
       <span className="mb-2 block">{description}</span>
       <a
-        className="text-dracula-orange hover:text-dracula-orange-700 active:text-dracula-orange-700"
+        className="text-dracula-red hover:text-dracula-red-700 active:text-dracula-red-700"
         href={url}
         target="_blank"
         rel="noreferrer"
@@ -44,24 +47,53 @@ const LinkPreview: React.FC<LinkPreviewProps> = ({
 
 type ProofModalProps = {
   data: WorkProject;
-  closeModal: () => void;
 };
 
-const ProofModal: React.FC<ProofModalProps> = ({ data, closeModal }) => {
+const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
   const {
     name,
-    description,
     technologies,
     projectType,
     url,
     ogTitle,
     ogImage,
     ogDescription,
+    mdxSource,
   } = data;
   const isApp = projectType === 'app';
   const isWeb = projectType === 'web';
-  // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
-  const _breadMan = () => closeModal();
+  const components = {
+    h1: () => null,
+
+    h2: (props: any) => <h2 className="text-dracula-purple" {...props} />,
+    h3: (props: any) => (
+      <h3
+        className="mb-0 font-myriad-pro text-base text-dracula-pink md:text-lg"
+        {...props}
+      />
+    ),
+    pre: (props: any) => <pre className="!bg-dracula-darker" {...props} />,
+    p: (
+      props: JSX.IntrinsicAttributes &
+        React.ClassAttributes<HTMLParagraphElement> &
+        React.HTMLAttributes<HTMLParagraphElement>
+    ) => <p className="text-dracula-light" {...props} />,
+    span: (
+      props: JSX.IntrinsicAttributes &
+        React.ClassAttributes<HTMLSpanElement> &
+        React.HTMLAttributes<HTMLSpanElement>
+    ) => <span className="text-dracula-light" {...props} />,
+    strong: (props: any) => <strong className="text-dracula-cyan" {...props} />,
+    ul: (props: any) => <ul className="m-0 ml-5 p-0" {...props} />,
+    li: (props: any) => (
+      <li
+        className="m-0 p-0 text-sm marker:text-dracula-dark-600 ipad:text-base"
+        {...props}
+      >
+        <span className="text-dracula-cyan">{props.children}</span>
+      </li>
+    ),
+  };
 
   return (
     <article className="rounded-lg px-3.5 pb-[180px] shadow-md md:mx-2.5 md:px-6 md:pb-[80px]">
@@ -70,12 +102,11 @@ const ProofModal: React.FC<ProofModalProps> = ({ data, closeModal }) => {
       </h4>
       <div className="mb-2 aspect-video rounded-lg bg-slate-300 md:mb-3.5" />
 
-      <h6 className="text-lg text-dracula-green md:text-xl">{name}</h6>
-      <div className="p-4">
-        {description && (
-          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
-            {description}
-          </p>
+      <h6 className="mb-2 text-lg text-dracula-green md:text-xl">{name}</h6>
+
+      <div className="md:prose-md resume-md prose prose-invert mb-4 max-w-full text-dracula-light">
+        {mdxSource && (
+          <MDXRemote {...mdxSource} components={components as any} />
         )}
       </div>
 

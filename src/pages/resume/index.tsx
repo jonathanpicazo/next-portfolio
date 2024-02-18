@@ -61,7 +61,7 @@ export default function Resume({
             ))}
           </div>
           <Link href="/resume/proof-of-work">
-            <span className="mt-4 text-dracula-orange underline hover:text-dracula-orange-700 active:text-dracula-orange-700">
+            <span className="mt-4 text-dracula-red underline hover:text-dracula-red-700 active:text-dracula-red-700">
               View more projects and work experience
             </span>
           </Link>
