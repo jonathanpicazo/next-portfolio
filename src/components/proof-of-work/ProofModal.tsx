@@ -3,7 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote';
-import type { WorkProject, SanityAsset } from '~/lib';
+import { DemoPlayer } from '~/components/global';
+import type { WorkProject } from '~/lib';
+import { SanityAsset } from '@sanity/image-url/lib/types/types';
 import { urlFor } from '~/lib/utils';
 import AppStoreImage from '../../../public/app_store_download.svg';
 
@@ -59,6 +61,7 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
     ogImage,
     ogDescription,
     mdxSource,
+    media,
   } = data;
   const isApp = projectType === 'app';
   const isWeb = projectType === 'web';
@@ -100,7 +103,12 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
       <h4 className="mb-1.5 text-lg font-bold text-dracula-pink md:mb-2.5 md:text-xl">
         Project Details
       </h4>
-      <div className="mb-2 aspect-video rounded-lg bg-slate-300 md:mb-3.5" />
+
+      {/* Media */}
+      <div className="flex">
+        {media &&
+          media.map((item) => <DemoPlayer url={item.url!} key={item._key} />)}
+      </div>
 
       <h6 className="mb-2 text-lg text-dracula-green md:text-xl">{name}</h6>
 

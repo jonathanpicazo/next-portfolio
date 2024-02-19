@@ -17,7 +17,23 @@ export async function getStaticProps(): Promise<{
 }> {
   try {
     const data = await client.fetch(
-      groq`*[_type == "proof-of-work"]{_id, name, description, previewImage, url, technologies, featuredTechnologies, context, projectType, media, ogTitle, ogImage, ogDescription, details}`
+      groq`*[_type == "proof-of-work"]{
+        _id,
+        name,
+        description,
+        previewImage,
+        url,
+        technologies,
+        featuredTechnologies,
+        context,
+        projectType,
+        media[]{..., "url": asset->url},
+        ogTitle,
+        ogImage,
+        ogDescription,
+        details
+        }
+      `
     );
     const serializedData = await Promise.all(
       data.map(async (item: any) => ({

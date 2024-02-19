@@ -1,4 +1,5 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { SanityAsset } from '@sanity/image-url/lib/types/types';
 // SOCIALS
 export type SocialLinkType = {
   url: string;
@@ -56,12 +57,6 @@ export type ProjectItem = {
 };
 
 // Proof of Work
-
-export type SanityAsset = {
-  asset: {
-    url: string;
-  };
-};
 
 export type WorkProject = {
   _id: string;
