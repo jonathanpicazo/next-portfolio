@@ -43,7 +43,7 @@ export default defineType({
     defineField({
       type: 'array',
       // @ts-ignore
-      of: [defineArrayMember({ type: 'image' })],
+      of: [defineArrayMember({ type: 'file', name: 'file', title: 'File' })],
       name: 'media',
       title: 'Media',
     }),
