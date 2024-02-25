@@ -19,6 +19,7 @@ export default function App({
     >
       <Layout>
         <motion.div
+          className="text-dracula-light"
           key={router.route}
           initial="hidden" // Set the initial state to variants.hidden
           animate="enter" // Animated state to variants.enter
