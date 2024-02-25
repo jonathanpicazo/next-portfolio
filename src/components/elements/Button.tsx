@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 type ButtonPropType = {
   children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'none';
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const buttonStyles =
@@ -10,11 +11,26 @@ export const buttonStyles =
 
 const Button: React.FC<ButtonPropType> = ({
   children,
+  variant = 'primary',
   ...props
-}: ButtonPropType) => (
-  <button className={twMerge(buttonStyles, props!.className)}>
-    {children}
-  </button>
-);
+}: ButtonPropType) => {
+  const getButtonStyles = () => {
+    switch (variant) {
+      case 'primary':
+        return buttonStyles;
+      case 'secondary':
+        return 'rounded-lg border border-dracula-dark shadow-xl px-5 py-2.5 text-center text-sm text-dracula-purple font-bold';
+      case 'none':
+        return '';
+      default:
+        return '';
+    }
+  };
+  return (
+    <button {...props} className={twMerge(getButtonStyles(), props!.className)}>
+      {children}
+    </button>
+  );
+};
 
 export default Button;

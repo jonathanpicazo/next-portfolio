@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/heading-has-content */
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import Image from 'next/image';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { client } from '~/sanity-client';
-import { Header, SEO, PageCard, AuthorCard } from '~/components';
+import { Header, SEO, PageCard, AuthorCard, CodeBlock } from '~/components';
 import { ALL_POST_SLUGS_QUERY, POST_QUERY } from '~/data';
 import { urlFor } from '~/lib/utils';
 import { BlogPostType } from '~/lib';
@@ -38,6 +40,22 @@ export default function Post({ data, mdxSource }: PostProps) {
   const date = new Date(publishedAt).toLocaleDateString();
   const components = {
     h1: () => null,
+
+    h2: (props: any) => <h2 className="text-dracula-purple" {...props} />,
+    h3: (props: any) => <h3 className="text-dracula-pink" {...props} />,
+    pre: (props: any) => <pre className="!bg-dracula-darker" {...props} />,
+    code: CodeBlock,
+    p: (
+      props: JSX.IntrinsicAttributes &
+        React.ClassAttributes<HTMLParagraphElement> &
+        React.HTMLAttributes<HTMLParagraphElement>
+    ) => <p className="text-dracula-light" {...props} />,
+    span: (
+      props: JSX.IntrinsicAttributes &
+        React.ClassAttributes<HTMLSpanElement> &
+        React.HTMLAttributes<HTMLSpanElement>
+    ) => <span className="text-dracula-light" {...props} />,
+    strong: (props: any) => <strong className="text-dracula-cyan" {...props} />,
   };
 
   return (
@@ -48,7 +66,9 @@ export default function Post({ data, mdxSource }: PostProps) {
       <PageCard>
         <section className="rounded-lg">
           <div className="md:prose-md prose prose-invert">
-            {mdxSource && <MDXRemote {...mdxSource} components={components} />}
+            {mdxSource && (
+              <MDXRemote {...mdxSource} components={components as any} />
+            )}
           </div>
         </section>
       </PageCard>

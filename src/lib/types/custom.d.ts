@@ -1,3 +1,5 @@
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { SanityAsset } from '@sanity/image-url/lib/types/types';
 // SOCIALS
 export type SocialLinkType = {
   url: string;
@@ -63,16 +65,14 @@ export type WorkProject = {
   technologies: string[];
   context: string;
   featuredTechnologies: TechStackKeys[];
-  previewImage: {
-    asset: {
-      url: string;
-    };
-  };
+  projectType: 'web' | 'app' | 'other';
+  previewImage: SanityAsset;
   description: string;
   url: string;
-  media: {
-    asset: {
-      url: string;
-    };
-  }[];
+  media: SanityAsset[];
+  ogImage: SanityAsset;
+  ogTitle: string;
+  ogDescription: string;
+  details: string;
+  mdxSource: MDXRemoteSerializeResult;
 };

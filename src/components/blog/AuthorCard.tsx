@@ -17,7 +17,7 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ date }) => {
         alt="Jonathan Picazo, author of this blog"
         height={200}
         width={200}
-        src="/images/author.gif"
+        src="/author.gif"
         className="aspect-square h-[100px] w-[100px] rounded-full"
         priority
       />
