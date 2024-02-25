@@ -36,7 +36,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
         </div>
       </div>
     )}
-    <p className="mt-2 text-base text-dracula-light">{project.description}</p>
+    <p className="mt-2 flex-1 text-base text-dracula-light">
+      {project.description}
+    </p>
     <div className="mt-4">
       <a target="_blank" href={project.link} rel="noreferrer">
         <Button>View Repo</Button>

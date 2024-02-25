@@ -7,7 +7,7 @@ import {
   siteStack,
 } from '~/data';
 import Lottie from 'lottie-react';
-import aboutMe from '../../public/lottie/aboutMe.json';
+import leftLottie from '../../public/lottie/about.json';
 
 const aboutText = [
   "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
@@ -24,7 +24,7 @@ export default function About() {
         <div className="flex flex-col-reverse gap-x-5 md:flex-row">
           {/* Left Image */}
           <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
-            <Lottie animationData={aboutMe} />
+            <Lottie animationData={leftLottie} />
           </div>
           <div className="desktop:basis-2/3 w-full">
             {/* Right Content */}
