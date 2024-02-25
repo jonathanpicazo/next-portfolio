@@ -31,6 +31,7 @@ const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
       setShowControls(true);
     }
   }, [playing]);
+
   const handleFullScreen = (evt: React.MouseEvent) => {
     evt.stopPropagation();
     setIsFullScreen(!isFullScreen);
@@ -42,9 +43,9 @@ const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
   const iconStyles = 'flex items-center justify-center';
 
   return (
-    <div>
+    <div className="flex-1">
       <div
-        className="relative"
+        className="aspect-w-16 aspect-h-9 relative min-h-[200px]"
         ref={playerWrapperRef}
         onClick={(evt) => handleVideoClick(evt)}
         onKeyDown={(evt) => handleVideoClick(evt as any)} // Add keyboard listener
@@ -59,6 +60,7 @@ const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
           width="100%"
           height="100%"
           onClickPreview={(evt) => evt.stopPropagation()}
+          muted
         />
         {!playing && showControls && (
           <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 transform">
