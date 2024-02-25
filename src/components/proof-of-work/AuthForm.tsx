@@ -25,8 +25,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ password, setAuthenticated }) => {
   return (
     <div className="max-w-screen fixed inset-0 z-50 flex h-full max-h-screen w-full items-center justify-center bg-dracula-darker-900">
       <section className="w-full max-w-lg cursor-pointer rounded-lg border border-dracula-dark px-5 py-4 shadow-xl">
-        {/* <Header title="Contact Me" /> */}
-
         <form
           name="contact"
           method="POST"

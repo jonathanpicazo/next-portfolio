@@ -71,20 +71,27 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+              transition={{ type: 'spring', stiffness: 150, damping: 20 }}
             >
               <PageCard
-                className="relative h-full min-h-screen max-w-desktop border border-dracula-dark !pt-0"
+                className="relative !m-0 h-full min-h-screen max-w-desktop border border-dracula-dark !p-0"
                 ref={modalContentRef}
               >
-                <div className="mx-auto mb-2 mt-3 h-2 w-12 rounded bg-gray-600" />
-                <button
-                  className="absolute right-0 top-0 p-4"
-                  onClick={clearProject}
+                <div className="pb-4">
+                  <div className="mx-auto mb-2 mt-3 h-2 w-12 rounded bg-gray-600" />
+                  <button
+                    className="absolute right-0 top-0 px-4 py-3"
+                    onClick={clearProject}
+                  >
+                    <CloseIcon className="text-3xl" />
+                  </button>
+                </div>
+                <div
+                  className="overflow-y-auto"
+                  style={{ maxHeight: 'calc(100vh - 60px)' }}
                 >
-                  <CloseIcon className="text-3xl" />
-                </button>
-                <ProofModal data={selectedProject} closeModal={clearProject} />
+                  <ProofModal data={selectedProject} />
+                </div>
               </PageCard>
             </motion.div>
           </motion.div>

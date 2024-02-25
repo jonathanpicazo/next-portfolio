@@ -60,8 +60,8 @@ export default function Resume({
               <ExperienceCard key={`experience-card-${el._id}`} data={el} />
             ))}
           </div>
-          <Link href="/proof-of-work">
-            <span className="mt-4 text-dracula-orange underline">
+          <Link href="/resume/proof-of-work">
+            <span className="mt-4 text-dracula-red underline hover:text-dracula-red-700 active:text-dracula-red-700">
               View more projects and work experience
             </span>
           </Link>
