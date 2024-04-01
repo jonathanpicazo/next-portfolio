@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { FiMenu } from 'react-icons/fi';
 import { useClickAway } from 'react-use';
@@ -11,26 +11,19 @@ import { navLinks } from '~/data';
 import { formatPathName } from '~/lib/utils';
 
 type MobileListProps = {
-  showMobileMenu: boolean;
   setShowMobileMenu: (state: boolean) => void;
   isSelectedPath: (path: string) => boolean;
 };
 const MobileList: React.FC<MobileListProps> = ({
-  showMobileMenu,
   setShowMobileMenu,
   isSelectedPath,
 }) => (
   <motion.div
     className="absolute z-50 block w-full bg-dracula-darker-900 px-[10px] pb-3 pt-3 md:hidden"
-    animate={showMobileMenu ? 'enter' : 'hidden'}
-    initial="hidden" // Set the initial state to variants.hidden
-    exit="exit" // Exit state (used later) to variants.exit
-    transition={{ type: 'linear' }} // Set the transition to linear
-    variants={{
-      hidden: { opacity: 0, x: -0, y: 0 },
-      enter: { opacity: 1, x: 0, y: 1 },
-      exit: { opacity: 0, x: 0, y: -100 },
-    }}
+    initial={{ opacity: 0, y: -50 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -50 }}
+    transition={{ type: 'spring', stiffness: 200, damping: 25 }}
   >
     <ul className="flex flex-col rounded-lg bg-dracula-dark px-1 py-4 text-base">
       {navLinks.map((name, index) => (
@@ -125,13 +118,14 @@ const NavBar: React.FC = () => {
           {/* Mobile */}
         </div>
       </nav>
-      {showMobileMenu && (
-        <MobileList
-          isSelectedPath={isSelectedPath}
-          setShowMobileMenu={setShowMobileMenu}
-          showMobileMenu={showMobileMenu}
-        />
-      )}
+      <AnimatePresence>
+        {showMobileMenu && (
+          <MobileList
+            isSelectedPath={isSelectedPath}
+            setShowMobileMenu={setShowMobileMenu}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
