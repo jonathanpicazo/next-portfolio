@@ -1,13 +1,6 @@
 import React from 'react';
-import { Header, PageCard, TechStackIcon, SEO, SubHeader } from '~/components';
-import {
-  techStackArr,
-  techStackDictionary,
-  personalInfo,
-  siteStack,
-} from '~/data';
-import Lottie from 'lottie-react';
-import leftLottie from '../../public/lottie/about.json';
+import { Header, PageCard, SEO, SubHeader } from '~/components';
+import { personalInfo } from '~/data';
 
 const aboutText = [
   "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
@@ -23,9 +16,10 @@ export default function About() {
       <PageCard>
         <div className="flex flex-col-reverse gap-x-5 md:flex-row">
           {/* Left Image */}
-          <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
+          {/* <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
             <Lottie animationData={leftLottie} />
-          </div>
+          </div> */}
+
           <div className="desktop:basis-2/3 w-full">
             {/* Right Content */}
             <div className="mb-4">
@@ -36,7 +30,7 @@ export default function About() {
               ))}
             </div>
             {/* Personal Info */}
-            <div>
+            <div className="mb-3 md:mb-5">
               <SubHeader className="mb-4">Personal Info</SubHeader>
               {/* Social Grid */}
               <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
@@ -55,41 +49,26 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="mt-4">
-          <SubHeader className="mb-2">Tech Stack</SubHeader>
-          {/* Tech Stack */}
-          <section className="flex flex-col gap-y-4">
-            {techStackArr.map((el) => (
-              <div key={`tech-stack-arr-${el.label}`}>
-                <p className="mb-3 text-base text-dracula-purple">{el.label}</p>
-                <div className="flex flex-wrap gap-x-3 gap-y-3">
-                  {el.items.map((key) => {
-                    const item = techStackDictionary[key];
-                    return (
-                      <TechStackIcon
-                        key={`tech-stack-list-${item.label}`}
-                        item={item}
-                      />
-                    );
-                  })}
+            <div className="grid grid-cols-1 gap-2 ipad:grid-cols-2  ipad:gap-4 md:grid-cols-3 md:gap-6">
+              <div>
+                <SubHeader className="mb-2.5">Hobbies</SubHeader>
+                <div className="flex flex-col [&>*]:align-middle [&>*]:first-letter:mr-2 [&>*]:first-letter:text-lg">
+                  <span>🏃‍♂️ Running</span>
+                  <span>☕️ Cafe Hopping</span>
+                  <span>🎮 Video Games</span>
+                  <span>📚 Reading About New Tech</span>
                 </div>
               </div>
-            ))}
-          </section>
-          {/* Site Stack */}
-          <section className="mt-4">
-            <SubHeader className="mb-2">This Site is Built With</SubHeader>
-            <div className="flex flex-wrap gap-x-3 gap-y-3">
-              {siteStack.items.map((icon) => (
-                <TechStackIcon
-                  key={`site-stack-list-${icon}`}
-                  item={techStackDictionary[icon]}
-                />
-              ))}
+              <div>
+                <SubHeader className="mb-2.5">Favorite Recent Shows</SubHeader>
+                <div className="flex flex-col">
+                  <span>⚖️ Better Call Saul</span>
+                  <span>☢️ Fallout</span>
+                  <span>👨‍🏫 Abbott Elementary</span>
+                </div>
+              </div>
             </div>
-          </section>
+          </div>
         </div>
       </PageCard>
     </>
