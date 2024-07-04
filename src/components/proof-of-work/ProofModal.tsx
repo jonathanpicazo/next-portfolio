@@ -3,11 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote';
+import { twMerge } from 'tailwind-merge';
 import { DemoPlayer } from '~/components/global';
 import type { WorkProject } from '~/lib';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
 import { urlFor } from '~/lib/utils';
 import AppStoreImage from '../../../public/app_store_download.svg';
+import { getButtonStyles } from '../elements/Button';
 
 type LinkPreviewProps = {
   image: SanityAsset;
@@ -36,7 +38,7 @@ const LinkPreview: React.FC<LinkPreviewProps> = ({
       </span>
       <span className="mb-2 block">{description}</span>
       <a
-        className="text-dracula-red hover:text-dracula-red-700 active:text-dracula-red-700"
+        className={twMerge('block', getButtonStyles('tertiary'))}
         href={url}
         target="_blank"
         rel="noreferrer"
