@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
-import { SocialLinkType } from '~/lib/types';
-
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { GoRepo } from 'react-icons/go';
+import { SocialLinkType } from '~/lib/types';
 
 const socialLinks: SocialLinkType[] = [
   {
@@ -16,6 +16,11 @@ const socialLinks: SocialLinkType[] = [
     label: 'GitHub',
     url: 'https://github.com/jonathanpicazo',
     icon: <FaGithub className="text-xl text-dracula-cyan" />,
+  },
+  {
+    label: 'Repository',
+    url: 'https://github.com/jonathanpicazo/next-portfolio',
+    icon: <GoRepo className="text-xl text-dracula-cyan" />,
   },
 ];
 
