@@ -30,9 +30,9 @@ export async function getStaticProps() {
     experience: ExperienceItemType[];
   };
   const { education, experience }: ResumeQueryType = await client.fetch(groq`
-  {
+{
     'education': *[_type == "education"],
-    'experience': *[_type == "experience"]
+    'experience': *[_type == "experience"] | order(ranking asc)
   }
 `);
   return {

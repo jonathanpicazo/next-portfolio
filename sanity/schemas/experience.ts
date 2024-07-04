@@ -67,6 +67,13 @@ export default defineType({
       type: 'markdown',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'ranking',
+      title: 'Ranking',
+      type: 'number',
+      description: 'A number to rank the work experience for sorting purposes.',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 
   preview: {
