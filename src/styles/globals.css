@@ -76,3 +76,23 @@ h6,
   border-radius: 10px;
   border: 3px solid #282a36;
 }
+
+/* Override Swiper pagination and navigation colors */
+.swiper-pagination-bullet {
+  background: #fafeff !important; /* Change to your desired color */
+}
+
+.swiper-pagination-bullet-active {
+  background: #8be9fd !important; /* Change to your desired active color */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #8be9fd !important; /* Change to your desired color */
+}
+
+/* Swiper button hover state */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ffb86c; /* Change to your desired hover color */
+}

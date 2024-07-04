@@ -12,7 +12,7 @@ export async function getStaticProps(): Promise<{
 }> {
   try {
     const data = await client.fetch(
-      groq`*[_type == "proof-of-work"]{
+      groq`*[_type == "proof-of-work"] | order(ranking asc){
         _id,
         name,
         description,

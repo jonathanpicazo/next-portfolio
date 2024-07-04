@@ -1,30 +1,72 @@
 import React from 'react';
-import { Header, PageCard, TechStackIcon, SEO, SubHeader } from '~/components';
-import {
-  techStackArr,
-  techStackDictionary,
-  personalInfo,
-  siteStack,
-} from '~/data';
-import Lottie from 'lottie-react';
-import leftLottie from '../../public/lottie/about.json';
+import groq from 'groq';
+import Image from 'next/image';
+import { Navigation, Pagination } from 'swiper/modules';
+import { Header, PageCard, SEO, SubHeader } from '~/components';
+import { personalInfo } from '~/data';
+import { client } from '~/sanity-client';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { urlFor } from '~/lib/utils';
 
-const aboutText = [
-  "Hello! I'm a software developer passionate about creating dynamic and engaging online experiences. With a strong foundation in front-end development and a keen eye for design, I strive to bring ideas to life through clean, efficient code.",
-  'Throughout my education and personal projects, I have gained proficiency in HTML, CSS, and JavaScript. I enjoy the process of transforming wireframes and mockups into fully functional websites that not only look great but also provide a seamless user experience. I am also familiar with popular front-end frameworks and libraries like React, NextJS and Tailwind, which enable me to build interactive and responsive web applications.',
-  'As a lifelong learner, I am constantly expanding my skill set and staying up-to-date with the latest trends and technologies in web development. I am enthusiastic about tackling new challenges and collaborating with experienced developers to enhance my knowledge and contribute to impactful projects.',
-];
+import 'swiper/css/bundle';
 
-export default function About() {
+export async function getStaticProps() {
+  const aboutData = await client.fetch(
+    groq`*[_type == "about" && _id == "about"][0] {
+      personalImages[]{
+        ...,
+        "url": asset->url
+      },
+      aboutText
+    }`
+  );
+
+  return {
+    props: {
+      aboutText: aboutData.aboutText,
+      personalImages: aboutData.personalImages,
+    },
+  };
+}
+
+type Props = {
+  aboutText: string[];
+  personalImages: { url: string; alt?: string }[];
+};
+
+export default function About({ aboutText, personalImages }: Props) {
   return (
     <>
       <SEO title="About" description={aboutText.join(' ')} />
       <Header title="About" />
       <PageCard>
-        <div className="flex flex-col-reverse gap-x-5 md:flex-row">
-          {/* Left Image */}
-          <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
-            <Lottie animationData={leftLottie} />
+        <div className="flex flex-col-reverse gap-5 md:flex-row">
+          <div className="mx-auto mt-4 w-full max-w-[400px] md:max-w-[350px]">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              spaceBetween={10}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              navigation
+              className="mx-auto"
+              style={
+                { '--swiper-navigation-size': '25px' } as React.CSSProperties
+              }
+            >
+              {personalImages.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className="relative aspect-[9/16] h-full w-full">
+                    <Image
+                      src={urlFor(image.url).url() || ''}
+                      alt={image.alt || 'Personal Image'}
+                      priority
+                      fill
+                      className="h-auto w-auto rounded-md object-cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
           <div className="desktop:basis-2/3 w-full">
             {/* Right Content */}
@@ -36,7 +78,7 @@ export default function About() {
               ))}
             </div>
             {/* Personal Info */}
-            <div>
+            <div className="mb-3 md:mb-5">
               <SubHeader className="mb-4">Personal Info</SubHeader>
               {/* Social Grid */}
               <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2">
@@ -55,41 +97,33 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="mt-4">
-          <SubHeader className="mb-2">Tech Stack</SubHeader>
-          {/* Tech Stack */}
-          <section className="flex flex-col gap-y-4">
-            {techStackArr.map((el) => (
-              <div key={`tech-stack-arr-${el.label}`}>
-                <p className="mb-3 text-base text-dracula-purple">{el.label}</p>
-                <div className="flex flex-wrap gap-x-3 gap-y-3">
-                  {el.items.map((key) => {
-                    const item = techStackDictionary[key];
-                    return (
-                      <TechStackIcon
-                        key={`tech-stack-list-${item.label}`}
-                        item={item}
-                      />
-                    );
-                  })}
-                </div>
+
+            <div>
+              <SubHeader className="mb-2.5">Hobbies</SubHeader>
+              <div className="flex flex-col [&>*]:align-middle [&>*]:first-letter:mr-2 [&>*]:first-letter:text-lg">
+                <span>
+                  🏃‍♂️ Running: Staying fit and clearing my mind with regular jogs
+                  and marathon training.
+                </span>
+                <span>
+                  ☕️ Cafe Hopping: Exploring new cafes and enjoying unique
+                  coffee blends.
+                </span>
+                <span>
+                  🎮 Video Games: Unwinding with competitive and story-driven
+                  games.
+                </span>
+                <span>
+                  📚 Reading About New Tech: Keeping up with the latest
+                  technology trends and advancements.
+                </span>
+                <span>
+                  📺 Binge-watching Shows: Relaxing with series on Netflix and
+                  Hulu (usually sitcoms).
+                </span>
               </div>
-            ))}
-          </section>
-          {/* Site Stack */}
-          <section className="mt-4">
-            <SubHeader className="mb-2">This Site is Built With</SubHeader>
-            <div className="flex flex-wrap gap-x-3 gap-y-3">
-              {siteStack.items.map((icon) => (
-                <TechStackIcon
-                  key={`site-stack-list-${icon}`}
-                  item={techStackDictionary[icon]}
-                />
-              ))}
             </div>
-          </section>
+          </div>
         </div>
       </PageCard>
     </>

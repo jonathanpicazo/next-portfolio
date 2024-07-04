@@ -62,7 +62,9 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
     ogDescription,
     mdxSource,
     media,
+    previewImage,
   } = data;
+
   const isApp = projectType === 'app';
   const isWeb = projectType === 'web';
   const components = {
@@ -105,9 +107,19 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
       </h4>
 
       {/* Media */}
-      <div className="flex">
-        {media &&
-          media.map((item) => <DemoPlayer url={item.url!} key={item._key} />)}
+      <div>
+        {media ? (
+          media.map((item) => <DemoPlayer url={item.url!} key={item._key} />)
+        ) : (
+          <div className="relative mb-4 aspect-[5/3]">
+            <Image
+              alt="Project 1"
+              className="h-auto w-auto object-cover object-top"
+              fill
+              src={urlFor(previewImage).width(1000).url()}
+            />
+          </div>
+        )}
       </div>
 
       <h6 className="mb-2 text-lg text-dracula-green md:text-xl">{name}</h6>

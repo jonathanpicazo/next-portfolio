@@ -8,12 +8,21 @@ import {
   SubHeader,
   EducationCard,
   ExperienceCard,
+  TechStackIcon,
 } from '~/components';
-import { projectList } from '~/data';
+import { getButtonStyles } from '~/components/elements/Button';
+import {
+  projectList,
+  siteStack,
+  techStackArr,
+  techStackDictionary,
+} from '~/data';
 import { client } from '~/sanity-client';
 import { serialize } from 'next-mdx-remote/serialize';
 import { EducationItemType, ExperienceItemType } from '~/lib';
 import groq from 'groq';
+import Lottie from 'lottie-react';
+import leftLottie from '../../../public/lottie/about.json';
 
 export async function getStaticProps() {
   type ResumeQueryType = {
@@ -21,9 +30,9 @@ export async function getStaticProps() {
     experience: ExperienceItemType[];
   };
   const { education, experience }: ResumeQueryType = await client.fetch(groq`
-  {
+{
     'education': *[_type == "education"],
-    'experience': *[_type == "experience"]
+    'experience': *[_type == "experience"] | order(ranking asc)
   }
 `);
   return {
@@ -51,19 +60,20 @@ export default function Resume({
       <SEO title="Resume" description="Resume" />
       <Header title="Resume" />
       <section>
-        <PageCard>
+        <PageCard className="pb-7">
           <SubHeader as="h3" className="mb-3 text-xl text-dracula-pink">
             Experience
           </SubHeader>
-          <div className="relative mb-2.5 flex flex-col justify-between gap-3 md:mb-3 md:gap-6">
+          <div className="relative mb-3 flex flex-col justify-between gap-3 md:mb-5 md:gap-6">
             {experience.map((el) => (
               <ExperienceCard key={`experience-card-${el._id}`} data={el} />
             ))}
           </div>
-          <Link href="/resume/proof-of-work">
-            <span className="mt-4 text-dracula-red underline hover:text-dracula-red-700 active:text-dracula-red-700">
-              View more projects and work experience
-            </span>
+          <Link
+            href="/resume/proof-of-work"
+            className={getButtonStyles('primary')}
+          >
+            <span>View more projects and work experience</span>
           </Link>
         </PageCard>
 
@@ -75,6 +85,52 @@ export default function Resume({
             {education.map((el) => (
               <EducationCard key={`education-card-${el._id}`} data={el} />
             ))}
+          </div>
+        </PageCard>
+
+        <PageCard className="mt-4 flex flex-col justify-between gap-4 md:flex-row">
+          <div>
+            <SubHeader className="mb-2">Tech Stack</SubHeader>
+            <div className="mb-3 flex w-full items-center justify-center md:mb-0 md:basis-1/3 md:justify-start">
+              <Lottie animationData={leftLottie} />
+            </div>
+          </div>
+          <div>
+            {/* Tech Stack */}
+            <section className="flex flex-col gap-y-4">
+              {techStackArr.map((el) => (
+                <div key={`tech-stack-arr-${el.label}`}>
+                  <span className="mb-3 block text-base text-dracula-purple">
+                    {el.label}
+                  </span>
+                  <div className="flex flex-wrap gap-x-3 gap-y-3">
+                    {el.items.map((key) => {
+                      const item = techStackDictionary[key];
+                      return (
+                        <TechStackIcon
+                          key={`tech-stack-list-${item.label}`}
+                          item={item}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </section>
+            {/* Site Stack */}
+            <section className="mt-4">
+              <span className="mb-3 block text-base text-dracula-purple">
+                This Site is Built With
+              </span>
+              <div className="flex flex-wrap gap-x-3 gap-y-3">
+                {siteStack.items.map((icon) => (
+                  <TechStackIcon
+                    key={`site-stack-list-${icon}`}
+                    item={techStackDictionary[icon]}
+                  />
+                ))}
+              </div>
+            </section>
           </div>
         </PageCard>
 
