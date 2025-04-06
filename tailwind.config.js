@@ -28,7 +28,6 @@ module.exports = {
   },
   plugins: [
     require('tailwind-dracula')('dracula'),
-    require('prettier-plugin-tailwindcss'),
     require('@tailwindcss/typography'),
   ],
 };
