@@ -22,16 +22,16 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ data }) => {
               alt="test"
               width={120}
               height={120}
-              className="h-[80px] w-[80px] ipad:h-[90px] ipad:w-[90px] md:h-[120px] md:w-[120px]"
+              className="ipad:h-22.5 ipad:w-22.5 h-20 w-20 md:h-25 md:w-25"
             />
           </div>
           <div>
-            <h6 className="mt-2 text-lg font-semibold text-dracula">
+            <h6 className="text-dracula mt-2 text-lg font-semibold">
               {data.name}
             </h6>
             <p className="text-dracula-cyan">{data.title}</p>
             <p className="text-dracula-orange">{data.location}</p>
-            <div className="flex items-center gap-1 text-sm text-dracula-darker-300">
+            <div className="text-dracula-darker-300 flex items-center gap-1 text-sm">
               <time>{dateFormatter.format(new Date(data.startingDate))}</time>
               <span>-</span>
               {data.endingDate ? (
@@ -44,7 +44,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="md:prose-md resume-md prose prose-invert max-w-full text-dracula-light">
+      <div className="md:prose-md resume-md prose prose-invert text-dracula-light max-w-full">
         <MDXRemote {...data.content} />
       </div>
     </div>

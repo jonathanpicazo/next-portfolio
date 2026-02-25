@@ -1,4 +1,4 @@
-import { SanityAsset } from '@sanity/image-url/lib/types/types';
+import type { SanityAsset } from '@sanity/image-url';
 
 export type BlogPostType = {
   _id: string;

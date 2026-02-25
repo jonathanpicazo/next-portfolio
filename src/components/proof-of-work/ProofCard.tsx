@@ -18,7 +18,7 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
   const isMobile = useMobile();
   return (
     <motion.article
-      className="flex cursor-pointer flex-col overflow-hidden rounded-lg border border-dracula-dark shadow-xl"
+      className="border-dracula-dark flex cursor-pointer flex-col overflow-hidden rounded-lg border shadow-xl"
       whileHover={
         !isMobile
           ? {
@@ -29,7 +29,7 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
       }
       onClick={() => openModal(data)}
     >
-      <div className="relative aspect-[5/3]">
+      <div className="relative aspect-5/3">
         <Image
           alt="Project 1"
           className="object-cover object-top"
@@ -39,13 +39,13 @@ const ProofCard: React.FC<ProofCardProps> = ({ data, openModal }) => {
       </div>
       <div className="flex w-full flex-1 flex-col p-4">
         <h3 className="text-md text-dracula-purple md:text-xl">{name}</h3>
-        <p className="mb-1 text-sm text-dracula-cyan">
+        <p className="text-dracula-cyan mb-1 text-sm">
           <span>Context: </span>
           <span>{context}</span>
         </p>
         <div className="flex flex-1 flex-col justify-between">
           {description && (
-            <p className="mb-4 text-sm text-dracula-blue-300 md:mb-5">
+            <p className="text-dracula-blue-300 mb-4 text-sm md:mb-5">
               {description}
             </p>
           )}

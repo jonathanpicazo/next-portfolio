@@ -11,6 +11,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ data }) => {
     year: 'numeric',
     month: 'short',
   });
+
   return (
     <div className="flex items-center">
       <div className="mr-4">
@@ -19,17 +20,17 @@ const EducationCard: React.FC<EducationCardProps> = ({ data }) => {
           alt="test"
           width={120}
           height={120}
-          className="h-[70px] w-[70px] md:h-[80px] md:w-[80px]"
+          className="ipad:h-20 ipad:w-20 h-17.5 w-17.5 md:h-20 md:w-20"
         />
       </div>
       <div className="mb-3 flex justify-between">
         <div>
-          <h6 className="mt-2 text-lg font-semibold text-dracula">
+          <h6 className="text-dracula mt-2 text-lg font-semibold">
             {data.name}
           </h6>
           <p className="text-dracula-cyan">{data.degree}</p>
           <p className="text-dracula-orange">{data.location}</p>
-          <div className="flex items-center gap-1 text-sm text-dracula-darker-300">
+          <div className="text-dracula-darker-300 flex items-center gap-1 text-sm">
             <time>{dateFormatter.format(new Date(data.startingDate))}</time>
             <span>-</span>
             {data.endingDate ? (

@@ -18,7 +18,7 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ date }) => {
         height={200}
         width={200}
         src="/author.gif"
-        className="aspect-square h-[100px] w-[100px] rounded-full"
+        className="aspect-square h-25 w-25 rounded-full"
         priority
       />
       <div>

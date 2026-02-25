@@ -3,8 +3,6 @@ import type { AppProps } from 'next/app';
 import { Layout } from '~/components';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/globals.css';
-import 'dracula-ui/styles/dracula-ui.css';
-import 'easymde/dist/easymde.min.css';
 
 export default function App({
   Component,
@@ -12,28 +10,27 @@ export default function App({
   router,
 }: AppProps) {
   return (
-    <AnimatePresence
-      mode="wait"
-      onExitComplete={() => window.scrollTo(0, 0)}
-      initial={false}
-    >
-      <Layout>
+    <Layout>
+      <AnimatePresence
+        mode="wait"
+        initial={false}
+      >
         <motion.div
           className="text-dracula-light"
           key={router.route}
-          initial="hidden" // Set the initial state to variants.hidden
-          animate="enter" // Animated state to variants.enter
-          exit="exit" // Exit state (used later) to variants.exit
+          initial="hidden"
+          animate="enter"
+          exit="exit"
           variants={{
             hidden: { opacity: 0, x: -20, y: 0 },
             enter: { opacity: 1, x: 0, y: 0 },
             exit: { opacity: 0, x: 0, y: -20 },
           }}
-          transition={{ ease: 'easeOut', duration: 0.6 }}
+          transition={{ ease: 'easeOut', duration: 0.25 }}
         >
           <Component {...pageProps} />
         </motion.div>
-      </Layout>
-    </AnimatePresence>
+      </AnimatePresence>
+    </Layout>
   );
 }
