@@ -1,5 +1,5 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { SanityAsset } from '@sanity/image-url/lib/types/types';
+import type { SanityAsset } from '@sanity/image-url';
 // SOCIALS
 export type SocialLinkType = {
   url: string;

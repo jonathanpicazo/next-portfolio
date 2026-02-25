@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState, useRef, useEffect } from 'react';
+  import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import { MdClose as CloseIcon } from 'react-icons/md';
@@ -20,8 +17,8 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
   );
   const clearProject = () => setSelectedProject(null);
   const setProject = (project: WorkProject) => setSelectedProject(project);
-  const modalRef: React.RefObject<HTMLDivElement> = useRef(null);
-  const modalContentRef: React.RefObject<HTMLDivElement> = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const modalContentRef = useRef<HTMLDivElement>(null);
 
   useClickAway(modalContentRef, () => {
     if (selectedProject) {
@@ -54,7 +51,7 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
           <motion.div
             key="work-project-modal"
             ref={modalRef}
-            className="fixed left-0 top-0 z-50 mt-[80px] h-full w-full rounded-lg bg-transparent shadow-2xl"
+            className="fixed left-0 top-0 z-50 mt-20 h-full w-full rounded-lg bg-transparent shadow-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -74,7 +71,7 @@ const ProofPage: React.FC<ProofOfWorkProps> = ({ data }) => {
               transition={{ type: 'spring', stiffness: 150, damping: 20 }}
             >
               <PageCard
-                className="relative !m-0 h-full min-h-screen max-w-desktop border border-dracula-dark !p-0"
+                className="relative m-0! h-full min-h-screen max-w-desktop border border-dracula-dark p-0!"
                 ref={modalContentRef}
               >
                 <div className="pb-4">

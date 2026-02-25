@@ -1,12 +1,10 @@
-/* eslint-disable jsx-a11y/heading-has-content */
-/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote';
 import { twMerge } from 'tailwind-merge';
 import { DemoPlayer } from '~/components/global';
 import type { WorkProject } from '~/lib';
-import { SanityAsset } from '@sanity/image-url/lib/types/types';
+import type { SanityAsset } from '@sanity/image-url';
 import { urlFor } from '~/lib/utils';
 import AppStoreImage from '../../../public/app_store_download.svg';
 import { getButtonStyles } from '../elements/Button';
@@ -23,7 +21,7 @@ const LinkPreview: React.FC<LinkPreviewProps> = ({
   url,
   title,
 }) => (
-  <div className="max-w-[500px] rounded-lg border border-dracula-dark shadow-xl">
+  <div className="max-w-125 rounded-lg border border-dracula-dark shadow-xl">
     <div className="relative aspect-[1.91/1] rounded-lg">
       <Image
         alt="Open Graph Image"
@@ -79,17 +77,13 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
         {...props}
       />
     ),
-    pre: (props: any) => <pre className="!bg-dracula-darker" {...props} />,
-    p: (
-      props: JSX.IntrinsicAttributes &
-        React.ClassAttributes<HTMLParagraphElement> &
-        React.HTMLAttributes<HTMLParagraphElement>
-    ) => <p className="text-dracula-light" {...props} />,
-    span: (
-      props: JSX.IntrinsicAttributes &
-        React.ClassAttributes<HTMLSpanElement> &
-        React.HTMLAttributes<HTMLSpanElement>
-    ) => <span className="text-dracula-light" {...props} />,
+    pre: (props: any) => <pre className="bg-dracula-darker!" {...props} />,
+    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+      <p className="text-dracula-light" {...props} />
+    ),
+    span: (props: React.HTMLAttributes<HTMLSpanElement>) => (
+      <span className="text-dracula-light" {...props} />
+    ),
     strong: (props: any) => <strong className="text-dracula-cyan" {...props} />,
     ul: (props: any) => <ul className="m-0 ml-5 p-0" {...props} />,
     li: (props: any) => (
@@ -103,7 +97,7 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
   };
 
   return (
-    <article className="rounded-lg px-3.5 pb-[180px] shadow-md md:mx-2.5 md:px-6 md:pb-[80px]">
+    <article className="rounded-lg px-3.5 pb-45 shadow-md md:mx-2.5 md:px-6 md:pb-20">
       <h4 className="mb-1.5 text-lg font-bold text-dracula-pink md:mb-2.5 md:text-xl">
         Project Details
       </h4>
@@ -111,9 +105,9 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
       {/* Media */}
       <div>
         {media ? (
-          media.map((item) => <DemoPlayer url={item.url!} key={item._key} />)
+          media.map((item) => <DemoPlayer src={item.url!} key={item._key} />)
         ) : (
-          <div className="relative mb-4 aspect-[5/3]">
+          <div className="relative mb-4 aspect-5/3">
             <Image
               alt="Project 1"
               className="h-auto w-auto object-cover object-top"
@@ -128,7 +122,7 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
 
       <div className="md:prose-md resume-md prose prose-invert mb-4 max-w-full text-dracula-light">
         {mdxSource && (
-          <MDXRemote {...mdxSource} components={components as any} />
+          <MDXRemote {...mdxSource} components={components} />
         )}
       </div>
 
@@ -151,7 +145,7 @@ const ProofModal: React.FC<ProofModalProps> = ({ data }) => {
 
       <div>
         {isApp ? (
-          <div className="relative aspect-[6/2] max-w-[150px] md:max-w-[200px]">
+          <div className="relative aspect-6/2 max-w-37.5 md:max-w-50">
             <a
               href={url}
               aria-label="Download App"

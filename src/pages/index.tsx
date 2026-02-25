@@ -28,22 +28,22 @@ type HomeProps = {
 export default function Home({ resumeFile }: HomeProps) {
   const isMobile = useMobile();
   return (
-    <div className="mx-auto w-full max-w-desktop md:px-10">
+    <div className="max-w-desktop mx-auto w-full md:px-10">
       <SEO
         title="Jonathan Picazo"
         description="Welcome to my personal website/portfolio!"
       />
 
-      <div className="home lg:h-[80vh] xl:h-[71vh] flex h-screen w-full items-center justify-center md:h-[90vh]">
+      <div className="home flex h-screen w-full items-center justify-center md:h-[90vh] lg:h-[80vh] xl:h-[71vh]">
         <div className="w-full">
           <section className="flex flex-col items-center justify-center">
             <div className="mb-[-20px] md:mb-[-40px]">
-              <Lottie animationData={purpleLaptop} />
+              {/* <Lottie animationData={purpleLaptop} /> */}
             </div>
-            <h1 className="text-body mb-5 text-2xl font-bold text-dracula-green  md:text-4xl">
+            <h1 className="text-body text-dracula-green mb-5 text-2xl font-bold md:text-4xl">
               Jonathan Picazo
             </h1>
-            <div className="text-large mb-4 text-dracula-yellow md:text-xl">
+            <div className="text-large text-dracula-yellow mb-4 md:text-xl">
               <Typewriter
                 options={{
                   strings: [
@@ -57,7 +57,7 @@ export default function Home({ resumeFile }: HomeProps) {
                 }}
               />
             </div>
-            <SocialList className="mb-7 mt-4" />
+            <SocialList className="mt-4 mb-7" />
             {resumeFile && (
               <motion.div
                 /**
@@ -68,7 +68,7 @@ export default function Home({ resumeFile }: HomeProps) {
                 transition={{ duration: 0.3 }}
               >
                 <a
-                  className="my-2 flex items-center gap-x-5 rounded-3xl border border-dracula-purple bg-dracula-darker p-5 hover:opacity-75"
+                  className="border-dracula-purple bg-dracula-darker my-2 flex items-center gap-x-5 rounded-3xl border p-5 hover:opacity-75"
                   role="button"
                   href={resumeFile}
                   download="Jonathan_Picazo_Resume.pdf"

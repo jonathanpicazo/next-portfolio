@@ -15,7 +15,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className = '' }) => {
 
   const language = className.replace(/language-/, '');
   return (
-    <pre className={twMerge(className, '!m-0 !p-0')}>
+    <pre className={twMerge(className, 'm-0! p-0!')}>
       <code className={`language-${language}`}>{children}</code>
     </pre>
   );

@@ -8,14 +8,14 @@ import { Button } from '~/components/elements';
 import ReactPlayer from 'react-player';
 
 type DemoPlayerProps = {
-  url: string;
+  src: string;
 };
 
-const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
+const DemoPlayer: React.FC<DemoPlayerProps> = ({ src }) => {
   const [playing, setPlaying] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showControls, setShowControls] = useState(false);
-  const playerRef = useRef<ReactPlayer>(null);
+  const playerRef = useRef<HTMLVideoElement>(null);
   const playerWrapperRef = useRef<HTMLDivElement>(null);
   const handlePlayPause = (evt: React.MouseEvent) => {
     evt.stopPropagation();
@@ -36,7 +36,7 @@ const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
     evt.stopPropagation();
     setIsFullScreen(!isFullScreen);
   };
-  const isFullscreen = useFullscreen(playerWrapperRef, isFullScreen, {
+  const isFullscreen = useFullscreen(playerWrapperRef as React.RefObject<Element>, isFullScreen, {
     onClose: () => setIsFullScreen(false),
   });
 
@@ -45,7 +45,7 @@ const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
   return (
     <div className="flex-1">
       <div
-        className="aspect-w-16 aspect-h-9 relative min-h-[200px]"
+        className="aspect-w-16 aspect-h-9 relative min-h-50"
         ref={playerWrapperRef}
         onClick={(evt) => handleVideoClick(evt)}
         onKeyDown={(evt) => handleVideoClick(evt as any)} // Add keyboard listener
@@ -54,7 +54,7 @@ const DemoPlayer: React.FC<DemoPlayerProps> = ({ url }) => {
       >
         <ReactPlayer
           ref={playerRef}
-          url={url}
+          src={src}
           playing={playing}
           loop={playing} // Loop the video when playing
           width="100%"

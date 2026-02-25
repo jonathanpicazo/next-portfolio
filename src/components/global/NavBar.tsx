@@ -1,4 +1,4 @@
-/* eslint-disable react/no-array-index-key */
+
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,7 +19,7 @@ const MobileList: React.FC<MobileListProps> = ({
   isSelectedPath,
 }) => (
   <motion.div
-    className="absolute z-50 block w-full bg-dracula-darker-900 px-[10px] pb-3 pt-3 md:hidden"
+    className="absolute z-50 block w-full bg-dracula-darker-900 px-2.5 pb-3 pt-3 md:hidden"
     initial={{ opacity: 0, y: -50 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -50 }}
